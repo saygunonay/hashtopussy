@@ -303,4 +303,5 @@ class PActions {
   const BENCHMARK = "bench";
   const SOLVE     = "solve";
   const TEST      = "test";
+  const INVALID   = "INV";
 }
