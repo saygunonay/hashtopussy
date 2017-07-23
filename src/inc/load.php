@@ -56,7 +56,7 @@ foreach ($dir as $entry) {
 require_once(dirname(__FILE__) . "/../dba/init.php");
 
 $FACTORIES = new Factory();
-$LANG = new Lang();
+$LANGUAGE = new Lang();
 
 $gitcommit = "";
 $gitfolder = dirname(__FILE__) . "/../../.git";
