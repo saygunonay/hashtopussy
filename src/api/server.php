@@ -10,7 +10,7 @@
 require_once(dirname(__FILE__) . "/../inc/load.php");
 set_time_limit(0);
 
-/** @var $LANG Lang */
+$LANG = new Lang(Lang::$defaultLanguage);
 
 header("Content-Type: application/json");
 $QUERY = json_decode(file_get_contents('php://input'), true);

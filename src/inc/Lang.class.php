@@ -7,17 +7,17 @@
  * @author Sein
  */
 class Lang {
-  private $language;
-  private $array;
-  private $available;
-  private $langArr;
-  private $defaultLanguage = "EN-en";
+  private       $language;
+  private       $array;
+  private       $available;
+  private       $langArr;
+  public static $defaultLanguage = "EN-en";
   
   /**
    * Constructs the language object. Language files need to be included BEFORE this constructor.
-   *
+   * @param bool $forceLang set language force to use
    */
-  public function __construct() {
+  public function __construct($forceLang = false) {
     global $LANG;
     
     $availableLanguages = array();
@@ -36,8 +36,8 @@ class Lang {
     $this->langArr = $LANG;
     
     // default language setting
-    $this->array = $this->langArr[$this->defaultLanguage];
-    $this->language = $this->defaultLanguage;
+    $this->array = $this->langArr[Lang::$defaultLanguage];
+    $this->language = Lang::$defaultLanguage;
     
     if (isset($_GET['setlang'])) {
       if (in_array($_GET['setlang'], $this->available)) {
@@ -52,6 +52,12 @@ class Lang {
         $this->array = $this->langArr[$this->language];
         setcookie("htp_lang", $this->language, time() + 86400);
       }
+    }
+    
+    // if force is set
+    if ($forceLang) {
+      $this->language = $forceLang;
+      $this->array = $this->langArr[$this->language];
     }
   }
   
@@ -79,7 +85,7 @@ class Lang {
       return true;
     }
     else if (!$strict) {
-      if (isset($this->langArr[$this->defaultLanguage][$key])) {
+      if (isset($this->langArr[Lang::$defaultLanguage][$key])) {
         return true;
       }
     }
@@ -97,8 +103,8 @@ class Lang {
       return $this->array[$key];
     }
     else {
-      if (isset($this->langArr[$this->defaultLanguage][$key])) {
-        return $this->langArr[$this->defaultLanguage][$key];
+      if (isset($this->langArr[Lang::$defaultLanguage][$key])) {
+        return $this->langArr[Lang::$defaultLanguage][$key];
       }
       return "___" . $key . "___";
     }
