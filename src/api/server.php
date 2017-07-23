@@ -102,6 +102,6 @@ switch ($QUERY[PQuery::ACTION]) {
     API::solve($QUERY);
     break;
   default:
-    API::sendErrorResponse("INV", "Invalid query!");
+    API::sendErrorResponse(PActions::INVALID, "Invalid query!");
 }
 
