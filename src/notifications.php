@@ -27,7 +27,7 @@ $TEMPLATE = new Template("notifications");
 $MENU->setActive("account_notifications");
 
 //catch actions here...
-if (isset($_POST['action'])) {
+if (isset($_POST['action']) && Util::checkCSRF($_POST['csrf'])) {
   $notificationHandler = new NotificationHandler();
   $notificationHandler->handle($_POST['action']);
   if (UI::getNumMessages() == 0) {
@@ -77,7 +77,7 @@ foreach ($notifications as $notification) {
         break;
       case DNotificationObjectType::AGENT:
         $agent = $FACTORIES::getAgentFactory()->get($notification->getObjectId());
-        $appliedTo = "<a href='agents.php?id=" . $agent->getId() . "'>Hashlist: " . $agent->getAgentName() . " (" . $agent->getId() . ")</a>";
+        $appliedTo = "<a href='agents.php?id=" . $agent->getId() . "'>Agent: " . $agent->getAgentName() . " (" . $agent->getId() . ")</a>";
         break;
     }
   }

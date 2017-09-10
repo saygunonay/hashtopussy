@@ -101,6 +101,7 @@ class Util {
           $importFiles[] = new DataSet(array("file" => $file, "size" => Util::filesize($directory . "/" . $file)));
         }
       }
+      sort($importFiles);
       return $importFiles;
     }
     return array();
@@ -395,13 +396,13 @@ class Util {
           $dispatched += $chunk->getLength();
         }
       }
-      if ($t->getKeyspace() != 0 && $dispatched == $t->getKeyspace()) {
+      if ($t->getKeyspace() != 0 && $dispatched >= $t->getKeyspace()) {
         // task is fully dispatched
         $fullCount++;
         continue;
       }
       
-      if (($t->getKeyspace() == $sumProgress && $t->getKeyspace() != 0) || $hashlist->getCracked() == $hashlist->getHashCount()) {
+      if (($t->getKeyspace() <= $sumProgress && $t->getKeyspace() != 0) || $hashlist->getCracked() == $hashlist->getHashCount()) {
         //task is finished
         $t->setPriority(0);
         //TODO: make massUpdate
@@ -514,7 +515,7 @@ class Util {
         $uncompletedChunk = $chunk;
       }
     }
-    if ($task->getKeyspace() != $dispatched) {
+    if ($task->getKeyspace() > $dispatched) {
       return true; // task is not fully dispatched
     }
     else if ($uncompletedChunk != null) {
@@ -673,7 +674,7 @@ class Util {
    */
   public static function tickdone($prog, $total) {
     // show tick of progress is done
-    if ($total > 0 && $prog == $total) {
+    if ($total > 0 && $prog >= $total) {
       return " <img src='static/check.png' alt='Finished'>";
     }
     return "";
@@ -729,7 +730,7 @@ class Util {
    * @return string escaped string
    */
   public static function escapeSpecial($string) {
-    $string = htmlentities($string, false, "UTF-8");
+    $string = htmlentities($string, ENT_QUOTES, "UTF-8");
     $string = str_replace('"', '&#34;', $string);
     $string = str_replace("'", "&#39;", $string);
     $string = str_replace('`', '&#96;', $string);
@@ -1181,5 +1182,18 @@ class Util {
    */
   public static function getMessage($type, $msg) {
     return "<div class='alert alert-$type'>$msg</div>";
+  }
+  
+  public static function checkCSRF($csrf) {
+    global $OBJECTS;
+    
+    if (!isset($_SESSION['csrf']) || $csrf !== $_SESSION['csrf']) {
+      unset($_SESSION['csrf']);
+      UI::addMessage(UI::ERROR, "Invalid form submission!");
+      return false;
+    }
+    $_SESSION['csrf'] = Util::randomString(30);
+    $OBJECTS['csrf'] = $_SESSION['csrf'];
+    return true;
   }
 }

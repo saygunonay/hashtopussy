@@ -8,12 +8,22 @@
 </div>
 <form class='form-inline' action="supertasks.php" method="POST">
 	<input type='hidden' name='action' value='[[$DSupertaskAction::IMPORT_SUPERTASK]]'>
+	<input type="hidden" name="csrf" value="[[csrf]]">
 	<div class="panel panel-default">
 		<table class="table table-bordered table-nonfluid">
 			<tr>
 				<td style="width: 150px;">Name:</td>
 				<td>
 					<input type='text' name='name' class='form-control'>
+				</td>
+			</tr>
+			<tr>
+				<td>Is Small Task:</td>
+				<td>
+					<select name="isSmall" class="form-control">
+						<option value="0">No</option>
+						<option value="1">Yes</option>
+					</select>
 				</td>
 			</tr>
 			<tr>

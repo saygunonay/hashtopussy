@@ -119,7 +119,8 @@ INSERT INTO `Config` (`configId`, `item`, `value`) VALUES
   (16, 'batchSize', '10000'),
   (18, 'yubikey_id', ''),
   (19, 'yubikey_key', ''),
-  (20, 'yubikey_url', 'http://api.yubico.com/wsapi/2.0/verify');
+  (20, 'yubikey_url', 'http://api.yubico.com/wsapi/2.0/verify'),
+  (21, 'donateOff', '0');
 
 CREATE TABLE `AgentError` (
   `agentErrorId` INT(11)               NOT NULL,
@@ -642,7 +643,9 @@ ALTER TABLE `File`
 ALTER TABLE `Hash`
   ADD PRIMARY KEY (`hashId`),
   ADD KEY `hashlistId` (`hashlistId`),
-  ADD KEY `chunkId` (`chunkId`);
+  ADD KEY `chunkId` (`chunkId`),
+  ADD KEY `hash` (`hash`),
+  ADD KEY `isCracked` (`isCracked`);
 
 ALTER TABLE `HashBinary`
   ADD PRIMARY KEY (`hashBinaryId`),
@@ -840,5 +843,3 @@ ALTER TABLE `TaskTask`
   ADD CONSTRAINT FOREIGN KEY (`subtaskId`) REFERENCES `Task` (`taskId`);
 ALTER TABLE `TaskTask`
   ADD CONSTRAINT FOREIGN KEY (`taskId`) REFERENCES `Task` (`taskId`);
-
-ALTER TABLE `Hash` ADD INDEX(`hash`);

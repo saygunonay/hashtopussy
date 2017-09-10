@@ -12,11 +12,10 @@ if (!isset($_POST['username']) || !isset($_POST['password'])) {
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-$otp = $_POST['otp'];
-$fw = "";
-if (isset($_POST['fw'])) {
-  $fw = $_POST['fw'];
-}
+
+// isYubikeyEnabled() ?
+$otp = (isset($_POST['otp'])) ? $_POST['otp'] : "";
+$fw = (isset($_POST['fw'])) ? $_POST['fw'] : "";
 
 if (strlen($username) == 0 || strlen($password) == 0) {
   header("Location: index.php?err=2" . time());
@@ -27,7 +26,7 @@ $LOGIN->login($username, $password, $otp);
 
 if ($LOGIN->isLoggedin()) {
   if (strlen($fw) > 0) {
-    header("Location: " . urldecode($fw));
+    header("Location: " . Util::buildServerUrl() . "/" . urldecode($fw));
     die();
   }
   header("Location: index.php");

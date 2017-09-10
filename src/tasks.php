@@ -25,7 +25,7 @@ $TEMPLATE = new Template("tasks/index");
 $MENU->setActive("tasks_list");
 
 //catch agents actions here...
-if (isset($_POST['action'])) {
+if (isset($_POST['action']) && Util::checkCSRF($_POST['csrf'])) {
   $taskHandler = new TaskHandler();
   $taskHandler->handle($_POST['action']);
   if (UI::getNumMessages() == 0) {
@@ -184,6 +184,7 @@ if (isset($_GET['id'])) {
   }
   $OBJECTS['assignAgents'] = $assignAgents;
   
+  $OBJECTS['showAllAgents'] = false;
   if (isset($_GET['allagents'])) {
     $OBJECTS['showAllAgents'] = true;
     $allAgentsSpent = new DataSet();

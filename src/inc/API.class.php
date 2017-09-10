@@ -336,12 +336,12 @@ class API {
     $hashcat = $FACTORIES::getHashcatReleaseFactory()->filter(array($FACTORIES::ORDER => array($oF)), true);
     if ($hashcat != null) {
       if ($agent->getHcVersion() != $hashcat->getVersion()) {
-        /*API::sendResponse(array(
+        API::sendResponse(array(
             PResponseChunk::ACTION => PActions::CHUNK,
             PResponseChunk::RESPONSE => PValues::SUCCESS,
             PResponseChunk::CHUNK_STATUS => PValuesChunkType::HASHCAT_UPDATE
           )
-        );*/
+        );
       }
     }
     
@@ -467,8 +467,8 @@ class API {
     }
     
     $gpu = $QUERY[PQueryRegister::GPUS];
-    $uid = htmlentities($QUERY[PQueryRegister::USERID], false, "UTF-8");
-    $name = htmlentities($QUERY[PQueryRegister::AGENT_NAME], false, "UTF-8");
+    $uid = htmlentities($QUERY[PQueryRegister::USERID], ENT_QUOTES, "UTF-8");
+    $name = htmlentities($QUERY[PQueryRegister::AGENT_NAME], ENT_QUOTES, "UTF-8");
     $os = intval($QUERY[PQueryRegister::OPERATING_SYSTEM]);
     
     //determine if the client has cpu only
@@ -482,7 +482,7 @@ class API {
     
     //create access token & save agent details
     $token = Util::randomString(10);
-    $gpu = htmlentities(implode("\n", $gpu), false, "UTF-8");
+    $gpu = htmlentities(implode("\n", $gpu), ENT_QUOTES, "UTF-8");
     $agent = new Agent(0, $name, $uid, $os, $gpu, "", "", 0, 1, 0, $token, PActions::REGISTER, time(), Util::getIP(), null, $cpuOnly);
     $FACTORIES::getRegVoucherFactory()->delete($voucher);
     if ($FACTORIES::getAgentFactory()->save($agent)) {
@@ -675,6 +675,7 @@ class API {
     
     $payload = new DataSet(array(DPayloadKeys::AGENT => $agent, DPayloadKeys::AGENT_ERROR => $QUERY[PQueryError::MESSAGE]));
     NotificationHandler::checkNotifications(DNotificationType::AGENT_ERROR, $payload);
+    NotificationHandler::checkNotifications(DNotificationType::OWN_AGENT_ERROR, $payload);
     
     if ($agent->getIgnoreErrors() == 0) {
       //deactivate agent
@@ -952,13 +953,13 @@ class API {
       $origTask = $setToTask;
       $setToTask = Util::getBestTask($agent, 0, $setToTask->getId());
       
-      // this is a special case when the agent continues on the task and it's NOT a new assignment. Otherwise there will be duplicate assignments
-      if ($currentTask != null && $currentTask->getId() == $setToTask->getId()) {
-        $newAssignment = false;
-      }
       if ($setToTask == null) {
         $origTask->setPriority(0);
         $FACTORIES::getTaskFactory()->update($origTask);
+      }
+      // this is a special case when the agent continues on the task and it's NOT a new assignment. Otherwise there will be duplicate assignments
+      else if ($currentTask != null && $currentTask->getId() == $setToTask->getId()) {
+        $newAssignment = false;
       }
     }
     
@@ -1370,7 +1371,7 @@ class API {
             )
           );
         }
-        $chunk->setSpeed($speed * 1000);
+        $chunk->setSpeed($speed);
         $FACTORIES::getChunkFactory()->update($chunk);
         
         $agentZap = $FACTORIES::getAgentZapFactory()->get($agent->getId());

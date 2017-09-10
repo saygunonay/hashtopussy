@@ -21,7 +21,7 @@ $TEMPLATE = new Template("hashcat/index");
 $MENU->setActive("hashcat_list");
 
 //catch actions here...
-if (isset($_POST['action'])) {
+if (isset($_POST['action']) && Util::checkCSRF($_POST['csrf'])) {
   $hashcatHandler = new HashcatHandler();
   $hashcatHandler->handle($_POST['action']);
   if (UI::getNumMessages() == 0) {
@@ -29,7 +29,7 @@ if (isset($_POST['action'])) {
   }
 }
 
-if (isset($_GET['new'])) {
+if (isset($_GET['new']) && $LOGIN->getLevel() >= DAccessLevel::SUPERUSER) {
   $TEMPLATE = new Template("hashcat/new");
   $MENU->setActive("hashcat_new");
   $oF = new OrderFilter(HashcatRelease::TIME, "DESC LIMIT 1");
@@ -39,7 +39,7 @@ if (isset($_GET['new'])) {
   if (sizeof($releases) > 0) {
     $rootDir = $releases[0]->getRootdir();
   }
-  $OBJECTS['rootDir'] = $rootDir;
+  $OBJECTS['rootDir'] = htmlentities($rootDir, ENT_QUOTES, "UTF-8");
 }
 else {
   $oF = new OrderFilter(HashcatRelease::TIME, "DESC");

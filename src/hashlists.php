@@ -28,7 +28,7 @@ $MENU->setActive("lists_norm");
 $OBJECTS['zap'] = false;
 
 //catch actions here...
-if (isset($_POST['action'])) {
+if (isset($_POST['action']) && Util::checkCSRF($_POST['csrf'])) {
   $hashlistHandler = new HashlistHandler();
   $hashlistHandler->handle($_POST['action']);
   if (UI::getNumMessages() == 0 && !$OBJECTS['zap']) {
@@ -62,6 +62,7 @@ else if (isset($_GET['id'])) {
   $OBJECTS['list'] = $list;
   
   //check if the list is a superhashlist
+  $OBJECTS['sublists'] = array();
   if ($list->getVal('hashlist')->getFormat() == 3) {
     $jF = new JoinFilter($FACTORIES::getSuperHashlistHashlistFactory(), SuperHashlistHashlist::HASHLIST_ID, Hashlist::HASHLIST_ID);
     $qF = new QueryFilter(SuperHashlistHashlist::SUPER_HASHLIST_ID, $list->getVal('hashlist')->getId(), "=", $FACTORIES::getSuperHashlistHashlistFactory());
@@ -103,6 +104,10 @@ else if (isset($_GET['id'])) {
     }
   }
   $OBJECTS['preTasks'] = $preTasks;
+  
+  // load list of available supertasks
+  $OBJECTS['superTasks'] = $FACTORIES::getSupertaskFactory()->filter(array());
+  
   $TEMPLATE = new Template("hashlists/detail");
 }
 else {

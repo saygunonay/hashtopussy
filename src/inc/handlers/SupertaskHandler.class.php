@@ -1,7 +1,6 @@
 <?php
 
 use DBA\JoinFilter;
-use DBA\OrderFilter;
 use DBA\QueryFilter;
 use DBA\Supertask;
 use DBA\SupertaskTask;
@@ -38,11 +37,15 @@ class SupertaskHandler implements Handler {
     /** @var $CONFIG DataSet */
     global $FACTORIES, $CONFIG;
     
-    $name = htmlentities($_POST['name'], false, "UTF-8");
+    $name = htmlentities($_POST['name'], ENT_QUOTES, "UTF-8");
     $masks = $_POST['masks'];
+    $isSmall = intval($_POST['isSmall']);
     if (strlen($name) == 0 || strlen($masks) == 0) {
       UI::addMessage(UI::ERROR, "Name or masks is empty!");
       return;
+    }
+    if ($isSmall != 0 && $isSmall != 1) {
+      $isSmall = 0;
     }
     
     $masks = explode("\n", str_replace("\r\n", "\n", $masks));
@@ -93,8 +96,8 @@ class SupertaskHandler implements Handler {
       $preTaskName = str_replace("COMMA_PLACEHOLDER", "\\,", $preTaskName);
       $preTaskName = str_replace("HASH_PLACEHOLDER", "\\#", $preTaskName);
       
-      //TODO: make configurable if small task, cpu only task etc.
-      $preTask = new Task(0, $preTaskName, $CONFIG->getVal(DConfig::HASHLIST_ALIAS) . " -a 3 " . $cmd, null, $CONFIG->getVal(DConfig::CHUNK_DURATION), $CONFIG->getVal(DConfig::STATUS_TIMER), 0, 0, $priority, "", 0, 0, 0, 0, 0);
+      //TODO: make configurable if cpu only task etc.
+      $preTask = new Task(0, $preTaskName, $CONFIG->getVal(DConfig::HASHLIST_ALIAS) . " -a 3 " . $cmd, null, $CONFIG->getVal(DConfig::CHUNK_DURATION), $CONFIG->getVal(DConfig::STATUS_TIMER), 0, 0, $priority, "", $isSmall, 0, 0, 0, 0);
       $preTask = $FACTORIES::getTaskFactory()->save($preTask);
       $preTasks[] = $preTask;
       $priority--;
@@ -126,20 +129,13 @@ class SupertaskHandler implements Handler {
     
     $subTasks = array();
     
-    $oF = new OrderFilter(Task::PRIORITY, "DESC LIMIT 1");
-    $qF = new QueryFilter(Task::HASHLIST_ID, null, "<>");
-    $highestTask = $FACTORIES::getTaskFactory()->filter(array($FACTORIES::FILTER => $qF, $FACTORIES::ORDER => $oF), true);
-    $highestPriority = 1;
-    if ($highestTask != null) {
-      $highestPriority = $highestTask->getPriority() + 1;
-    }
-    
     $isCpuTask = 0;
     
     $qF = new QueryFilter(SupertaskTask::SUPERTASK_ID, $supertask->getId(), "=", $FACTORIES::getSupertaskTaskFactory());
     $jF = new JoinFilter($FACTORIES::getSupertaskTaskFactory(), SupertaskTask::TASK_ID, Task::TASK_ID);
     $joinedTasks = $FACTORIES::getTaskFactory()->filter(array($FACTORIES::FILTER => $qF, $FACTORIES::JOIN => $jF));
     $tasks = $joinedTasks[$FACTORIES::getTaskFactory()->getModelName()];
+    $supertaskPriority = 0;
     foreach ($tasks as $task) {
       /** @var $task Task */
       if (strpos($task->getAttackCmd(), $CONFIG->getVal(DConfig::HASHLIST_ALIAS)) === false) {
@@ -152,7 +148,9 @@ class SupertaskHandler implements Handler {
       if ($hashlist->getHexSalt() == 1 && strpos($task->getAttackCmd(), "--hex-salt") === false) {
         $task->setAttackCmd("--hex-salt " . $task->getAttackCmd());
       }
-      $task->setPriority($highestPriority + $task->getPriority());
+      if ($supertaskPriority == 0 || $supertaskPriority > $task->getPriority()) {
+        $supertaskPriority = $task->getPriority();
+      }
       $task->setHashlistId($hashlist->getId());
       $task->setTaskType(DTaskTypes::SUBTASK);
       $task = $FACTORIES::getTaskFactory()->save($task);
@@ -166,7 +164,7 @@ class SupertaskHandler implements Handler {
         $FACTORIES::getTaskFileFactory()->save($taskFile);
       }
     }
-    $supTask = new Task(0, $supertask->getSupertaskName(), "SUPER", $hashlist->getId(), 0, 0, 0, 0, 0, "", 0, $isCpuTask, 0, 0, DTaskTypes::SUPERTASK);
+    $supTask = new Task(0, $supertask->getSupertaskName(), "SUPER", $hashlist->getId(), 0, 0, 0, 0, $supertaskPriority, "", 0, $isCpuTask, 0, 0, DTaskTypes::SUPERTASK);
     $supTask = $FACTORIES::getTaskFactory()->save($supTask);
     foreach ($subTasks as $task) {
       $task->setIsCpuTask($isCpuTask); // we need to enforce that all tasks have either cpu task or not cpu task setting
@@ -182,7 +180,7 @@ class SupertaskHandler implements Handler {
   private function create() {
     global $FACTORIES;
     
-    $name = htmlentities($_POST['name'], false, "UTF-8");
+    $name = htmlentities($_POST['name'], ENT_QUOTES, "UTF-8");
     $tasks = $_POST['task'];
     $FACTORIES::getAgentFactory()->getDB()->query("START TRANSACTION");
     $supertask = new Supertask(0, $name);

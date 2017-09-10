@@ -169,7 +169,7 @@ class HashlistHandler implements Handler {
     if (sizeof($hashlists) == 0) {
       UI::printError("ERROR", "No hashlists selected!");
     }
-    $name = htmlentities($_POST["name"], false, "UTF-8");
+    $name = htmlentities($_POST["name"], ENT_QUOTES, "UTF-8");
     $qF = new ContainFilter(Hashlist::HASHLIST_ID, $hashlists);
     $FACTORIES::getAgentFactory()->getDB()->query("START TRANSACTION");
     $lists = $FACTORIES::getHashlistFactory()->filter(array($FACTORIES::FILTER => $qF));
@@ -199,7 +199,7 @@ class HashlistHandler implements Handler {
     /** @var $CONFIG DataSet */
     global $FACTORIES, $LOGIN, $CONFIG;
     
-    $name = htmlentities($_POST["name"], false, "UTF-8");
+    $name = htmlentities($_POST["name"], ENT_QUOTES, "UTF-8");
     $salted = (isset($_POST["salted"]) && intval($_POST["salted"]) == 1) ? "1" : "0";
     $secret = (isset($_POST["secret"]) && intval($_POST["secret"]) == 1) ? "1" : "0";
     $hexsalted = (isset($_POST["hexsalted"]) && $salted && intval($_POST["hexsalted"]) == 1) ? "1" : "0";
@@ -648,6 +648,7 @@ class HashlistHandler implements Handler {
     //start inserting
     $totalLines = 0;
     $newCracked = 0;
+    $tooLong = 0;
     $crackedIn = array();
     $zaps = array();
     foreach ($hashlists as $l) {
@@ -660,6 +661,7 @@ class HashlistHandler implements Handler {
     $hashlistIds = array();
     foreach ($hashlists as $l) {
       $hashlistIds[] = $l->getId();
+      $crackedIn[$l->getId()] = 0;
     }
     while (!feof($file)) {
       $data = stream_get_line($file, 1024, $lineSeparator);
@@ -686,6 +688,10 @@ class HashlistHandler implements Handler {
           continue;
         }
         $plain = str_replace($hash . $separator . $hashEntry->getSalt() . $separator, "", $data);
+        if (strlen($plain) > DLimits::PLAINTEXT_LENGTH) {
+          $tooLong++;
+          continue;
+        }
         $hashEntry->setPlaintext($plain);
         $hashEntry->setIsCracked(1);
         $hashFactory->update($hashEntry);
@@ -726,6 +732,10 @@ class HashlistHandler implements Handler {
             continue;
           }
           $plain = str_replace($hash . $separator, "", $data);
+          if (strlen($plain) > DLimits::PLAINTEXT_LENGTH) {
+            $tooLong++;
+            continue;
+          }
           $hashEntry->setPlaintext($plain);
           $hashEntry->setIsCracked(1);
           $hashFactory->update($hashEntry);
@@ -782,6 +792,9 @@ class HashlistHandler implements Handler {
     }
     $FACTORIES::getAgentFactory()->getDB()->query("COMMIT");
     UI::addMessage(UI::SUCCESS, "Processed pre-cracked hashes: $totalLines total lines, $newCracked new cracked hashes, $alreadyCracked were already cracked, $invalid invalid lines, $notFound not matching entries (" . ($endTime - $startTime) . "s)!");
+    if ($tooLong > 0) {
+      UI::addMessage(UI::WARN, "$tooLong entries with too long plaintext");
+    }
   }
   
   private function rename() {
@@ -792,7 +805,7 @@ class HashlistHandler implements Handler {
     if ($this->hashlist == null) {
       UI::printError("ERROR", "Invalid hashlist!");
     }
-    $name = htmlentities($_POST["name"], false, "UTF-8");
+    $name = htmlentities($_POST["name"], ENT_QUOTES, "UTF-8");
     $this->hashlist->setHashlistName($name);
     $FACTORIES::getHashlistFactory()->update($this->hashlist);
     Util::refresh();
@@ -904,6 +917,9 @@ class HashlistHandler implements Handler {
       }
       foreach ($_POST['task'] as $pretask) {
         $task = $FACTORIES::getTaskFactory()->get($pretask);
+        if ($task->getTaskType() == null) {
+          $task->setTaskType(DTaskTypes::NORMAL);
+        }
         if ($task != null) {
           if ($this->hashlist->getHexSalt() == 1 && strpos($task->getAttackCmd(), "--hex-salt") === false) {
             $task->setAttackCmd("--hex-salt " . $task->getAttackCmd());

@@ -12,7 +12,6 @@ abstract class HashtopussyNotification {
   /**
    * @param $notificationType string
    * @param $payload DataSet
-   * @param $receiver string Contains the value where the message can be sent to. This can for example be an URL, an email address, etc.
    * @param $notification NotificationSetting
    */
   public function execute($notificationType, $payload, $notification) {
@@ -35,6 +34,12 @@ abstract class HashtopussyNotification {
         $obj['message'] = "Agent '" . $agent->getAgentName() . "' (" . $agent->getId() . ") errored: " . $payload->getVal(DPayloadKeys::AGENT_ERROR);
         $obj['html'] = "Agent <a href='" . Util::buildServerUrl() . $CONFIG->getVal(DConfig::BASE_URL) . "/agents.php?id=" . $agent->getId() . "'>" . $agent->getAgentName() . "</a> errored: " . $payload->getVal(DPayloadKeys::AGENT_ERROR);
         $obj['simplified'] = "Agent <" . Util::buildServerUrl() . $CONFIG->getVal(DConfig::BASE_URL) . "/agents.php?id=" . $agent->getId() . "|" . $agent->getAgentName() . "> errored: " . $payload->getVal(DPayloadKeys::AGENT_ERROR);
+        break;
+      case DNotificationType::OWN_AGENT_ERROR:
+        $agent = $payload->getVal(DPayloadKeys::AGENT);
+        $obj['message'] = "Your owned Agent '" . $agent->getAgentName() . "' (" . $agent->getId() . ") errored: " . $payload->getVal(DPayloadKeys::AGENT_ERROR);
+        $obj['html'] = "Your owned Agent <a href='" . Util::buildServerUrl() . $CONFIG->getVal(DConfig::BASE_URL) . "/agents.php?id=" . $agent->getId() . "'>" . $agent->getAgentName() . "</a> errored: " . $payload->getVal(DPayloadKeys::AGENT_ERROR);
+        $obj['simplified'] = "Your owned Agent <" . Util::buildServerUrl() . $CONFIG->getVal(DConfig::BASE_URL) . "/agents.php?id=" . $agent->getId() . "|" . $agent->getAgentName() . "> errored: " . $payload->getVal(DPayloadKeys::AGENT_ERROR);
         break;
       case DNotificationType::LOG_ERROR:
         $logEntry = $payload->getVal(DPayloadKeys::LOG_ENTRY);

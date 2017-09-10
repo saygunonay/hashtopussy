@@ -1,4 +1,47 @@
-# v0.4.0 -> v0.x.x
+# v0.4.2 -> v0.x.x
+
+## New Features
+
+- Added telegram bot notification
+- Supertasks can now also be applied when viewing hashlist details (similar to preconfigured tasks)
+
+## Bugfixes
+
+- Notification display fixed
+- Updated problem where agents were looping when tasks go over 100%
+
+## Technical
+
+- Fixed warnings during found import
+- Fixed edge case where it could happen that agents started to loop after a task when no new task was available
+- Pre-crack import warns when too long plaintexts are in the import file
+- Implemented missing ownAgentError notification execution
+
+# v0.4.1 -> v0.4.2
+
+## New Features
+
+- Supertask imports can now be set to be small tasks for every subtask
+
+## Bugfixes
+
+- Fixed broken agent download
+
+## Technical
+
+- Typos in constants fixed
+- Tasks can also be deleted from the detailed view
+- Fixed update to 0.4.0 when adding taskType column
+- Supertasks are getting default priority from the subtasks
+- Fixed DBA issue with handling invalid input
+- Fixed additional vulnerabilities reported
+- Fixed remaining fragments when deleting finished supertasks
+
+# v0.4.0 -> v0.4.1
+
+## Bugfixes
+
+- Various vulnerabilities (CVE-2017-11680, CVE-2017-11681, CVE-2017-11682) fixed, see [issue #241](https://github.com/s3inlc/hashtopussy/issues/241)
 
 ## Technical
 

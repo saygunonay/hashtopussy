@@ -17,7 +17,7 @@ require_once(dirname(__FILE__) . "/inc/load.php");
 if (isset($_GET['download'])) {
   $binaryId = $_GET['download'];
   $agentHandler = new AgentHandler();
-  $agentHandler->handle('downloadagent');
+  $agentHandler->handle(DAgentAction::DOWNLOAD_AGENT);
 }
 
 if (!$LOGIN->isLoggedin()) {
@@ -33,7 +33,7 @@ $TEMPLATE = new Template("agents/index");
 $MENU->setActive("agents_list");
 
 //catch actions here...
-if (isset($_POST['action'])) {
+if (isset($_POST['action']) && Util::checkCSRF($_POST['csrf'])) {
   $binaryId = @$_POST['binary'];
   $agentHandler = new AgentHandler($_POST['agentId']);
   $agentHandler->handle($_POST['action']);
@@ -78,7 +78,7 @@ if (isset($_GET['id'])) {
     $OBJECTS['timeSpent'] = $timeSpent;
   }
 }
-else if (isset($_GET['new'])) {
+else if (isset($_GET['new']) && $LOGIN->getLevel() >= DAccessLevel::SUPERUSER) {
   $MENU->setActive("agents_new");
   $TEMPLATE = new Template("agents/new");
   $vouchers = $FACTORIES::getRegVoucherFactory()->filter(array());
