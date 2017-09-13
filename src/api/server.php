@@ -10,8 +10,6 @@
 require_once(dirname(__FILE__) . "/../inc/load.php");
 set_time_limit(0);
 
-$LANG = new Lang(Lang::$defaultLanguage);
-
 header("Content-Type: application/json");
 $QUERY = json_decode(file_get_contents('php://input'), true);
 
@@ -104,6 +102,6 @@ switch ($QUERY[PQuery::ACTION]) {
     API::solve($QUERY);
     break;
   default:
-    API::sendErrorResponse(PActions::INVALID, $LANG->render("___errorInvalidQuery___"));
+    API::sendErrorResponse(PActions::INVALID, $LANG->get("api_server_error_invalid_query"));
 }
 

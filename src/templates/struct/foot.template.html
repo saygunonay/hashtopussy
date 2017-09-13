@@ -2,16 +2,45 @@
 		<div class='container'>
 			<hr>
 			<footer class="footer">
-				<b>Hashtopussy: [[gitcommit]] [[version]] - <a href='about.php'>About</a> - <a href='help.php'>Help</a></b>
+				<div class='container'>
+				<div class='col-md-2'></div>
+				<div class='col-md-8'>
+				<b>Hashtopussy: [[gitcommit]] [[version]] - <a href='about.php'>[[lang.getUCF('about')]]</a> - <a href='help.php'>[[lang.getUCF('help')]]</a></b>
 				<p>
 					{{IF [[config.getVal("donateOff")]] != 1}}
-						Support us: BTC 15gi3X5L4VPa5S2yygztYaN7MF7VA26Zaf - ETH 0x06B3Ae7561AD763eF58Df9C37deB6757bDA2BC0c - <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7P3KXV8DQ5XKE" target="_blank">PayPal</a><br>
+						[[lang.get('footer_message_support_us')]]: BTC 15gi3X5L4VPa5S2yygztYaN7MF7VA26Zaf - ETH 0x06B3Ae7561AD763eF58Df9C37deB6757bDA2BC0c - <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7P3KXV8DQ5XKE" target="_blank">PayPal</a><br>
 					{{ENDIF}}
 					&copy;2016-[[date("Y")]] s3in!c - <a href='https://github.com/s3inlc/hashtopussy/' target='_blank'>Hashtopussy</a>
 				</p>
+				</div>
+				<div class='col-md-2'>
+				<select id="myselect" class="selectpicker" data-width="fit">
+					{{FOREACH language;[[lang.getAvailableLanguages()]]}}
+					<option data-content='<span class="flag-icon flag-icon-[[lang.getCountryLC([[language]])]]"></span> [[lang.get([[language]])]]'>[[language]]</option>
+					{{ENDFOREACH}}
+				</select>
+				</div>
+				</div>
 			</footer>
-			<script src="static/bootstrap.min.js"></script>
-			<script src="static/hashtopussy.js"></script>
 		</div>
+		<script src="static/bootstrap.min.js"></script>
+		<script src="static/hashtopussy.js"></script>
+		<script src='static/bootstrap-select.min.js'></script>
+		<script type='text/javascript'>
+			function setUriParam(uri, key, val) {
+    			return uri
+        			.replace(RegExp("([?&]"+key+"(?=[=&#]|$)[^#&]*|(?=#|$))"), "&"+key+"="+encodeURIComponent(val))
+        			.replace(/^([^?&]+)&/, "$1?");
+			}
+			$(function() {
+				$('.selectpicker').selectpicker();
+				$('.selectpicker').selectpicker('val', '[[lang.getCurrentLanguage()]]');
+				$('.selectpicker').on('change', function (e) {
+					console.log('Changed: ' + $('.selectpicker').val());
+					var url = window.location.href;
+					window.location.href = setUriParam(url, 'setlang', $('.selectpicker').val());
+				});			
+			});
+		</script>
 	</body>
 </html>

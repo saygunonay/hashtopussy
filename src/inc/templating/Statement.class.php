@@ -69,6 +69,7 @@ class Statement {
         break;
       case 'CONTENT': //setting -> nothing
         $output .= $LANG->render($this->renderContent($this->content, $objects));
+        // $output .= $this->renderContent($this->content, $objects);
         break;
       default:
         UI::printFatalError("Unknown Statement '" . $this->statementType . "'!");

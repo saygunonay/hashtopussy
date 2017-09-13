@@ -11,7 +11,7 @@ class Lang {
   private       $array;
   private       $available;
   private       $langArr;
-  public static $defaultLanguage = "EN-en";
+  public static $defaultLanguage = "en-US";
   
   /**
    * Constructs the language object. Language files need to be included BEFORE this constructor.
@@ -60,14 +60,40 @@ class Lang {
       $this->array = $this->langArr[$this->language];
     }
   }
+
+  private function ucfirst($text) {
+    $strlen = mb_strlen($text, "UTF-8");
+    return mb_strtoupper(mb_substr($text, 0, 1, "UTF-8")) . mb_substr($text, 1, $strlen - 1, "UTF-8");
+  }
+
+  public function get($text, $args=[]) {
+    return msgfmt_format_message($this->language, $this->getText($text), $args);
+  }
+
+  public function getUCF($text, $args=[]) {
+    return $this->ucfirst($this->get($text, $args));
+  }
+
+  public function getCountry($locale) {
+    return locale_get_region($locale);
+  }
   
+  public function getCountryLC($locale) {
+    return strtolower($this->getCountry($locale));
+  }
+
   public function render($text) {
     $matches = array();
     preg_match_all('/(___([a-zA-Z0-9\-_]+?)___)/mis', $text, $matches);
     for ($i = 0; $i < sizeof($matches[0]); $i++) {
       $toReplace = $matches[1][$i];
       $languageKey = str_replace("___", "", $matches[1][$i]);
-      $text = str_replace($toReplace, $this->getText($languageKey), $text);
+      // Nice convenience functionality: Upper-case the first letter of the string if the language key's first letter is upper-case
+      if ($languageKey[0] === strtoupper($languageKey[0]))
+        $replacementText = $this->ucfirst($this->getText(lcfirst($languageKey)));
+      else
+        $replacementText = $this->getText($languageKey);
+      $text = str_replace($toReplace, $replacementText, $text);
     }
     return $text;
   }

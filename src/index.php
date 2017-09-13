@@ -19,16 +19,16 @@ if (isset($_GET['err'])) {
   if (time() - $time < 10) {
     switch ($err[0]) {
       case '1':
-        $message = "<div class='alert alert-danger'>Invalid form submission!</div>";
+        $message = "<div class='alert alert-danger'>".$LANG->get('index_alert_description_invalid_form')."</div>";
         break;
       case '2':
-        $message = "<div class='alert alert-danger'>You need to fill in both fields!</div>";
+        $message = "<div class='alert alert-danger'>".$LANG->get('index_alert_description_fill_both')."</div>";
         break;
       case '3':
-        $message = "<div class='alert alert-danger'>Wrong username/password/OTP!</div>";
+        $message = "<div class='alert alert-danger'>".$LANG->get('index_alert_description_wrong_password')."</div>";
         break;
       case '4':
-        $message = "<div class='alert alert-warning'>You need to be logged in to view this! Please log in again.</div>";
+        $message = "<div class='alert alert-warning'>".$LANG->get('index_alert_description_need_logged')."</div>";
         break;
     }
   }
@@ -37,7 +37,7 @@ else if (isset($_GET['logout'])) {
   $logout = $_GET['logout'];
   $time = substr($logout, 1);
   if (time() - $time < 10) {
-    $message = "<div class='alert alert-success'>You logged out successfully!</div>";
+    $message = "<div class='alert alert-success'>".$LANG->get('index_alert_description_logged_out')."</div>";
   }
 }
 
