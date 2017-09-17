@@ -19,6 +19,61 @@ $LANG['en-US']['Client_s'] = "Client(s)";
 $LANG['en-US']['help'] = "help";
 $LANG['en-US']['about'] = "about";
 $LANG['en-US']['logout'] = "logout";
+$LANG['en-US']['no'] = "no";
+$LANG['en-US']['yes'] = "yes";
+$LANG['en-US']['unassigned'] = "unassigned";
+$LANG['en-US']['property'] = "property";
+$LANG['en-US']['value'] = "value";
+$LANG['en-US']['unassigned'] = "unassigned";
+$LANG['en-US']['ignore'] = "ignore";
+$LANG['en-US']['action'] = "action";
+$LANG['en-US']['time'] = "time";
+$LANG['en-US']['Clients'] = "Clients";
+
+//
+$LANG['en-US']['button_set'] = "Set";
+$LANG['en-US']['button_update_owner'] = "Update Owner";
+$LANG['en-US']['button_change'] = "Change";
+$LANG['en-US']['button_assign'] = "Assign";
+$LANG['en-US']['button_download'] = "Download";
+$LANG['en-US']['button_create'] = "Create";
+$LANG['en-US']['button_delete'] = "Delete";
+
+//
+$LANG['en-US']['table_property_id'] = "ID";
+$LANG['en-US']['table_property_owner'] = "Owner";
+$LANG['en-US']['table_property_active'] = "Active";
+$LANG['en-US']['table_property_machine_name'] = "Machine name";
+$LANG['en-US']['table_property_operating_system'] = "Operating system";
+$LANG['en-US']['table_property_access_token'] = "Access token";
+$LANG['en-US']['table_property_machine_id'] = "Machine ID";
+$LANG['en-US']['table_property_cpu_only'] = "CPU only agent";
+$LANG['en-US']['table_property_graphic_cards'] = "Graphic cards";
+$LANG['en-US']['table_property_hashcat_version'] = "Hashcat version";
+$LANG['en-US']['table_property_extra_parameters'] = "Extra parameters";
+$LANG['en-US']['table_property_hashcat_errors'] = "Hashcat errors";
+$LANG['en-US']['table_property_trust'] = "Trust";
+$LANG['en-US']['table_property_assignment'] = "Assignment";
+$LANG['en-US']['table_property_last_activity'] = "Last activity";
+$LANG['en-US']['table_property_time_spent_cracking'] = "Time spent cracking";
+$LANG['en-US']['table_property_start'] = "Start";
+$LANG['en-US']['table_property_length'] = "Length";
+$LANG['en-US']['table_property_checkpoint'] = "Checkpoint";
+$LANG['en-US']['table_property_progress'] = "Progress";
+$LANG['en-US']['table_property_task'] = "Task";
+$LANG['en-US']['table_property_dispatch_time'] = "Dispatch time";
+$LANG['en-US']['table_property_last_activity'] = "Last activity";
+$LANG['en-US']['table_property_time_spent'] = "Time spent";
+$LANG['en-US']['table_property_state'] = "State";
+$LANG['en-US']['table_property_cracked'] = "Cracked";
+$LANG['en-US']['table_property_action'] = "Action";
+$LANG['en-US']['table_property_version'] = "Version";
+$LANG['en-US']['table_property_programming_language'] = "Programming language";
+$LANG['en-US']['table_property_filename'] = "Filename";
+$LANG['en-US']['table_property_new_voucher'] = "New voucher";
+
+//
+$LANG['en-US']['description_no_activity'] = "no activity";
 
 // index
 $LANG['en-US']['index_alert_description_login_form'] = "This is a private closed system. If you need access you need to contact an admin of this page and ask for creating an account.";
@@ -66,6 +121,21 @@ $LANG['en-US']['menu_users'] = "Users";
 $LANG['en-US']['menu_users_all_users'] = "All users";
 $LANG['en-US']['menu_users_new_user'] = "New User";
 
+// agents
+$LANG['en-US']['agents_index_agents'] = "Agents";
+$LANG['en-US']['agents_index_table_col_act'] = "Act";
+$LANG['en-US']['agents_index_table_col_name_owner'] = "Name / Owner";
+$LANG['en-US']['agents_index_table_col_gpu_cpu'] = "GPUs/CPUs";
+$LANG['en-US']['agents_index_table_col_cpu_only'] = "CPU only";
+
+$LANG['en-US']['agents_detail_agent_details'] = "Agent details";
+$LANG['en-US']['agents_detail_hashcat_errors_description'] = "(Be careful, this might lead to endless loops!)";
+$LANG['en-US']['agents_detail_trust_description'] = "Trust agent with secret data";
+$LANG['en-US']['agents_detail_dispatched_chunks'] = "Dispatched chunks";
+
+$LANG['en-US']['agents_new_add_new_agent'] = "Add new agent";
+$LANG['en-US']['agents_new_description_general'] = "To add new agents provide them with a valid voucher and download a client.<br><br>Used vouchers are automatically deleted to prevent double spending.<br><br>If you are asked to provide the API url on the client to connect to, you need to enter the following:<br>";
+$LANG['en-US']['agents_new_vouchers'] = "Vouchers";
 
 // API
 $LANG['en-US']['api_server_error_invalid_query'] = "Invalid query!";

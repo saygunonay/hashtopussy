@@ -1,28 +1,26 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Add new agent</h2>
+<h2>[[lang.get('agents_new_add_new_agent')]]</h2>
 {%TEMPLATE->struct/messages%}
 <div class='alert alert-info'>
-	To add new agents provide them with a valid voucher and download a client.<br><br>
-	Used vouchers are automatically deleted to prevent double spending.<br><br>
-	If you are asked to provide the API url on the client to connect to, you need to enter the following:<br>
+	[[lang.get('agents_new_description_general')]]
 	<code>[[apiUrl]]</code>
 </div>
-<h3>Clients</h3>
+<h3>[[lang.getUCF('Clients')]]</h3>
 <div class="panel panel-default">
 	<table class="table table-bordered table-nonfluid">
     <tr>
-      <th>ID</th>
-			<th>Version</th>
-      <th>Programming Language</th>
-      <th>Operating Systems</th>
-      <th>Filename</th>
-      <th>&nbsp;</th>
+		<th>[[lang.get('table_property_id')]]</th>
+		<th>[[lang.get('table_property_version')]]</th>
+      	<th>[[lang.get('table_property_programming_language')]]</th>
+      	<th>[[lang.get('table_property_operating_system')]]</th>
+      	<th>[[lang.get('table_property_filename')]]</th>
+      	<th>&nbsp;</th>
     </tr>
 		{{FOREACH binary;[[agentBinaries]]}}
       <tr>
         <td>[[binary.getId()]]</td>
-				<td>[[binary.getVersion()]]</td>
+		<td>[[binary.getVersion()]]</td>
         <td>[[binary.getType()]]</td>
         <td>[[binary.getOperatingSystems()]]</td>
         <td>[[binary.getFilename()]]</td>
@@ -31,7 +29,7 @@
             <input type="hidden" name="action" value="[[$DAgentAction::DOWNLOAD_AGENT]]">
             <input type="hidden" name="binary" value="[[binary.getId()]]">
 						<input type="hidden" name="csrf" value="[[csrf]]">
-            <input type="submit" class='btn btn-primary' value="Download">
+            <input type="submit" class='btn btn-primary' value="[[lang.get('button_download')]]">
           </form><br>
 					<code>[[agentUrl]][[binary.getId()]]</code>
         </td>
@@ -40,7 +38,7 @@
 	</table>
 </div>
 {{IF [[sizeof([[vouchers]])]] > 0}}
-  <h3>Vouchers</h3>
+  <h3>[[lang.get('agents_new_vouchers')]]</h3>
 	<div class="panel panel-default">
 		<table class="table table-bordered table-nonfluid">
 			{{FOREACH voucher;[[vouchers]]}}
@@ -52,7 +50,7 @@
           					<input type="hidden" name="action" value="[[$DAgentAction::DELETE_VOUCHER]]">
           					<input type="hidden" name="voucher" value="[[voucher.getId()]]">
 										<input type="hidden" name="csrf" value="[[csrf]]">
-          					<input type="submit" class='btn btn-danger' value="Delete">
+          					<input type="submit" class='btn btn-danger' value="[[lang.get('button_delete')]]">
           				</form>
           			</td>
           		</tr>
@@ -66,12 +64,12 @@
 	<div class="panel panel-default">
 		<table class="table table-bordered table-nonfluid">
 			<tr>
-				<td>New voucher</td>
+				<td>[[lang.get('table_property_new_voucher')]]</td>
 				<td>
 					<input type="text" class='form-control' name="newvoucher" value="[[Util::randomString(8)]]">
 				</td>
 				<td>
-					<input type="submit" class='btn btn-default' value="Create">
+					<input type="submit" class='btn btn-default' value="[[lang.get('button_create')]]">
 				</td>
 			</tr>
 		</table>
