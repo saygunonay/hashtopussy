@@ -29,6 +29,9 @@ $LANG['tr-TR']['ignore'] = "aldırma";
 $LANG['tr-TR']['action'] = "eylem";
 $LANG['tr-TR']['time'] = "zaman";
 $LANG['tr-TR']['Clients'] = "İstemciler";
+$LANG['tr-TR']['seconds'] = "saniye";
+$LANG['tr-TR']['rules'] = "kurallar";
+$LANG['tr-TR']['wordlists'] = "kelime listeleri";
 
 //
 $LANG['tr-TR']['button_set'] = "Ayarla";
@@ -38,6 +41,12 @@ $LANG['tr-TR']['button_assign'] = "Ata";
 $LANG['tr-TR']['button_download'] = "İndir";
 $LANG['tr-TR']['button_create'] = "Oluştur";
 $LANG['tr-TR']['button_delete'] = "Sil";
+$LANG['tr-TR']['button_copy'] = "Kopyala";
+$LANG['tr-TR']['button_create_task'] = "Görevi oluştur";
+$LANG['tr-TR']['button_show_hide'] = "Göster/Gizle";
+$LANG['tr-TR']['button_apply_to_hashlist'] = "Hash listesine Uygula";
+$LANG['tr-TR']['button_create_supertask'] = "Üstgörev Oluştur";
+$LANG['tr-TR']['button_create_tasks_supertask'] = "Üstgörevden görevler oluştur";
 
 //
 $LANG['tr-TR']['table_property_id'] = "Kimlik";
@@ -65,12 +74,35 @@ $LANG['tr-TR']['table_property_dispatch_time'] = "Sevk zamanı";
 $LANG['tr-TR']['table_property_last_activity'] = "Son faaliyet";
 $LANG['tr-TR']['table_property_time_spent'] = "Harcanan zaman";
 $LANG['tr-TR']['table_property_state'] = "Durum";
-$LANG['tr-TR']['table_property_cracked'] = "Kırıldı";
+$LANG['tr-TR']['table_property_cracked'] = "Kırılan";
 $LANG['tr-TR']['table_property_action'] = "Eylem";
 $LANG['tr-TR']['table_property_version'] = "Sürüm";
 $LANG['tr-TR']['table_property_programming_language'] = "Programlama dili";
 $LANG['tr-TR']['table_property_filename'] = "Dosya ismi";
 $LANG['tr-TR']['table_property_new_voucher'] = "Yeni tanıt";
+$LANG['tr-TR']['table_property_name'] = "İsim";
+$LANG['tr-TR']['table_property_hashlist'] = "Hash listesi";
+$LANG['tr-TR']['table_property_chunks'] = "Parçalar";
+$LANG['tr-TR']['table_property_dispatched'] = "Sevkedilen";
+$LANG['tr-TR']['table_property_searched'] = "Aranan";
+$LANG['tr-TR']['table_property_agents'] = "Ajanlar";
+$LANG['tr-TR']['table_property_files'] = "Dosyalar";
+$LANG['tr-TR']['table_property_task_priority'] = "Görev Önceliği";
+$LANG['tr-TR']['table_property_command_line'] = "Komut satırı";
+$LANG['tr-TR']['table_property_chunk_size'] = "Parça boyutu";
+$LANG['tr-TR']['table_property_status_timer'] = "Durum sorgusu periyotu";
+$LANG['tr-TR']['table_property_benchmark_type'] = "Değerlendirme tipi";
+$LANG['tr-TR']['table_property_color'] = "Renk";
+$LANG['tr-TR']['table_property_task_cpu_only'] = "Görev sadece CPU kullansın";
+$LANG['tr-TR']['table_property_task_small'] = "Küçük görev";
+$LANG['tr-TR']['table_property_skip_keyspace'] = "Görevin başından bir miktar denemeyi atla";
+$LANG['tr-TR']['table_property_size'] = "Boyut";
+$LANG['tr-TR']['table_property_attack_command'] = "Saldırı komutu";
+$LANG['tr-TR']['table_property_priority'] = "Öncelik";
+$LANG['tr-TR']['table_property_actions'] = "Eylemler";
+$LANG['tr-TR']['table_property_subtask_priority'] = "Alt-görev Önceliği";
+$LANG['tr-TR']['table_property_tasks'] = "Görevler";
+$LANG['tr-TR']['table_property_insert_masks'] = "Maskeleri girin";
 
 //
 $LANG['tr-TR']['description_no_activity'] = "faaliyet yok";
@@ -136,6 +168,33 @@ $LANG['tr-TR']['agents_detail_dispatched_chunks'] = "Sevkedilmiş parçalar";
 $LANG['tr-TR']['agents_new_add_new_agent'] = "Yeni ajan ekle";
 $LANG['tr-TR']['agents_new_description_general'] = "Yeni ajan eklemek için istemciyi indirin ve ona geçerli bir tanıt atayın.<br><br>Kullanılan tanıtlar ikinci kez kullanılmalarını önlemek için otomatik olarak silinirler.<br><br>Eğer istemci tarafından bağlanılacak API URL'i sorulursa, aşağıdakini girmelisiniz:<br>";
 $LANG['tr-TR']['agents_new_vouchers'] = "Tanıtlar";
+
+// tasks
+$LANG['tr-TR']['tasks_index_tasks'] = "Görevler";
+$LANG['tr-TR']['tasks_index_button_delete_finished'] = "Bitenleri sil";
+$LANG['tr-TR']['tasks_index_button_turn_on_auto_reload'] = "Otomatik yeniden yüklemeyi aç";
+$LANG['tr-TR']['tasks_index_button_turn_off_auto_reload'] = "Otomatik yeniden yüklemeyi kapat";
+
+$LANG['tr-TR']['tasks_new_new_task'] = "Yeni görev";
+$LANG['tr-TR']['tasks_new_description_hashlist'] = "hash listesi görevden önce oluşturulmalıdır";
+$LANG['tr-TR']['tasks_new_hashlist_item_preconfigured_task'] = "(ön-ayarlı görev)";
+$LANG['tr-TR']['tasks_new_description_command_line'] = "Hash listesi yerine <b>{0}</b> kullanın ve tüm dosyaların güncel dizinde kabul edin.<br>Eğer Linux ajanlarınız varsa, dosya isimlerindeki büyük/küçük harf duyarlılığına dikkat edin!<br>Ayrıca aşağıdaki parametreleri kullanmayın, bunlar komut satırına otomatik uygulanacaklardır:<br>hash-type, limit, outfile-check-dir, outfile-check-timer, potfile-disable, remove, remove-timer, separator, session, skip, status, status-timer";
+$LANG['tr-TR']['tasks_new_benchmark_type_runtime'] = "Koşu sırasında değerlendirme";
+$LANG['tr-TR']['tasks_new_benchmark_type_speed'] = "Hız testi";
+$LANG['tr-TR']['tasks_new_description_task_cpu_only'] = "sadece CPU olan ajanlar atanır";
+$LANG['tr-TR']['tasks_new_description_task_small'] = "sadece tek bir ajan atanır";
+
+$LANG['tr-TR']['tasks_pre_preconfigured_tasks'] = "Ön-ayarlı görevler";
+
+$LANG['tr-TR']['tasks_super_index_supertasks'] = "Üstgörevler";
+$LANG['tr-TR']['tasks_super_create_supertask'] = "Üstgörev Oluştur";
+$LANG['tr-TR']['tasks_super_create_select_tasks'] = "Bu üstgöreve atanmış görevleri seç";
+$LANG['tr-TR']['tasks_super_create_no_preconfigured_tasks'] = "Şu anda üstgörev oluşturmak için kullanılabilecek hiçbir ön-ayarlı görev bulunmamaktadır!";
+$LANG['tr-TR']['tasks_super_new_use_supertask'] = "Üstgörevi Kullan";
+$LANG['tr-TR']['tasks_super_new_description_hashlist'] = "görevden önce hash listesi oluşturulmalıdır";
+$LANG['tr-TR']['tasks_super_details_supertask_details'] = "Üstgörev Detayları";
+$LANG['tr-TR']['tasks_super_import_create_supertask'] = "Hashcat maskelerinden Üstgörev Oluştur";
+$LANG['tr-TR']['tasks_super_import_description_masks'] = "Hashcat maskelerinizi satır satır burayaya yapıştırın. Formatları .hcmask dosyasındakine uygun olmalıdır...";
 
 // API
 $LANG['tr-TR']['api_server_error_invalid_query'] = "Geçersiz sorgu!";

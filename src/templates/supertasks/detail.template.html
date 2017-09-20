@@ -1,6 +1,6 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Supertask Details</h2>
+<h2>[[lang.get('tasks_super_details_supertask_details')]]</h2>
 {%TEMPLATE->struct/messages%}
 {{IF ! [[supertask]]}}
 	<div class='alert alert-danger'>Invalid supertask!</div>
@@ -8,15 +8,15 @@
 	<div class="panel panel-default">
 		<table class="table table-bordered table-nonfluid">
 			<tr>
-				<th>ID</th>
+				<th>[[lang.get('table_property_id')]]</th>
         <td>[[supertask.getId()]]</td>
       </tr>
       <tr>
-				<th>Name</th>
+				<th>[[lang.get('table_property_name')]]</th>
         <td>[[supertask.getSupertaskName()]]</td>
       </tr>
       <tr>
-				<th>Tasks</th>
+				<th>[[lang.get('table_property_tasks')]]</th>
         <td>
           {{FOREACH task;[[tasks]]}}
             <a href="tasks.php?id=[[task.getId()]]">[[task.getTaskName()]]</a><br>
@@ -24,11 +24,11 @@
         </td>
       </tr>
       <tr>
-				<th>Actions</th>
+				<th>[[lang.get('table_property_actions')]]</th>
         <td>
           <form style ='float: left; padding-right: 5px;' action="supertasks.php?new=true&id=[[supertask.getId()]]" method="post">
             <input type="hidden" name="csrf" value="[[csrf]]">
-            <input type="submit" class='btn btn-default' value="Apply to Hashlist">
+            <input type="submit" class='btn btn-default' value="[[lang.get('button_apply_to_hashlist')]]">
           </form>
           <form style ='float: left;' action="supertasks.php" method="POST" onSubmit="if (!confirm('Really delete supertasktask [[supertask.getId()]]?')) return false;">
             <input type="hidden" name="action" value="[[$DSupertaskAction::DELETE_SUPERTASK]]">

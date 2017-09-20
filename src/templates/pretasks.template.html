@@ -1,16 +1,16 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Preconfigured tasks ([[sizeof([[tasks]])]])</h2>
+<h2>[[lang.get('tasks_pre_preconfigured_tasks')]] ([[sizeof([[tasks]])]])</h2>
 {%TEMPLATE->struct/messages%}
 <div class="panel panel-default">
 	<table class="table table-bordered table-nonfluid">
 		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>Attack command</th>
-			<th>Files</th>
-			<th>Priority</th>
-			<th>Action</th>
+			<th>[[lang.get('table_property_id')]]</th>
+			<th>[[lang.get('table_property_name')]]</th>
+			<th>[[lang.get('table_property_attack_command')]]</th>
+			<th>[[lang.get('table_property_files')]]</th>
+			<th>[[lang.get('table_property_priority')]]</th>
+			<th>[[lang.get('table_property_action')]]</th>
 		</tr>
 		{{FOREACH task;[[tasks]]}}
 			<tr>
@@ -35,12 +35,12 @@
             <input type="hidden" name="task" value="[[task.getVal('Task').getId()]]">
 						<input type="hidden" name="csrf" value="[[csrf]]">
             <input type="text" class='form-control' name="priority" size="4" value="[[task.getVal('Task').getPriority()]]">
-            <input type="submit" class='btn btn-default' value="Set">
+            <input type="submit" class='btn btn-default' value="[[lang.get('button_set')]]">
           </form>
         </td>
         <td>
           <form style='float: left; padding-right: 5px;' action="tasks.php?new=true&copy=[[task.getVal('Task').getId()]]" method="POST">
-            <input type="submit" class='btn btn-default' value="Copy">
+            <input type="submit" class='btn btn-default' value="[[lang.get('button_copy')]]">
           </form>
 					{{IF [[login.getLevel()]] >= 30}}
 						<form style='float: left;' action="tasks.php" method="POST" onSubmit="if (!confirm('Really delete task [[task.getVal('Task').getId()]]?') || ({{IF [[task.getVal('isUsed')]]}}true{{ELSE}}false{{ENDIF}} && !confirm('This task is used in a Supertask, are you sure you really want to delete it?'))) return false;">
@@ -48,7 +48,7 @@
 							<input type='hidden' name='refer' value='pretask'>
 							<input type="hidden" name="task" value="[[task.getVal('Task').getId()]]">
 							<input type="hidden" name="csrf" value="[[csrf]]">
-							<input type="submit" class='btn btn-danger' value="Delete">
+							<input type="submit" class='btn btn-danger' value="[[lang.get('button_delete')]]">
 						</form>
 					{{ENDIF}}
 				</td>

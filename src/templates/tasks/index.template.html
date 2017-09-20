@@ -1,13 +1,13 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Tasks ([[sizeof([[tasks]])]])</h2>
+<h2>[[lang.get('tasks_index_tasks')]] ([[sizeof([[tasks]])]])</h2>
 {%TEMPLATE->struct/messages%}
 <div style='overflow: auto;'>
 	{{IF [[login.getLevel()]] >= 30}}
 		<form style ='float: left; padding-right: 5px;' action="tasks.php" class='form-inline' method="POST" onSubmit="if (!confirm('Really delete all finished tasks?')) return false;">
 			<input type='hidden' name='action' value='[[$DTaskAction::DELETE_FINISHED]]'>
 			<input type="hidden" name="csrf" value="[[csrf]]">
-			<input type="submit" value="Delete finished" class='btn btn-default'>
+			<input type="submit" value="[[lang.get('tasks_index_button_delete_finished')]]" class='btn btn-default'>
 		</form>
 	{{ENDIF}}
 	{%TEMPLATE->tasks/autorefresh%}
@@ -17,17 +17,17 @@
 <div class="panel panel-default">
 	<table class="table table-bordered table-nonfluid">
     	<tr>
-    		<th>ID</th>
-    		<th>Name</th>
-    		<th>Hashlist</th>
-    		<th>Chunks</th>
-    		<th>Dispatched</th>
-    		<th>Searched</th>
-    		<th>Cracked</th>
-    		<th>Agents</th>
-    		<th>Files</th>
-    		<th>Task Priority</th>
-    		<th>Action</th>
+    		<th>[[lang.get('table_property_id')]]</th>
+    		<th>[[lang.get('table_property_name')]]</th>
+    		<th>[[lang.get('table_property_hashlist')]]</th>
+    		<th>[[lang.get('table_property_chunks')]]</th>
+    		<th>[[lang.get('table_property_dispatched')]]</th>
+    		<th>[[lang.get('table_property_searched')]]</th>
+    		<th>[[lang.get('table_property_cracked')]]</th>
+    		<th>[[lang.get('table_property_agents')]]</th>
+    		<th>[[lang.get('table_property_files')]]</th>
+    		<th>[[lang.get('table_property_task_priority')]]</th>
+    		<th>[[lang.get('table_property_action')]]</th>
     	</tr>
     	{{FOREACH task;[[tasks]]}}
     		<tr{{IF [[task.getVal('Task').getTaskType()]] == 1}} style="background-color: rgba(0,0,0,0.1);"{{ENDIF}}>
@@ -125,7 +125,7 @@
 	        				<input type="hidden" name="task" value="[[task.getVal('Task')->getId()]]">
 									<input type="hidden" name="csrf" value="[[csrf]]">
 	        				<input type="text" class='form-control' style='width: 60px;' name="priority" size="4" value="[[task.getVal('Task')->getPriority()]]">
-	        				<input type="submit" class='btn btn-default' value="Set">
+	        				<input type="submit" class='btn btn-default' value="[[lang.get('button_set')]]">
 	        			</form>
         			{{ELSE}}
         				[[task.getVal('Task')->getPriority()]]
@@ -135,7 +135,7 @@
 
                     {{IF [[task.getVal('Task').getTaskType()]] == 1}}
 						<form style ='float: left; padding-right: 5px;'>
-        	                <a class="btn btn-primary accordion-toggle" onclick="expansionCheck('#task[[task.getVal('Task').getId()]]')" role="button" href="#" data-toggle="collapse" data-target="#task[[task.getVal('Task').getId()]]">Show/Hide</a>
+        	                <a class="btn btn-primary accordion-toggle" onclick="expansionCheck('#task[[task.getVal('Task').getId()]]')" role="button" href="#" data-toggle="collapse" data-target="#task[[task.getVal('Task').getId()]]">[[lang.get('button_show_hide')]]</a>
 						</form>
 							<script type="text/javascript">
                   $( document ).ready(function() {
@@ -146,7 +146,7 @@
         			{{IF [[login.getLevel()]] >= 30}}
                 {{IF [[task.getVal('Task').getTaskType()]] != 1}}
                   <form style ='float: left; padding-right: 5px;' action="tasks.php?new=true&copy=[[task.getVal('Task')->getId()]]" method="post">
-                    <input type="submit" class='btn btn-default' value="Copy">
+                    <input type="submit" class='btn btn-default' value="[[lang.get('button_copy')]]">
                   </form>
                 {{ENDIF}}
 

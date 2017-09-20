@@ -29,6 +29,9 @@ $LANG['en-US']['ignore'] = "ignore";
 $LANG['en-US']['action'] = "action";
 $LANG['en-US']['time'] = "time";
 $LANG['en-US']['Clients'] = "Clients";
+$LANG['en-US']['seconds'] = "seconds";
+$LANG['en-US']['rules'] = "rules";
+$LANG['en-US']['wordlists'] = "wordlists";
 
 //
 $LANG['en-US']['button_set'] = "Set";
@@ -38,6 +41,12 @@ $LANG['en-US']['button_assign'] = "Assign";
 $LANG['en-US']['button_download'] = "Download";
 $LANG['en-US']['button_create'] = "Create";
 $LANG['en-US']['button_delete'] = "Delete";
+$LANG['en-US']['button_copy'] = "Copy";
+$LANG['en-US']['button_create_task'] = "Create task";
+$LANG['en-US']['button_show_hide'] = "Show/Hide";
+$LANG['en-US']['button_apply_to_hashlist'] = "Apply to Hashlist";
+$LANG['en-US']['button_create_supertask'] = "Create Supertask";
+$LANG['en-US']['button_create_tasks_supertask'] = "Create tasks from supertask";
 
 //
 $LANG['en-US']['table_property_id'] = "ID";
@@ -71,6 +80,29 @@ $LANG['en-US']['table_property_version'] = "Version";
 $LANG['en-US']['table_property_programming_language'] = "Programming language";
 $LANG['en-US']['table_property_filename'] = "Filename";
 $LANG['en-US']['table_property_new_voucher'] = "New voucher";
+$LANG['en-US']['table_property_name'] = "Name";
+$LANG['en-US']['table_property_hashlist'] = "Hashlist";
+$LANG['en-US']['table_property_chunks'] = "Chunks";
+$LANG['en-US']['table_property_dispatched'] = "Dispatched";
+$LANG['en-US']['table_property_searched'] = "Searched";
+$LANG['en-US']['table_property_agents'] = "Agents";
+$LANG['en-US']['table_property_files'] = "Files";
+$LANG['en-US']['table_property_task_priority'] = "Task Priority";
+$LANG['en-US']['table_property_command_line'] = "Command line";
+$LANG['en-US']['table_property_chunk_size'] = "Chunk size";
+$LANG['en-US']['table_property_status_timer'] = "Status timer";
+$LANG['en-US']['table_property_benchmark_type'] = "Benchmark type";
+$LANG['en-US']['table_property_color'] = "Color";
+$LANG['en-US']['table_property_task_cpu_only'] = "Task is CPU only";
+$LANG['en-US']['table_property_task_small'] = "Task is small";
+$LANG['en-US']['table_property_skip_keyspace'] = "Skip a given keyspace at the beginning of the task";
+$LANG['en-US']['table_property_size'] = "Size";
+$LANG['en-US']['table_property_attack_command'] = "Attack command";
+$LANG['en-US']['table_property_priority'] = "Priority";
+$LANG['en-US']['table_property_actions'] = "Actions";
+$LANG['en-US']['table_property_subtask_priority'] = "Subtask Priority";
+$LANG['en-US']['table_property_tasks'] = "Tasks";
+$LANG['en-US']['table_property_insert_masks'] = "Insert masks";
 
 //
 $LANG['en-US']['description_no_activity'] = "no activity";
@@ -136,6 +168,33 @@ $LANG['en-US']['agents_detail_dispatched_chunks'] = "Dispatched chunks";
 $LANG['en-US']['agents_new_add_new_agent'] = "Add new agent";
 $LANG['en-US']['agents_new_description_general'] = "To add new agents provide them with a valid voucher and download a client.<br><br>Used vouchers are automatically deleted to prevent double spending.<br><br>If you are asked to provide the API url on the client to connect to, you need to enter the following:<br>";
 $LANG['en-US']['agents_new_vouchers'] = "Vouchers";
+
+// tasks
+$LANG['en-US']['tasks_index_tasks'] = "Tasks";
+$LANG['en-US']['tasks_index_button_delete_finished'] = "Delete finished";
+$LANG['en-US']['tasks_index_button_turn_on_auto_reload'] = "Turn on auto-reload";
+$LANG['en-US']['tasks_index_button_turn_off_auto_reload'] = "Turn off auto-reload";
+
+$LANG['en-US']['tasks_new_new_task'] = "New task";
+$LANG['en-US']['tasks_new_description_hashlist'] = "hashlist needs to be created before task";
+$LANG['en-US']['tasks_new_hashlist_item_preconfigured_task'] = "(pre-configured task)";
+$LANG['en-US']['tasks_new_description_command_line'] = "Use <b>{0}</b> for hash list and assume all files in current directory.<br>If you have Linux agents, please mind the filename case sensitivity!<br>Also, don't use any of these parameters, they will be invoked automatically:<br>hash-type, limit, outfile-check-dir, outfile-check-timer, potfile-disable, remove, remove-timer, separator, session, skip, status, status-timer";
+$LANG['en-US']['tasks_new_benchmark_type_runtime'] = "Runtime Benchmark";
+$LANG['en-US']['tasks_new_benchmark_type_speed'] = "Speed Test";
+$LANG['en-US']['tasks_new_description_task_cpu_only'] = "gets only CPU agents assigned";
+$LANG['en-US']['tasks_new_description_task_small'] = "only one agent gets assigned to it";
+
+$LANG['en-US']['tasks_pre_preconfigured_tasks'] = "Preconfigured tasks";
+
+$LANG['en-US']['tasks_super_index_supertasks'] = "Supertasks";
+$LANG['en-US']['tasks_super_create_supertask'] = "Create Supertask";
+$LANG['en-US']['tasks_super_create_select_tasks'] = "Select tasks assigned to this supertask";
+$LANG['en-US']['tasks_super_create_no_preconfigured_tasks'] = "Currently there are no preconfigured tasks which can be used for creating supertasks!";
+$LANG['en-US']['tasks_super_new_use_supertask'] = "Use Supertask";
+$LANG['en-US']['tasks_super_new_description_hashlist'] = "hashlist needs to be created before task";
+$LANG['en-US']['tasks_super_details_supertask_details'] = "Supertask Details";
+$LANG['en-US']['tasks_super_import_create_supertask'] = "Create Supertask from Hashcat masks";
+$LANG['en-US']['tasks_super_import_description_masks'] = "Paste your Hashcat mask lines here. Format should be according to .hcmask files...";
 
 // API
 $LANG['en-US']['api_server_error_invalid_query'] = "Invalid query!";

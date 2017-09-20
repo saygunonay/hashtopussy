@@ -272,7 +272,7 @@ else if (isset($_GET['new'])) {
   $lists = array();
   $set = new DataSet();
   $set->addValue('id', null);
-  $set->addValue("name", "(pre-configured task)");
+  $set->addValue("name", $LANG->get('tasks_new_hashlist_item_preconfigured_task'));
   $lists[] = $set;
   $res = $FACTORIES::getHashlistFactory()->filter(array());
   foreach ($res as $list) {
