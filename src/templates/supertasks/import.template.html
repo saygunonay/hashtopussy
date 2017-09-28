@@ -3,8 +3,8 @@
 <h2>[[lang.get('tasks_super_import_create_supertask')]]</h2>
 {%TEMPLATE->struct/messages%}
 <div class="alert alert-info">
-	<b>Information:</b><br>
-	For every imported mask there will be a pre-conf task created which is then included in the newly created supertask.
+	<b>[[lang.getUCF('information')]]:</b><br>
+	[[lang.getUCF('tasks_super_import_information')]]
 </div>
 <form class='form-inline' action="supertasks.php" method="POST">
 	<input type='hidden' name='action' value='[[$DSupertaskAction::IMPORT_SUPERTASK]]'>

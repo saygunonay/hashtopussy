@@ -1,6 +1,6 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Hash Search</h2>
+<h2>[[lang.get('lists_search_hash_search')]]</h2>
 {%TEMPLATE->struct/messages%}
 <form action="search.php" method="post">
   <input type="hidden" name="action" value="[[$DSearchAction::SEARCH]]">
@@ -8,14 +8,14 @@
   <div class="panel panel-default">
     <table class="table table-bordered table-nonfluid">
       <tr>
-        <th>Search</th>
+        <th>[[lang.get('table_property_search')]]</th>
         <td>
-          <textarea class="form-control" rows="15" name="search" placeholder="Enter hashes to search for here..."></textarea>
+          <textarea class="form-control" rows="15" name="search" placeholder="[[lang.get('lists_search_description')]]"></textarea>
         </td>
       </tr>
       <tr>
         <td colspan="2" style="text-align: center;">
-          <button type="submit" name="send" class="btn btn-primary">Search</button>
+          <button type="submit" name="send" class="btn btn-primary">[[lang.get('button_search')]]</button>
         </td>
       </tr>
     </table>
@@ -31,11 +31,11 @@
             {{IF [[entry.getVal('found')]]}}
               {{FOREACH match;[[entry.getVal('matches')]]}}
                 <code>[[htmlentities([[match.getHash()]], ENT_QUOTES, "UTF-8")]]{{IF [[strlen([[match.getSalt()]])]] > 0}}:[[htmlentities([[match.getSalt()]], false, "UTF-8")]]{{ENDIF}}</code>
-                {{IF [[match.getIsCracked()]]}} cracked: <code>[[htmlentities([[match.getPlaintext()]], ENT_QUOTES, "UTF-8")]]</code>{{ENDIF}}
-                in hashlist <a href="hashlists.php?id=[[match.getHashlistId()]]">[[hashlists.getVal([[match.getHashlistId()]]).getHashlistName()]]</a><br>
+                {{IF [[match.getIsCracked()]]}} [[lang.get('cracked')]]: <code>[[htmlentities([[match.getPlaintext()]], ENT_QUOTES, "UTF-8")]]</code>{{ENDIF}}
+                [[lang.get('lists_search_found_in_hashlist', [ [[match.getHashlistId()]], [[hashlists.getVal([[match.getHashlistId()]]).getHashlistName()]] ])]]<br>
               {{ENDFOREACH}}
             {{ELSE}}
-              NOT FOUND
+              [[lang.get('lists_search_not_found')]]
             {{ENDIF}}
           </td>
         </tr>

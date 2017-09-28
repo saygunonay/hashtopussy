@@ -18,7 +18,7 @@ class Lang {
    * @param bool $forceLang set language force to use
    */
   public function __construct($forceLang = false) {
-    global $LANG;
+    global $LANGARR;
     
     $availableLanguages = array();
     $dir = scandir(dirname(__FILE__) . "/../lang/");
@@ -33,7 +33,7 @@ class Lang {
       $availableLanguages[] = str_replace(".php", "", $entry);
     }
     $this->available = $availableLanguages;
-    $this->langArr = $LANG;
+    $this->langArr = $LANGARR;
     
     // default language setting
     $this->array = $this->langArr[Lang::$defaultLanguage];

@@ -1,32 +1,33 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Files</h2>
+<h2>[[lang.get('files_index_files')]]</h2>
 <script>
 	function addLine(tablename) { 
 		var table = document.getElementById(tablename); 
 		var pos = table.getElementsByTagName('tr').length-1; 
 		var row = table.insertRow(pos); 
 		var cell = row.insertCell(0); 
-		cell.innerHTML= '<input type="file" class="form-control" name="upfile[]"><br>'; 
+		cell.innerHTML= '<input type="file" class="filestyle" name="upfile[]"><br>';
+		$(":file").filestyle({icon: false, buttonText: "[[lang.get('button_choose_file')]]", placeholder: "[[lang.get('button_choose_file_placeholder')]]"});
 	}
 </script>
 {%TEMPLATE->struct/messages%}
 <div class='col-md-8' style='padding: 0px; padding-right: 5px;'>
 	<div class='btn-toolbar'>
 		<div class='btn-group'>
-			<button class='btn btn-default{{IF [[view]] == "rule"}} active{{ENDIF}}' onclick="window.location='files.php?view=rule'">Rules</button>
-			<button class='btn btn-default{{IF [[view]] == "dict"}} active{{ENDIF}}' onclick="window.location='files.php?view=dict'">Wordlists</button>
+			<button class='btn btn-default{{IF [[view]] == "rule"}} active{{ENDIF}}' onclick="window.location='files.php?view=rule'">[[lang.getUCF('rules')]]</button>
+			<button class='btn btn-default{{IF [[view]] == "dict"}} active{{ENDIF}}' onclick="window.location='files.php?view=dict'">[[lang.getUCF('wordlists')]]</button>
 		</div>
 	</div>
-	<h3>Existing [[fileType]] ([[sizeof([[files]])]])</h3>
+	<h3>[[lang.get('files_index_existing_files', [ [[fileType]] ])]] ([[sizeof([[files]])]])</h3>
 	<div class="panel panel-default">
 		<table class="table table-bordered table-nonfluid">
 			<tr>
-				<th>ID</th>
-				<th>File</th>
+				<th>[[lang.get('table_property_id')]]</th>
+				<th>[[lang.get('table_property_file')]]</th>
 				<th><img src="static/lock.gif" alt="Secret"></th>
-				<th style="text-align: right">Size</th>
-				<th>Action</th>
+				<th style="text-align: right">[[lang.get('table_property_size')]]</th>
+				<th>[[lang.get('table_property_action')]]</th>
 			</tr>
 			{{FOREACH file;[[files]]}}
 				<tr>
@@ -56,13 +57,13 @@
 					<td>
 						{{IF [[login.getLevel()]] >= 30}}
 							<form style ='float: left; padding-right: 5px;' action="files.php?view=[[view]]&edit=[[file.getId()]]" method="POST">
-								<input type="submit" class='btn btn-primary' value="Rename">
+								<input type="submit" class='btn btn-primary' value="[[lang.get('button_rename')]]">
 							</form>
 							<form style ='float: left;' action="files.php?view=[[view]]" method="POST" onSubmit="if (!confirm('Really delete file [[file.getFilename()]]?')) return false;">
 								<input type="hidden" name="action" value="[[$DFileAction::DELETE_FILE]]">
 								<input type="hidden" name="csrf" value="[[csrf]]">
 								<input type="hidden" name="file" value="[[file.getId()]]">
-								<input type="submit" class='btn btn-danger' value="Delete">
+								<input type="submit" class='btn btn-danger' value="[[lang.get('button_delete')]]">
 							</form>
 						{{ENDIF}}
 					</td>
@@ -72,7 +73,7 @@
 	</div>
 </div>
 <div class='col-md-4' style='padding: 0px;'>
-	<h3>Add new [[fileType]]</h3>
+	<h3>[[lang.get('files_index_add_new_file', [ [[fileType]] ])]]</h3>
 	<form action="files.php?view=[[view]]" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="source" value="upload">
 		<input type="hidden" name="csrf" value="[[csrf]]">
@@ -81,13 +82,13 @@
 			<table class="table table-bordered table-nonfluid" id='upfiles'>
 				<tr>
 					<th>
-						Upload files 
-						<button type="button" class='btn btn-default' onclick="javascript:addLine('upfiles');">Add file</button>
+						[[lang.get('files_index_upload_files')]]
+						<button type="button" class='btn btn-default' onclick="javascript:addLine('upfiles');">[[lang.get('button_add_file')]]</button>
 					</th>
 				</tr>
 				<tr>
 					<td>
-						<input type="submit" class='btn btn-default' value="Upload files">
+						<input type="submit" class='btn btn-default' value="[[lang.get('button_upload_files')]]">
 					</td>
 				</tr>
 			</table>
@@ -100,7 +101,7 @@
 			<div class="panel panel-default">
 			<table class="table table-bordered table-nonfluid" id='imfiles'>
 				<tr>
-					<th>Import files</th>
+					<th>[[lang.get('files_index_import_files')]]</th>
 				</tr>
 				{{FOREACH impfile;[[impfiles]]}}
 					<tr>
@@ -112,13 +113,13 @@
 				{{ENDFOREACH}}
 				{{IF [[sizeof([[impfiles]])]] == 0}}
 					<tr>
-						<td>'import' directory is empty.</td>
+						<td>[[lang.get('files_index_import_directory_empty')]]</td>
 					</tr>
 				{{ELSE}}
 					<tr>
 						<td>
-							<input type="submit" class='btn btn-default' value="Import files"> 
-							<input type="checkbox" onChange="javascript:checkAll('impfiles',this.checked);"> Select All
+							<input type="submit" class='btn btn-default' value="[[lang.get('button_import_files')]]"> 
+							<input type="checkbox" onChange="javascript:checkAll('impfiles',this.checked);"> [[lang.get('checkbox_select_all')]]
 						</td>
 					</tr>
 				{{ENDIF}}
@@ -132,7 +133,7 @@
 			<div class="panel panel-default">
 			<table class="table table-bordered table-nonfluid" id='upfiles'>
 				<tr>
-					<td colspan='2'>Download URL</td>
+					<th colspan='2'>[[lang.get('files_index_download_url')]]</th>
 				</tr>
 				<tr>
 					<td>URL:</td>
@@ -142,7 +143,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" class='btn btn-default' value="Download file">
+						<input type="submit" class='btn btn-default' value="[[lang.get('button_download_file')]]">
 					</td>
 				</tr>
 			</table>

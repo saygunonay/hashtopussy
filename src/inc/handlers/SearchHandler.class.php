@@ -13,22 +13,24 @@ class SearchHandler implements Handler {
   }
   
   public function handle($action) {
+    global $LANG;
+
     switch ($action) {
       case DSearchAction::SEARCH:
         $this->search();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get("handler_message_invalid_action"));
         break;
     }
   }
   
   private function search() {
-    global $FACTORIES, $OBJECTS;
+    global $FACTORIES, $OBJECTS, $LANG;
     
     $query = $_POST['search'];
     if (strlen($query) == 0) {
-      UI::addMessage(UI::ERROR, "Search query cannot be empty!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_search_query_cannot_be_empty"));
       return;
     }
     $query = str_replace("\r\n", "\n", $query);
@@ -93,6 +95,6 @@ class SearchHandler implements Handler {
     $OBJECTS['resultEntries'] = $resultEntries;
     $OBJECTS['hashlists'] = $hashlists;
     $OBJECTS['result'] = true;
-    UI::addMessage(UI::SUCCESS, "Searched for " . sizeof($resultEntries) . " entries!");
+    UI::addMessage(UI::SUCCESS, $LANG->get("handler_message_searched_for_entries", [sizeof($resultEntries)]));
   }
 }

@@ -1,6 +1,6 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>New hashlist</h2>
+<h2>[[lang.get('lists_new_new_hashlist')]]</h2>
 {%TEMPLATE->struct/messages%}
 <script type='text/javascript'>
 	function formatChange(valu) { 
@@ -33,17 +33,17 @@
 	<div class="panel panel-default">
 		<table class="table table-bordered table-nonfluid">
 			<tr>
-				<th>Property</th>
-				<th>Value</th>
+				<th>[[lang.getUCF('property')]]</th>
+				<th>[[lang.getUCF('value')]]</th>
 			</tr>
 			<tr>
-				<td>Name:</td>
+				<td>[[lang.get('table_property_name')]]</td>
 				<td>
 					<input type="text" class='form-control' name="name" size="35">
 				</td>
 			</tr>
 			<tr>
-				<td>Hashtype:</td>
+				<td>[[lang.get('table_property_hash_type')]]</td>
 				<td>
 					<select name="hashtype" class='form-control' id="hashtype" onchange="hashtypeChange()">
 						<option value=''>&nbsp;</option>
@@ -54,50 +54,50 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Hashlist format:</td>
+				<td>[[lang.get('table_property_hashlist_format')]]</td>
 				<td>
 					<select class='form-control' name="format" onChange="formatChange(this.value);">
-						<option value="0">Text file</option>
-						<option value="1">HCCAPX file</option>
-						<option value="2">Binary file (single hash)</option>
+						<option value="0">[[lang.get('lists_new_hashlist_format_text_file')]]</option>
+						<option value="1">[[lang.get('lists_new_hashlist_format_hccapx_file')]]</option>
+						<option value="2">[[lang.get('lists_new_hashlist_format_binary_file')]]</option>
 					</select>
 					<span class="textopt">
 						<br>
-						<input type="checkbox" name="salted" id="salted" value="1"> Salted hashes, separator
+						<input type="checkbox" name="salted" id="salted" value="1"> [[lang.get('lists_new_salted_hashes')]]
 						<input type="text" class='form-control' name="separator" value="[[config.getVal('fieldseparator')]]" size="1">
 					</span>
 					<span class="textopt">
 						<br>
-						<input type="checkbox" name="hexsalted" value="1"> Salt is in hex (only when salted hashes)
+						<input type="checkbox" name="hexsalted" value="1"> [[lang.get('lists_new_salt_is_hex')]]
 					</span>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Hash source<br>
-					<i>(make sure it's sorted!)</i>
+					[[lang.get('table_property_hash_source')]]<br>
+					<i>[[lang.get('lists_new_hash_source_description')]]</i>
 				</td>
 				<td>
-					<input type="radio" name="source" onChange="sourceChange(this.value);" value="paste"> Paste<br>
-          <input type="radio" name="source" onChange="sourceChange(this.value);" value="upload" checked> Upload<br>
-          <input type="radio" name="source" onChange="sourceChange(this.value);" value="import"> Import<br>
-          <input type="radio" name="source" onChange="sourceChange(this.value);" value="url"> URL download
+					<input type="radio" name="source" onChange="sourceChange(this.value);" value="paste"> [[lang.get('lists_new_hash_source_paste')]]<br>
+          <input type="radio" name="source" onChange="sourceChange(this.value);" value="upload" checked> [[lang.get('lists_new_hash_source_upload')]]<br>
+          <input type="radio" name="source" onChange="sourceChange(this.value);" value="import"> [[lang.get('lists_new_hash_source_import')]]<br>
+          <input type="radio" name="source" onChange="sourceChange(this.value);" value="url"> [[lang.get('lists_new_hash_source_url_download')]]
 				</td>
 			</tr>
 			<tr id="pasteLine" style="display: none;">
-				<td>Input field:</td>
+				<td>[[lang.get('lists_new_hash_source_input_field')]]</td>
 				<td>
 					<textarea class='form-control' name="hashfield" cols="60" rows="10"></textarea>
 				</td>
 			</tr>
 			<tr id="uploadLine">
-				<td>File to upload:</td>
+				<td>[[lang.get('lists_new_hash_source_file_to_upload')]]</td>
 				<td>
-					<input type="file" class='form-control' name="hashfile">
+					<input type="file" class='filestyle' name="hashfile" data-icon="false" data-buttonText="[[lang.get('button_choose_file')]]" data-placeholder="[[lang.get('button_choose_file_placeholder')]]">
 				</td>
 			</tr>
 			<tr id="importLine" style="display: none;">
-				<td>File to import:</td>
+				<td>[[lang.get('lists_new_hash_source_file_to_import')]]</td>
 				<td>
 					<select class='form-control' name="importfile">
 						{{FOREACH impfile;[[impfiles]]}}
@@ -107,14 +107,14 @@
 				</td>
 			</tr>
 			<tr id="downloadLine" style="display: none;">
-				<td>File URL:</td>
+				<td>[[lang.get('lists_new_hash_source_file_url')]]</td>
 				<td>
 					<input type="text" class='form-control' name="url" size="35">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					<input type="submit" class='btn btn-default' value="Create hashlist">
+					<input type="submit" class='btn btn-default' value="[[lang.get('button_create_hashlist')]]">
 				</td>
 			</tr>
 		</table>

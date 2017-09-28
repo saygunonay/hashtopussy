@@ -49,7 +49,7 @@ if (isset($_GET['edit'])) {
 else {
   $qF = new QueryFilter(File::FILE_TYPE, array_search($view, array('dict', 'rule')), "=");
   $oF = new OrderFilter(File::FILENAME, "ASC");
-  $OBJECTS['fileType'] = ($view == "dict") ? "Wordlists" : "Rules";
+  $OBJECTS['fileType'] = ($view == "dict") ? $LANG->getUCF("wordlists") : $LANG->getUCF("rules");
   $OBJECTS['files'] = $FACTORIES::getFileFactory()->filter(array($FACTORIES::FILTER => $qF, $FACTORIES::ORDER => $oF));;
   $OBJECTS['impfiles'] = Util::scanImportDirectory();
 }

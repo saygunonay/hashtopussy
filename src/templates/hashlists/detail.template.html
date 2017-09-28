@@ -1,6 +1,6 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Hashlist details</h2>
+<h2>[[lang.get('lists_detail_hashlist_details')]]</h2>
 {%TEMPLATE->struct/messages%}
 {{IF [[zap]]}}
   {%TEMPLATE->hashlists/zap%}
@@ -8,15 +8,15 @@
 <div class="panel panel-default">
   <table class="table table-bordered table-nonfluid">
     <tr>
-      <th>Property</th>
-      <th>Value</th>
+      <th>[[lang.getUCF('property')]]</th>
+      <th>[[lang.getUCF('value')]]</th>
     </tr>
     <tr>
-      <td>ID:</td>
+      <td>[[lang.get('table_property_id')]]</td>
       <td>[[list.getVal('hashlist')->getId()]]</td>
     </tr>
     <tr>
-      <td>Name:</td>
+      <td>[[lang.get('table_property_name')]]</td>
       <td>
         {{IF [[login.getLevel()]] >= 20}}
           <form class='form-inline' action="hashlists.php?id=[[list.getVal('hashlist')->getId()]]" method="POST">
@@ -24,7 +24,7 @@
             <input type="hidden" name="hashlist" value="[[list.getVal('hashlist')->getId()]]">
             <input type="hidden" name="csrf" value="[[csrf]]">
             <input type="text" class='form-control' name="name" size="20" value="[[list.getVal('hashlist')->getHashlistName()]]">
-            <input type="submit" class='btn btn-default' value="Change">
+            <input type="submit" class='btn btn-default' value="[[lang.get('button_change')]]">
           </form>
         {{ELSE}}
           [[list.getVal('hashlist')->getHashlistName()]]
@@ -32,13 +32,13 @@
       </td>
     </tr>
     <tr>
-      <td>Hash type:</td>
+      <td>[[lang.get('table_property_hash_type')]]</td>
       <td>
         [[list.getVal('hashtype')->getDescription()]]
       </td>
     </tr>
     <tr>
-      <td>Format:</td>
+      <td>[[lang.get('table_property_format')]]</td>
       <td>
         [[Util::getStaticArray([[list.getVal('hashlist')->getFormat()]], 'formats')]]
         {{IF [[list.getVal('hashlist')->getHexSalt()]] == 1}}
@@ -47,27 +47,27 @@
       </td>
     </tr>
     <tr>
-      <td>Hashes:</td>
+      <td>[[lang.get('table_property_hashes')]]</td>
       <td>
         <a href="hashes.php?hashlist=[[list.getVal('hashlist')->getId()]]">[[list.getVal('hashlist')->getHashCount()]]</a>
       </td>
     </tr>
     <tr>
-      <td>Cracked:</td>
+      <td>[[lang.get('table_property_cracked')]]</td>
       <td>
         <a href="hashes.php?hashlist=[[list.getVal('hashlist')->getId()]]&filter=cracked">[[list.getVal('hashlist')->getCracked()]]</a>
         ([[Util::showperc([[list.getVal('hashlist')->getCracked()]], [[list.getVal('hashlist')->getHashCount()]])]]%)
       </td>
     </tr>
     <tr>
-      <td>Remaining:</td>
+      <td>[[lang.get('table_property_remaining')]]</td>
       <td>
         <a href="hashes.php?hashlist=[[list.getVal('hashlist')->getId()]]&filter=uncracked">[[Util::subtract([[list.getVal('hashlist')->getHashCount()]], [[list.getVal('hashlist')->getCracked()]])]]</a>
         ([[Util::showperc([[list.getVal('hashlist')->getHashCount()]] - [[list.getVal('hashlist')->getCracked()]], [[list.getVal('hashlist')->getHashCount()]])]]%)
       </td>
     </tr>
     <tr>
-      <td>Secret:</td>
+      <td>[[lang.get('table_property_secret')]]</td>
       <td>
         {{IF [[login.getLevel()]] >= 30}}
           <form id="hashlistsecret" action="hashlists.php?id=[[list.getVal('hashlist')->getId()]]" method="POST">
@@ -75,29 +75,29 @@
             <input type="hidden" name="action" value="[[$DHashlistAction::SET_SECRET]]">
             <input type="hidden" name="csrf" value="[[csrf]]">
             <input type="checkbox" name="secret" value="1"{{IF [[list.getVal('hashlist')->getSecret()]] == 1}} checked{{ENDIF}}
-            onChange="javascript:document.getElementById('hashlistsecret').submit();"> Hashlist contains secret data
+            onChange="javascript:document.getElementById('hashlistsecret').submit();"> [[lang.get('lists_detail_description_secret')]]
           </form>
         {{ENDIF}}
         {{IF [[login.getLevel()]] < 30}}
-          <input type='checkbox'{{IF [[list.getVal('hashlist')->getSecret()]] == 1}} checked{{ENDIF}} disabled> Hashlist contains secret data
+          <input type='checkbox'{{IF [[list.getVal('hashlist')->getSecret()]] == 1}} checked{{ENDIF}} disabled> [[lang.get('lists_detail_description_secret')]]
         {{ENDIF}}
       </td>
     </tr>
     <tr>
-      <td>Actions:</td>
+      <td>[[lang.get('table_property_actions')]]</td>
       <td>
         {{IF [[list.getVal('hashlist')->getCracked()]] > 0 && [[login.getLevel()]] >= 20}}
           <form style='float: left; padding-right: 5px;' action="hashlists.php?id=[[list.getVal('hashlist')->getId()]]" method='post'>
             <input type='hidden' name='action' value='[[$DHashlistAction::CREATE_WORDLIST]]'>
             <input type='hidden' name='hashlist' value="[[list.getVal('hashlist')->getId()]]">
             <input type="hidden" name="csrf" value="[[csrf]]">
-            <input type='submit' class='btn btn-default' value='Generate wordlist'>
+            <input type='submit' class='btn btn-default' value="[[lang.get('button_generate_wordlist')]]">
           </form>
           <form style='float: left; padding-right: 5px;' action="hashlists.php?id=[[list.getVal('hashlist')->getId()]]" method='post'>
             <input type='hidden' name='action' value='[[$DHashlistAction::EXPORT_HASHLIST]]'>
             <input type='hidden' name='hashlist' value="[[list.getVal('hashlist')->getId()]]">
             <input type="hidden" name="csrf" value="[[csrf]]">
-            <input type='submit' class='btn btn-default' value='Export hashes for pre-crack'>
+            <input type='submit' class='btn btn-default' value="[[lang.get('button_export_hashes_for_precrack')]]">
           </form>
           <form style='float: left; padding-right: 5px;' action="hashlists.php?id=[[list.getVal('hashlist')->getId()]]" method='post'>
             <input type='hidden' name='action' value='[[$DHashlistAction::CREATE_LEFTLIST]]'>
@@ -111,7 +111,7 @@
             <input type='hidden' name='action' value='[[$DHashlistAction::ZAP_HASHLIST]]'>
             <input type='hidden' name='hashlist' value="[[list.getVal('hashlist')->getId()]]">
             <input type="hidden" name="csrf" value="[[csrf]]">
-            <input type='submit' class='btn btn-default' value='Import pre-cracked hashes'>
+            <input type='submit' class='btn btn-default' value="[[lang.get('button_import_precracked_hashes')]]">
           </form>
         {{ENDIF}}
       </td>

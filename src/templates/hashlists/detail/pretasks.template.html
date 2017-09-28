@@ -1,5 +1,5 @@
 {{IF [[login.getLevel()]] >= 20}}
-  <h3>Create pre-configured tasks:</h3>
+  <h3>[[lang.get('lists_detail_create_preconfigured_tasks')]]</h3>
   <form id="preconf" action="hashlists.php?id=[[list.getVal('hashlist')->getId()]]" method="POST">
     <input type='hidden' name='action' value='[[$DHashlistAction::APPLY_PRECONFIGURED_TASKS]]'>
     <input type="hidden" name="hashlist" value="[[list.getVal('hashlist')->getId()]]">
@@ -7,9 +7,9 @@
     <div class="panel panel-default">
       <table class="table table-bordered table-nonfluid">
         <tr>
-          <th class="col-md-1">ID</th>
-          <th class="col-md-1">Color</th>
-          <th>Name</th>
+          <th class="col-md-1">[[lang.get('table_property_id')]]</th>
+          <th class="col-md-1">[[lang.get('table_property_color')]]</th>
+          <th>[[lang.get('table_property_name')]]</th>
         </tr>
         {{FOREACH task;[[preTasks]]}}
           <tr>
@@ -27,8 +27,8 @@
         {{ENDFOREACH}}
         <tr>
           <td colspan="2">
-            <input type="submit" class='btn btn-default' value="Create">
-            <input type="checkbox" onChange="checkAll('preconf', this.checked);"> Select All
+            <input type="submit" class='btn btn-default' value="[[lang.get('button_create')]]">
+            <input type="checkbox" onChange="checkAll('preconf', this.checked);"> [[lang.get('checkbox_select_all')]]
           </td>
         </tr>
       </table>

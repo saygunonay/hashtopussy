@@ -158,7 +158,7 @@ class HashlistHandler implements Handler {
   }
   
   private function createSuperhashlist() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $hashlists = $_POST["hlist"];
     for ($i = 0; $i < sizeof($hashlists); $i++) {
@@ -167,7 +167,7 @@ class HashlistHandler implements Handler {
       }
     }
     if (sizeof($hashlists) == 0) {
-      UI::printError("ERROR", "No hashlists selected!");
+      UI::printError("ERROR", $LANG->get('handler_message_no_hashlists_selected'));
     }
     $name = htmlentities($_POST["name"], ENT_QUOTES, "UTF-8");
     $qF = new ContainFilter(Hashlist::HASHLIST_ID, $hashlists);
@@ -898,7 +898,7 @@ class HashlistHandler implements Handler {
   }
   
   private function preconf() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $this->hashlist = $FACTORIES::getHashlistFactory()->get($_POST["hashlist"]);
     if ($this->hashlist == null) {
@@ -950,7 +950,7 @@ class HashlistHandler implements Handler {
         }
       }
       if ($addCount > 0) {
-        UI::addMessage(UI::SUCCESS, "Successfully created $addCount new tasks with $fileCount files! You will be forward to the tasks page in 5 seconds.");
+        UI::addMessage(UI::SUCCESS, $LANG->get("lists_detail_message_new_task_create_redirect", [$addCount, $fileCount]));
         UI::setForward("tasks.php", 5);
       }
       else {

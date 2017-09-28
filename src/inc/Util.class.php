@@ -784,18 +784,19 @@ class Util {
       "hashes_binary",
       "hashes_binary"
     );
+    global $LANG;
     $states = array(
-      "New",
-      "Init",
-      "Running",
-      "Paused",
-      "Exhausted",
-      "Cracked",
-      "Aborted",
-      "Quit",
-      "Bypass",
-      "Trimmed",
-      "Aborting..."
+      $LANG->get('util_staticarray_states_new'),
+      $LANG->get('util_staticarray_states_init'),
+      $LANG->get('util_staticarray_states_running'),
+      $LANG->get('util_staticarray_states_paused'),
+      $LANG->get('util_staticarray_states_exhausted'),
+      $LANG->get('util_staticarray_states_cracked'),
+      $LANG->get('util_staticarray_states_aborted'),
+      $LANG->get('util_staticarray_states_quit'),
+      $LANG->get('util_staticarray_states_bypass'),
+      $LANG->get('util_staticarray_states_trimmed'),
+      $LANG->get('util_staticarray_states_aborting')
     );
     switch ($id) {
       case 'os':
@@ -1185,11 +1186,11 @@ class Util {
   }
   
   public static function checkCSRF($csrf) {
-    global $OBJECTS;
+    global $OBJECTS, $LANG;
     
     if (!isset($_SESSION['csrf']) || $csrf !== $_SESSION['csrf']) {
       unset($_SESSION['csrf']);
-      UI::addMessage(UI::ERROR, "Invalid form submission!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_invalid_form_submission"));
       return false;
     }
     $_SESSION['csrf'] = Util::randomString(30);
