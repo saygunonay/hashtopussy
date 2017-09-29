@@ -1,15 +1,15 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Hashcat releases</h2>
+<h2>[[lang.get('hashcat_index_hashcat_releases')]]</h2>
 {%TEMPLATE->struct/messages%}
 <div class="panel panel-default">
 	<table class="table table-bordered table-nonfluid">
 		<tr>
-			<th>Version</th>
-			<th>Added</th>
+			<th>[[lang.get('table_property_version')]]</th>
+			<th>[[lang.get('table_property_add_date')]]</th>
 			<th>URL</th>
-			<th>Root directory</th>
-			<th>Action</th>
+			<th>[[lang.get('table_property_root_directory')]]</th>
+			<th>[[lang.get('table_property_action')]]</th>
 		</tr>
 		{{FOREACH release;[[releases]]}}
 			<tr>
@@ -29,7 +29,7 @@
 							<input type="hidden" name="action" value="[[$DHashcatAction::DELETE_RELEASE]]">
 							<input type="hidden" name="release" value="[[release.getId()]]">
 							<input type="hidden" name="csrf" value="[[csrf]]">
-							<input type="submit" class='btn btn-danger' value="Delete">
+							<input type="submit" class='btn btn-danger' value="[[lang.get('button_delete')]]">
 						</form>
 					{{ENDIF}}
 				</td>

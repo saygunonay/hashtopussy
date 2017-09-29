@@ -33,6 +33,7 @@ $LANGARR['tr-TR']['rules'] = "kurallar";
 $LANGARR['tr-TR']['wordlists'] = "kelime listeleri";
 $LANGARR['tr-TR']['information'] = "bilgi";
 $LANGARR['tr-TR']['cracked'] = "kırılmış";
+$LANGARR['tr-TR']['page'] = "sayfa";
 
 //
 $LANGARR['tr-TR']['button_set'] = "Ayarla";
@@ -69,6 +70,8 @@ $LANGARR['tr-TR']['button_choose_file'] = "Dosya seç";
 $LANGARR['tr-TR']['button_import_files'] = "Dosyaları ithal et";
 $LANGARR['tr-TR']['button_download_file'] = "Dosyayı indir";
 $LANGARR['tr-TR']['button_save'] = "Kaydet";
+$LANGARR['tr-TR']['button_show_all_chunks'] = "Bütün parçaları göster";
+$LANGARR['tr-TR']['button_create_release'] = "Sürüm oluştur";
 
 $LANGARR['tr-TR']['button_choose_file_placeholder'] = "Dosya yok";
 
@@ -147,6 +150,10 @@ $LANGARR['tr-TR']['table_property_hash_source'] = "Hash kaynağı";
 $LANGARR['tr-TR']['table_property_hashlists'] = "Hash listeleri";
 $LANGARR['tr-TR']['table_property_search'] = "Arama";
 $LANGARR['tr-TR']['table_property_file'] = "Dosya";
+$LANGARR['tr-TR']['table_property_root_directory'] = "Kök dizin";
+$LANGARR['tr-TR']['table_property_add_date'] = "Eklenme tarihi";
+$LANGARR['tr-TR']['table_property_archive_url'] = "Arşiv URL'i";
+$LANGARR['tr-TR']['table_property_archive_root_directory'] = "Arşiv kök dizini";
 
 //
 $LANGARR['tr-TR']['description_no_activity'] = "faaliyet yok";
@@ -310,6 +317,11 @@ $LANGARR['tr-TR']['files_index_download_url'] = 'İndirme URL\'i';
 
 $LANGARR['tr-TR']['files_edit_edit_file'] = 'Dosyayı Düzelt';
 $LANGARR['tr-TR']['files_edit_warning_message'] = "Uyarı: Eğer dosya koşmakta olan bir görevde kullanılıyorsa isminin değiştirilmesi önerilmez. Bu durum dosyayı kullanan ajanlarla ilgili sorunlar yaratabilir.<br>Dosyanın ismini değitirdiğinizde ajanlar dosyayı tekrar indireceklerdir çünkü onu yeni bir dosya olarak kabul edeceklerdir, ismi değitirilmiş bir dosya olduğunu bilemezler.";
+
+$LANGARR['tr-TR']['chunks_chunk_activity'] = 'Parça faaliyeti';
+
+$LANGARR['tr-TR']['hashcat_index_hashcat_releases'] = 'Hashcat sürümleri';
+$LANGARR['tr-TR']['hashcat_new_create_new_hashcat_release'] = 'Yeni hashcat sürümü oluştur';
 
 // 
 $LANGARR['tr-TR']['handler_message_invalid_form_submission'] = "Hatalı form gönderimi!";

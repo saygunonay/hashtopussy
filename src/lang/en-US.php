@@ -33,6 +33,7 @@ $LANGARR['en-US']['rules'] = "rules";
 $LANGARR['en-US']['wordlists'] = "wordlists";
 $LANGARR['en-US']['information'] = "information";
 $LANGARR['en-US']['cracked'] = "cracked";
+$LANGARR['en-US']['page'] = "page";
 
 //
 $LANGARR['en-US']['button_set'] = "Set";
@@ -69,6 +70,8 @@ $LANGARR['en-US']['button_choose_file'] = "Choose file";
 $LANGARR['en-US']['button_import_files'] = "Import files";
 $LANGARR['en-US']['button_download_file'] = "Download file";
 $LANGARR['en-US']['button_save'] = "Save";
+$LANGARR['en-US']['button_show_all_chunks'] = "Show all chunks";
+$LANGARR['en-US']['button_create_release'] = "Create release";
 
 $LANGARR['en-US']['button_choose_file_placeholder'] = "No file";
 
@@ -147,6 +150,10 @@ $LANGARR['en-US']['table_property_hash_source'] = "Hash source";
 $LANGARR['en-US']['table_property_hashlists'] = "Hashlists";
 $LANGARR['en-US']['table_property_search'] = "Search";
 $LANGARR['en-US']['table_property_file'] = "File";
+$LANGARR['en-US']['table_property_root_directory'] = "Root directory";
+$LANGARR['en-US']['table_property_add_date'] = "Add date";
+$LANGARR['en-US']['table_property_archive_url'] = "Archive URL";
+$LANGARR['en-US']['table_property_archive_root_directory'] = "Archive root directory";
 
 //
 $LANGARR['en-US']['description_no_activity'] = "no activity";
@@ -310,6 +317,11 @@ $LANGARR['en-US']['files_index_download_url'] = 'Download URL';
 
 $LANGARR['en-US']['files_edit_edit_file'] = 'Edit File';
 $LANGARR['en-US']['files_edit_warning_message'] = "WARNING: It's not recommended to rename a file during running a task where this file is used. This can cause problems with the agents using the file.<br>Keep in mind that when you rename a file the agents will download the file again as they don't know that it is just a renamed file.";
+
+$LANGARR['en-US']['chunks_chunk_activity'] = 'Chunk activity';
+
+$LANGARR['en-US']['hashcat_index_hashcat_releases'] = 'Hashcat releases';
+$LANGARR['en-US']['hashcat_new_create_new_hashcat_release'] = 'Create new hashcat release';
 
 // 
 $LANGARR['en-US']['handler_message_invalid_form_submission'] = "Invalid form submission!";

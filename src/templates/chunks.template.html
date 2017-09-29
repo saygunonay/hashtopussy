@@ -1,33 +1,33 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Chunk activity</h2>
+<h2>[[lang.get('chunks_chunk_activity')]]</h2>
 <div class="panel panel-default">
 	<table class="table table-bordered table-nonfluid">
 		{{IF ![[all]]}}
 			<tr>
 				<td colspan="12" style="text-align: center">
-					<a href="chunks.php?show=all"><button class="btn btn-primary">Show all chunks</button></a><br><br>
+					<a href="chunks.php?show=all"><button class="btn btn-primary">[[lang.get('button_show_all_chunks')]]</button></a><br><br>
 					<div class="btn-group" role="group">
 						<a href="chunks.php?page=[[Util::calculate([[page]] - 1)]]"><button type="button" class="btn btn-default"{{IF [[page]] == 0}} disabled{{ENDIF}}>&lt;</button></a>
-						<a href="#"><button type="button" class="btn btn-default" disabled>Page [[Util::calculate([[page]] + 1)]]</button></a>
+						<a href="#"><button type="button" class="btn btn-default" disabled>[[lang.getUCF('page')]] [[Util::calculate([[page]] + 1)]]</button></a>
 						<a href="chunks.php?page=[[Util::calculate([[page]] + 1)]]"><button type="button" class="btn btn-default"{{IF [[page]] == [[maxpage]]}} disabled{{ENDIF}}>&gt;</button></a>
 					</div>
 				</td>
 			</tr>
 		{{ENDIF}}
 		<tr>
-			<th>ID</th>
-			<th>Start</th>
-			<th>Length</th>
-			<th>Checkpoint</th>
-			<th>Progress</th>
-			<th>Task</th>
-			<th>Agent</th>
-			<th>Dispatch time</th>
-			<th>Last activity</th>
-			<th>Time spent</th>
-			<th>State</th>
-			<th>Cracked</th>
+			<th>[[lang.get('table_property_id')]]</th>
+			<th>[[lang.get('table_property_start')]]</th>
+			<th>[[lang.get('table_property_length')]]</th>
+			<th>[[lang.get('table_property_checkpoint')]]</th>
+			<th>[[lang.get('table_property_progress')]]</th>
+			<th>[[lang.get('table_property_task')]]</th>
+			<th>[[lang.get('table_property_agent')]]</th>
+			<th>[[lang.get('table_property_dispatch_time')]]</th>
+			<th>[[lang.get('table_property_last_activity')]]</th>
+			<th>[[lang.get('table_property_time_spent')]]</th>
+			<th>[[lang.get('table_property_state')]]</th>
+			<th>[[lang.get('table_property_cracked')]]</th>
 		</tr>
 		{{FOREACH chunk;[[chunks]]}}
 			<tr>
