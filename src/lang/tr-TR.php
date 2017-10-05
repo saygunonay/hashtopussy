@@ -34,6 +34,8 @@ $LANGARR['tr-TR']['wordlists'] = "kelime listeleri";
 $LANGARR['tr-TR']['information'] = "bilgi";
 $LANGARR['tr-TR']['cracked'] = "kırılmış";
 $LANGARR['tr-TR']['page'] = "sayfa";
+$LANGARR['tr-TR']['otp_key'] = "OTP anahtarı";
+$LANGARR['tr-TR']['all'] = "hepsi";
 
 //
 $LANGARR['tr-TR']['button_set'] = "Ayarla";
@@ -72,6 +74,10 @@ $LANGARR['tr-TR']['button_download_file'] = "Dosyayı indir";
 $LANGARR['tr-TR']['button_save'] = "Kaydet";
 $LANGARR['tr-TR']['button_show_all_chunks'] = "Bütün parçaları göster";
 $LANGARR['tr-TR']['button_create_release'] = "Sürüm oluştur";
+$LANGARR['tr-TR']['button_update'] = "Güncelle";
+$LANGARR['tr-TR']['button_change_password'] = "Şifreyi Değiştir";
+$LANGARR['tr-TR']['button_disable'] = "Pasif et";
+$LANGARR['tr-TR']['button_enable'] = "Aktif et";
 
 $LANGARR['tr-TR']['button_choose_file_placeholder'] = "Dosya yok";
 
@@ -154,6 +160,17 @@ $LANGARR['tr-TR']['table_property_root_directory'] = "Kök dizin";
 $LANGARR['tr-TR']['table_property_add_date'] = "Eklenme tarihi";
 $LANGARR['tr-TR']['table_property_archive_url'] = "Arşiv URL'i";
 $LANGARR['tr-TR']['table_property_archive_root_directory'] = "Arşiv kök dizini";
+$LANGARR['tr-TR']['table_property_user_type'] = "Kullanıcı tipi";
+$LANGARR['tr-TR']['table_property_registration_date'] = "Kayıt tarihi";
+$LANGARR['tr-TR']['table_property_email_address'] = "E-posta adresi";
+$LANGARR['tr-TR']['table_property_session_length'] = "Oturum süresi";
+$LANGARR['tr-TR']['table_property_password'] = "Şifre";
+$LANGARR['tr-TR']['table_property_yubikey_otp'] = "Yubikey OTP";
+$LANGARR['tr-TR']['table_property_enable_yubikey_otp'] = "Yubikey OTP aktif/pasif yap";
+$LANGARR['tr-TR']['table_property_trigger_action'] = "Tetik Eylemi";
+$LANGARR['tr-TR']['table_property_applied_to'] = "Uygulanan";
+$LANGARR['tr-TR']['table_property_notification_type'] = "Uyarı Tipi";
+$LANGARR['tr-TR']['table_property_receiver'] = "Alıcı";
 
 //
 $LANGARR['tr-TR']['description_no_activity'] = "faaliyet yok";
@@ -322,6 +339,36 @@ $LANGARR['tr-TR']['chunks_chunk_activity'] = 'Parça faaliyeti';
 
 $LANGARR['tr-TR']['hashcat_index_hashcat_releases'] = 'Hashcat sürümleri';
 $LANGARR['tr-TR']['hashcat_new_create_new_hashcat_release'] = 'Yeni hashcat sürümü oluştur';
+
+$LANGARR['tr-TR']['myaccount_myaccount'] = 'Hesabım';
+$LANGARR['tr-TR']['myaccount_old_password'] = 'Eski şifre';
+$LANGARR['tr-TR']['myaccount_new_password'] = 'Yeni şifre';
+$LANGARR['tr-TR']['myaccount_repeat_password'] = 'Yeni şifre tekrar';
+$LANGARR['tr-TR']['myaccount_disclaimer_otp'] = '<b>Tekzip:</b> Anahtarınızın kaybolması durumunda yöneticiler OTP yetkilendirme bilginizi sıfırlayamazlar.';
+$LANGARR['tr-TR']['myaccount_description_yubikey_otp'] = 'Yubikey şu anda yapılandırılmamıştır.<br>Sunucu yapılandırmasında yetki verilmesi gerektiği için lütfen bir yönetici ile temasa geçin.';
+$LANGARR['tr-TR']['myaccount_description_yubikey_enabled'] = 'Yubikey OTP şu anda aktif';
+$LANGARR['tr-TR']['myaccount_description_yubikey_disabled'] = 'Yubikey OTP şu anda aktif değil';
+$LANGARR['tr-TR']['myaccount_notifications'] = 'Uyarılar';
+$LANGARR['tr-TR']['myaccount_notifications_create_notification'] = 'Uyarı Oluştur';
+
+//
+$LANGARR['tr-TR']['notification_types_taskComplete'] = 'Görev Tamamlandı';
+$LANGARR['tr-TR']['notification_types_agentError'] = 'Ajan Hatası';
+$LANGARR['tr-TR']['notification_types_ownAgentError'] = 'Kendi Ajan Hatası';
+$LANGARR['tr-TR']['notification_types_logError'] = 'Log Error';
+$LANGARR['tr-TR']['notification_types_newTask'] = 'Yeni Görev';
+$LANGARR['tr-TR']['notification_types_newHashlist'] = 'Yeni Hash listesi';
+$LANGARR['tr-TR']['notification_types_hashlistAllCracked'] = 'Hash listesinin Tümü Kırıldı';
+$LANGARR['tr-TR']['notification_types_hashlistCrackedHash'] = 'Hash listesinden bir Hash Kırıldı';
+$LANGARR['tr-TR']['notification_types_userCreated'] = 'Kullanıcı Oluşturuldu';
+$LANGARR['tr-TR']['notification_types_userDeleted'] = 'Kullanıcı Silindi';
+$LANGARR['tr-TR']['notification_types_userLoginFailed'] = 'Kullanıcı Girişi Başarısız';
+$LANGARR['tr-TR']['notification_types_logWarn'] = 'Log Warn';
+$LANGARR['tr-TR']['notification_types_logFatal'] = 'Log Fatal';
+$LANGARR['tr-TR']['notification_types_newAgent'] = 'Yeni Ajan';
+$LANGARR['tr-TR']['notification_types_deleteTask'] = 'Görev Silindi';
+$LANGARR['tr-TR']['notification_types_deleteHashlist'] = 'Hash listesi Silindi';
+$LANGARR['tr-TR']['notification_types_deleteAgent'] = 'Ajan Silindi';
 
 // 
 $LANGARR['tr-TR']['handler_message_invalid_form_submission'] = "Hatalı form gönderimi!";

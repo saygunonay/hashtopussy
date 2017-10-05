@@ -91,17 +91,32 @@ foreach ($NOTIFICATIONS as $name => $notification) {
 }
 $OBJECTS['allNotifications'] = $allNotifications;
 
+class NameFun {
+  private $names = array();
+  
+  public function put($type, $name) {
+    $this->names[$type] = $name;
+  }
+  
+  public function get($type) {
+    return $this->names[$type];
+  }
+}
+
 $allowedActions = array();
 $actionSettings = array();
+$allowedActionNames = new NameFun();
 foreach (DNotificationType::getAll() as $notificationType) {
   if (DNotificationType::getRequiredLevel($notificationType) <= $LOGIN->getLevel()) {
     $allowedActions[] = $notificationType;
     $actionSettings[] = "\"" . $notificationType . "\":\"" . DNotificationType::getObjectType($notificationType) . "\"";
+    $allowedActionNames->put($notificationType, $LANG->get("notification_types_" . $notificationType));
   }
 }
 sort($allowedActions);
 $OBJECTS['allowedActions'] = $allowedActions;
 $OBJECTS['actionSettings'] = "{" . implode(",", $actionSettings) . "}";;
+$OBJECTS['allowedActionNames'] = $allowedActionNames;
 
 $qF = new QueryFilter(Task::HASHLIST_ID, null, "<>");
 $oF = new OrderFilter(Task::TASK_NAME, "ASC");

@@ -34,6 +34,8 @@ $LANGARR['en-US']['wordlists'] = "wordlists";
 $LANGARR['en-US']['information'] = "information";
 $LANGARR['en-US']['cracked'] = "cracked";
 $LANGARR['en-US']['page'] = "page";
+$LANGARR['en-US']['otp_key'] = "OTP key";
+$LANGARR['en-US']['all'] = "all";
 
 //
 $LANGARR['en-US']['button_set'] = "Set";
@@ -72,6 +74,10 @@ $LANGARR['en-US']['button_download_file'] = "Download file";
 $LANGARR['en-US']['button_save'] = "Save";
 $LANGARR['en-US']['button_show_all_chunks'] = "Show all chunks";
 $LANGARR['en-US']['button_create_release'] = "Create release";
+$LANGARR['en-US']['button_update'] = "Update";
+$LANGARR['en-US']['button_change_password'] = "Change Password";
+$LANGARR['en-US']['button_disable'] = "Disable";
+$LANGARR['en-US']['button_enable'] = "Enable";
 
 $LANGARR['en-US']['button_choose_file_placeholder'] = "No file";
 
@@ -154,6 +160,17 @@ $LANGARR['en-US']['table_property_root_directory'] = "Root directory";
 $LANGARR['en-US']['table_property_add_date'] = "Add date";
 $LANGARR['en-US']['table_property_archive_url'] = "Archive URL";
 $LANGARR['en-US']['table_property_archive_root_directory'] = "Archive root directory";
+$LANGARR['en-US']['table_property_user_type'] = "User type";
+$LANGARR['en-US']['table_property_registration_date'] = "Registration date";
+$LANGARR['en-US']['table_property_email_address'] = "Email address";
+$LANGARR['en-US']['table_property_session_length'] = "Session length";
+$LANGARR['en-US']['table_property_password'] = "Password";
+$LANGARR['en-US']['table_property_yubikey_otp'] = "Yubikey OTP";
+$LANGARR['en-US']['table_property_enable_yubikey_otp'] = "Enable/Disable Yubikey OTP";
+$LANGARR['en-US']['table_property_trigger_action'] = "Trigger Action";
+$LANGARR['en-US']['table_property_applied_to'] = "Applied to";
+$LANGARR['en-US']['table_property_notification_type'] = "Notification Type";
+$LANGARR['en-US']['table_property_receiver'] = "Receiver";
 
 //
 $LANGARR['en-US']['description_no_activity'] = "no activity";
@@ -322,6 +339,36 @@ $LANGARR['en-US']['chunks_chunk_activity'] = 'Chunk activity';
 
 $LANGARR['en-US']['hashcat_index_hashcat_releases'] = 'Hashcat releases';
 $LANGARR['en-US']['hashcat_new_create_new_hashcat_release'] = 'Create new hashcat release';
+
+$LANGARR['en-US']['myaccount_myaccount'] = 'My Account';
+$LANGARR['en-US']['myaccount_old_password'] = 'Old password';
+$LANGARR['en-US']['myaccount_new_password'] = 'New password';
+$LANGARR['en-US']['myaccount_repeat_password'] = 'Repeat new password';
+$LANGARR['en-US']['myaccount_disclaimer_otp'] = '<b>Disclaimer:</b> Administrators cannot reset your OTP auth information if your key is lost.';
+$LANGARR['en-US']['myaccount_description_yubikey_otp'] = 'Yubikey is currently not configured.<br>Please contact an admin as it needs to be enabled and set up on the server configuration.';
+$LANGARR['en-US']['myaccount_description_yubikey_enabled'] = 'Yubikey OTP currently enabled';
+$LANGARR['en-US']['myaccount_description_yubikey_disabled'] = 'Yubikey OTP is currently disabled';
+$LANGARR['en-US']['myaccount_notifications'] = 'Notifications';
+$LANGARR['en-US']['myaccount_notifications_create_notification'] = 'Create Notification';
+
+//
+$LANGARR['en-US']['notification_types_taskComplete'] = 'Task Complete';
+$LANGARR['en-US']['notification_types_agentError'] = 'Agent Error';
+$LANGARR['en-US']['notification_types_ownAgentError'] = 'Own Agent Error';
+$LANGARR['en-US']['notification_types_logError'] = 'Log Error';
+$LANGARR['en-US']['notification_types_newTask'] = 'New Task';
+$LANGARR['en-US']['notification_types_newHashlist'] = 'New Hashlist';
+$LANGARR['en-US']['notification_types_hashlistAllCracked'] = 'Hashlist All Cracked';
+$LANGARR['en-US']['notification_types_hashlistCrackedHash'] = 'Hashlist Cracked Hash';
+$LANGARR['en-US']['notification_types_userCreated'] = 'User Created';
+$LANGARR['en-US']['notification_types_userDeleted'] = 'User Deleted';
+$LANGARR['en-US']['notification_types_userLoginFailed'] = 'User Login Failed';
+$LANGARR['en-US']['notification_types_logWarn'] = 'Log Warn';
+$LANGARR['en-US']['notification_types_logFatal'] = 'Log Fatal';
+$LANGARR['en-US']['notification_types_newAgent'] = 'New Agent';
+$LANGARR['en-US']['notification_types_deleteTask'] = 'Delete Task';
+$LANGARR['en-US']['notification_types_deleteHashlist'] = 'Delete Hashlist';
+$LANGARR['en-US']['notification_types_deleteAgent'] = 'Delete Agent';
 
 // 
 $LANGARR['en-US']['handler_message_invalid_form_submission'] = "Invalid form submission!";
