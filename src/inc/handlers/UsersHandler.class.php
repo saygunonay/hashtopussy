@@ -12,6 +12,7 @@ class UsersHandler implements Handler {
   }
   
   public function handle($action) {
+    global $LANG;
     switch ($action) {
       case DUserAction::DELETE_USER:
         $this->delete();
@@ -32,34 +33,34 @@ class UsersHandler implements Handler {
         $this->create();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_invalid_action'));
         break;
     }
   }
   
   private function create() {
     /** @var $LOGIN Login */
-    global $FACTORIES, $LOGIN;
+    global $FACTORIES, $LOGIN, $LANG;
     
     $username = htmlentities($_POST['username'], ENT_QUOTES, "UTF-8");
     $email = $_POST['email'];
     $group = $FACTORIES::getRightGroupFactory()->get($_POST['group']);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) == 0) {
-      UI::addMessage(UI::ERROR, "Invalid email address!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_invalid_email'));
       return;
     }
     else if (strlen($username) < 2) {
-      UI::addMessage(UI::ERROR, "Username is too short!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_username_short'));
       return;
     }
     else if ($group == null) {
-      UI::addMessage(UI::ERROR, "Invalid group!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_invalid_group'));
       return;
     }
     $qF = new QueryFilter("username", $username, "=");
     $res = $FACTORIES::getUserFactory()->filter(array($FACTORIES::FILTER => array($qF)));
     if ($res != null && sizeof($res) > 0) {
-      UI::addMessage(UI::ERROR, "Username is already used!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_username_used'));
       return;
     }
     $newPass = Util::randomString(10);
@@ -82,15 +83,15 @@ class UsersHandler implements Handler {
   
   private function setPassword() {
     /** @var Login $LOGIN */
-    global $FACTORIES, $LOGIN;
+    global $FACTORIES, $LOGIN, $LANG;
     
     $user = $FACTORIES::getUserFactory()->get($_POST['user']);
     if ($user == null) {
-      UI::addMessage(UI::ERROR, "Invalid user!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_invalid_user'));
       return;
     }
     else if ($user->getId() == $LOGIN->getUserID()) {
-      UI::addMessage(UI::ERROR, "To change your own password go to your settings!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_change_own_password'));
       return;
     }
     
@@ -100,43 +101,43 @@ class UsersHandler implements Handler {
     $user->setPasswordSalt($newSalt);
     $user->setIsComputedPassword(0);
     $FACTORIES::getUserFactory()->update($user);
-    UI::addMessage(UI::SUCCESS, "User password was updated successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_users_password_updated_successfully'));
   }
   
   private function setRights() {
     /** @var Login $LOGIN */
-    global $FACTORIES, $LOGIN;
+    global $FACTORIES, $LOGIN, $LANG;
     
     $group = $FACTORIES::getRightGroupFactory()->get($_POST['group']);
     $user = $FACTORIES::getUserFactory()->get($_POST['user']);
     if ($user == null) {
-      UI::addMessage(UI::ERROR, "Invalid user!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_invalid_user'));
       return;
     }
     else if ($group == null) {
-      UI::addMessage(UI::ERROR, "Invalid group!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_invalid_group'));
       return;
     }
     else if ($user->getId() == $LOGIN->getUserID()) {
-      UI::addMessage(UI::ERROR, "You cannot change your own rights!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_cannot_change_own_rights'));
       return;
     }
     $user->setRightGroupId($group->getId());
     $FACTORIES::getUserFactory()->update($user);
-    UI::addMessage(UI::SUCCESS, "Updated user rights successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_users_updated_rights_successfully'));
   }
   
   private function disable() {
     /** @var Login $LOGIN */
-    global $FACTORIES, $LOGIN;
+    global $FACTORIES, $LOGIN, $LANG;
     
     $user = $FACTORIES::getUserFactory()->get($_POST['user']);
     if ($user == null) {
-      UI::addMessage(UI::ERROR, "Invalid user!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_invalid_user'));
       return;
     }
     else if ($user->getId() == $LOGIN->getUserID()) {
-      UI::addMessage(UI::ERROR, "You cannot disable yourself!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_cannot_disable_yourself'));
       return;
     }
     
@@ -145,34 +146,34 @@ class UsersHandler implements Handler {
     $FACTORIES::getSessionFactory()->massUpdate(array($FACTORIES::FILTER => array($qF), $FACTORIES::UPDATE => array($uS)));
     $user->setIsValid(0);
     $FACTORIES::getUserFactory()->update($user);
-    UI::addMessage(UI::SUCCESS, "User was disabled successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_users_user_disabled_successfully'));
   }
   
   private function enable() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $user = $FACTORIES::getUserFactory()->get($_POST['user']);
     if ($user == null) {
-      UI::addMessage(UI::ERROR, "Invalid user!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_invalid_user'));
       return;
     }
     
     $user->setIsValid(1);
     $FACTORIES::getUserFactory()->update($user);
-    UI::addMessage(UI::SUCCESS, "User account enabled successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_users_user_enabled_successfully'));
   }
   
   private function delete() {
     /** @var Login $LOGIN */
-    global $FACTORIES, $LOGIN;
+    global $FACTORIES, $LOGIN, $LANG;
     
     $user = $FACTORIES::getUserFactory()->get($_POST['user']);
     if ($user == null) {
-      UI::addMessage(UI::ERROR, "Invalid user!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_invalid_user'));
       return;
     }
     else if ($user->getId() == $LOGIN->getUserID()) {
-      UI::addMessage(UI::ERROR, "You cannot delete yourself!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_users_cannot_delete_yourself'));
       return;
     }
     

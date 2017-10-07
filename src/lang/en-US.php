@@ -78,6 +78,7 @@ $LANGARR['en-US']['button_update'] = "Update";
 $LANGARR['en-US']['button_change_password'] = "Change Password";
 $LANGARR['en-US']['button_disable'] = "Disable";
 $LANGARR['en-US']['button_enable'] = "Enable";
+$LANGARR['en-US']['button_manage'] = "Manage";
 
 $LANGARR['en-US']['button_choose_file_placeholder'] = "No file";
 
@@ -171,6 +172,16 @@ $LANGARR['en-US']['table_property_trigger_action'] = "Trigger Action";
 $LANGARR['en-US']['table_property_applied_to'] = "Applied to";
 $LANGARR['en-US']['table_property_notification_type'] = "Notification Type";
 $LANGARR['en-US']['table_property_receiver'] = "Receiver";
+$LANGARR['en-US']['table_property_username'] = "Username";
+$LANGARR['en-US']['table_property_creation_date'] = "Creation date";
+$LANGARR['en-US']['table_property_last_login'] = "Last login";
+$LANGARR['en-US']['table_property_email'] = "Email";
+$LANGARR['en-US']['table_property_validity'] = "Validity";
+$LANGARR['en-US']['table_property_user_group'] = "User group";
+$LANGARR['en-US']['table_property_enable_disable_user'] = 'Enable/Disable user';
+$LANGARR['en-US']['table_property_set_user_group'] = 'Set user group';
+$LANGARR['en-US']['table_property_set_password'] = 'Set password';
+$LANGARR['en-US']['table_property_delete_user'] = 'Delete user';
 
 //
 $LANGARR['en-US']['description_no_activity'] = "no activity";
@@ -351,6 +362,22 @@ $LANGARR['en-US']['myaccount_description_yubikey_disabled'] = 'Yubikey OTP is cu
 $LANGARR['en-US']['myaccount_notifications'] = 'Notifications';
 $LANGARR['en-US']['myaccount_notifications_create_notification'] = 'Create Notification';
 
+$LANGARR['en-US']['users_index_all_users'] = 'All users';
+$LANGARR['en-US']['users_index_status_valid'] = 'Valid';
+$LANGARR['en-US']['users_index_status_invalid'] = 'Invalid/Not activated';
+$LANGARR['en-US']['users_new_new_user'] = 'New user';
+$LANGARR['en-US']['users_detail_user'] = 'User';
+$LANGARR['en-US']['users_detail_user_currently_enabled'] = 'User is currently enabled';
+$LANGARR['en-US']['users_detail_user_currently_disabled'] = 'User is currently disabled';
+$LANGARR['en-US']['users_detail_delete_user_warning'] = 'Do you really want to delete this user? This cannot be undone!';
+
+//
+$LANGARR['en-US']['user_group_name_1'] = 'View User';
+$LANGARR['en-US']['user_group_name_2'] = 'Read Only User';
+$LANGARR['en-US']['user_group_name_3'] = 'Normal User';
+$LANGARR['en-US']['user_group_name_4'] = 'Superuser';
+$LANGARR['en-US']['user_group_name_5'] = 'Administrator';
+
 //
 $LANGARR['en-US']['notification_types_taskComplete'] = 'Task Complete';
 $LANGARR['en-US']['notification_types_agentError'] = 'Agent Error';
@@ -376,6 +403,20 @@ $LANGARR['en-US']['handler_message_invalid_action'] = "Invalid action!";
 $LANGARR['en-US']['handler_message_search_query_cannot_be_empty'] = "Search query cannot be empty!";
 $LANGARR['en-US']['handler_message_searched_for_entries'] = "Searched for {0} entries.";
 $LANGARR['en-US']['handler_message_no_hashlists_selected'] = "No hashlists selected!";
+
+$LANGARR['en-US']['handler_message_users_user_disabled_successfully'] = "User was disabled successfully!";
+$LANGARR['en-US']['handler_message_users_invalid_user'] = "Invalid user!";
+$LANGARR['en-US']['handler_message_users_cannot_disable_yourself'] = "You cannot disable yourself!";
+$LANGARR['en-US']['handler_message_users_user_enabled_successfully'] = "User was enabled successfully!";
+$LANGARR['en-US']['handler_message_users_cannot_delete_yourself'] = "You cannot delete yourself!";
+$LANGARR['en-US']['handler_message_users_invalid_group'] = "Invalid group!";
+$LANGARR['en-US']['handler_message_users_cannot_change_own_rights'] = "You cannot change your own rights!";
+$LANGARR['en-US']['handler_message_users_updated_rights_successfully'] = "Updated user rights successfully!";
+$LANGARR['en-US']['handler_message_users_change_own_password'] = "To change your own password go to your settings!";
+$LANGARR['en-US']['handler_message_users_password_updated_successfully'] = "User password was updated successfully!";
+$LANGARR['en-US']['handler_message_users_invalid_email'] = "Invalid email address!";
+$LANGARR['en-US']['handler_message_users_username_short'] = "Username is too short!";
+$LANGARR['en-US']['handler_message_users_username_used'] = "Username is already used!";
 
 // API
 $LANGARR['en-US']['api_server_error_invalid_query'] = "Invalid query!";

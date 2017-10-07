@@ -1,19 +1,19 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>All users ([[numUsers]])</h2>
+<h2>[[lang.get('users_index_all_users')]] ([[numUsers]])</h2>
 {%TEMPLATE->struct/messages%}
 <div class="panel panel-default">
 	<table class="table table-bordered table-nonfluid">
 		<tr>
-			<th>ID</th>
-			<th>Username</th>
-			<th>Creation date</th>
-			<th>Last login</th>
-			<th>Email</th>
-			<th>Validity</th>
-			<th>Session lifetime</th>
-			<th>Right group</th>
-			<th>Action</th>
+			<th>[[lang.get('table_property_id')]]</th>
+			<th>[[lang.get('table_property_username')]]</th>
+			<th>[[lang.get('table_property_creation_date')]]</th>
+			<th>[[lang.get('table_property_last_login')]]</th>
+			<th>[[lang.get('table_property_email')]]</th>
+			<th>[[lang.get('table_property_validity')]]</th>
+			<th>[[lang.get('table_property_session_length')]]</th>
+			<th>[[lang.get('table_property_user_group')]]</th>
+			<th>[[lang.get('table_property_action')]]</th>
 		</tr>
 		{{FOREACH entry;[[allUsers]]}}
 			<tr>
@@ -24,15 +24,15 @@
 				<td>[[entry.getVal('user').getEmail()]]</td>
 				<td>
 					{{IF [[entry.getVal('user').getIsValid()]] == 1}}
-						Valid
+						[[lang.get('users_index_status_valid')]]
 					{{ELSE}}
-						Invalid/Not activated
+						[[lang.get('users_index_status_invalid')]]
 					{{ENDIF}}
 				</td>
 				<td>[[entry.getVal('user').getSessionLifetime()]]</td>
 				<td>[[entry.getVal('group').getGroupName()]]</td>
 				<td>
-					<a class='btn btn-primary' href="users.php?id=[[entry.getVal('user').getId()]]">Manage</a>
+					<a class='btn btn-primary' href="users.php?id=[[entry.getVal('user').getId()]]">[[lang.get('button_manage')]]</a>
 				</td>
 			</tr>
 		{{ENDFOREACH}}

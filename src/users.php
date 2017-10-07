@@ -29,7 +29,11 @@ if (isset($_POST['action']) && Util::checkCSRF($_POST['csrf'])) {
 if (isset($_GET['new'])) {
   $TEMPLATE = new Template("users/new");
   $MENU->setActive("users_new");
-  $OBJECTS['groups'] = $FACTORIES::getRightGroupFactory()->filter(array());
+  $groups = $FACTORIES::getRightGroupFactory()->filter(array());
+  foreach ($groups as $group) {
+    $group->setGroupName($LANG->get("user_group_name_" . $group->getId()));
+  }
+  $OBJECTS['groups'] = $groups;
 }
 else if (isset($_GET['id'])) {
   $user = $FACTORIES::getUserFactory()->get($_GET['id']);
@@ -38,7 +42,11 @@ else if (isset($_GET['id'])) {
   }
   else {
     $OBJECTS['user'] = $user;
-    $OBJECTS['groups'] = $FACTORIES::getRightGroupFactory()->filter(array());
+    $groups = $FACTORIES::getRightGroupFactory()->filter(array());
+    foreach ($groups as $group) {
+      $group->setGroupName($LANG->get("user_group_name_" . $group->getId()));
+    }
+    $OBJECTS['groups'] = $groups;
     $TEMPLATE = new Template("users/detail");
   }
 }
@@ -48,7 +56,9 @@ else {
   foreach ($res as $entry) {
     $set = new DataSet();
     $set->addValue('user', $entry);
-    $set->addValue('group', $FACTORIES::getRightGroupFactory()->get($entry->getRightGroupId()));
+    $group = $FACTORIES::getRightGroupFactory()->get($entry->getRightGroupId());
+    $group->setGroupName($LANG->get("user_group_name_" . $group->getId()));
+    $set->addValue('group', $group);
     $users[] = $set;
   }
   

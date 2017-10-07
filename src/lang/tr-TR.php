@@ -78,6 +78,7 @@ $LANGARR['tr-TR']['button_update'] = "Güncelle";
 $LANGARR['tr-TR']['button_change_password'] = "Şifreyi Değiştir";
 $LANGARR['tr-TR']['button_disable'] = "Pasif et";
 $LANGARR['tr-TR']['button_enable'] = "Aktif et";
+$LANGARR['tr-TR']['button_manage'] = "Yönet";
 
 $LANGARR['tr-TR']['button_choose_file_placeholder'] = "Dosya yok";
 
@@ -171,6 +172,16 @@ $LANGARR['tr-TR']['table_property_trigger_action'] = "Tetik Eylemi";
 $LANGARR['tr-TR']['table_property_applied_to'] = "Uygulanan";
 $LANGARR['tr-TR']['table_property_notification_type'] = "Uyarı Tipi";
 $LANGARR['tr-TR']['table_property_receiver'] = "Alıcı";
+$LANGARR['tr-TR']['table_property_username'] = "Kullanıcı adı";
+$LANGARR['tr-TR']['table_property_creation_date'] = "Oluşturulma tarihi";
+$LANGARR['tr-TR']['table_property_last_login'] = "Son giriş";
+$LANGARR['tr-TR']['table_property_email'] = "E-posta";
+$LANGARR['tr-TR']['table_property_validity'] = "Geçerlilik";
+$LANGARR['tr-TR']['table_property_user_group'] = "Kullanıcı grubu";
+$LANGARR['tr-TR']['table_property_enable_disable_user'] = 'Kullanıcıyı aktif/pasif et';
+$LANGARR['tr-TR']['table_property_set_user_group'] = 'Kullanıcı grubunu ayarla';
+$LANGARR['tr-TR']['table_property_set_password'] = 'Şifreyi ayarla';
+$LANGARR['tr-TR']['table_property_delete_user'] = 'Kullanıcıyı sil';
 
 //
 $LANGARR['tr-TR']['description_no_activity'] = "faaliyet yok";
@@ -351,6 +362,22 @@ $LANGARR['tr-TR']['myaccount_description_yubikey_disabled'] = 'Yubikey OTP şu a
 $LANGARR['tr-TR']['myaccount_notifications'] = 'Uyarılar';
 $LANGARR['tr-TR']['myaccount_notifications_create_notification'] = 'Uyarı Oluştur';
 
+$LANGARR['tr-TR']['users_index_all_users'] = 'Tüm kullanıcılar';
+$LANGARR['tr-TR']['users_index_status_valid'] = 'Geçerli';
+$LANGARR['tr-TR']['users_index_status_invalid'] = 'Geçersiz/Aktive edilmemiş';
+$LANGARR['tr-TR']['users_new_new_user'] = 'Yeni kullanıcı';
+$LANGARR['tr-TR']['users_detail_user'] = 'Kullanıcı';
+$LANGARR['tr-TR']['users_detail_user_currently_enabled'] = 'Kullanıcı şu anda aktif';
+$LANGARR['tr-TR']['users_detail_user_currently_disabled'] = 'Kullanıcı şu anda pasif';
+$LANGARR['tr-TR']['users_detail_delete_user_warning'] = 'Bu kullanıcıyı gerçekten silmek istiyor musunuz? Bu işlem geri alınamaz!';
+
+//
+$LANGARR['tr-TR']['user_group_name_1'] = 'İzleyici Kullanıcı';
+$LANGARR['tr-TR']['user_group_name_2'] = 'Sadece Okuyucu Kullanıcı';
+$LANGARR['tr-TR']['user_group_name_3'] = 'Normal Kullanıcı';
+$LANGARR['tr-TR']['user_group_name_4'] = 'Süper Kullanıcı';
+$LANGARR['tr-TR']['user_group_name_5'] = 'Yönetici';
+
 //
 $LANGARR['tr-TR']['notification_types_taskComplete'] = 'Görev Tamamlandı';
 $LANGARR['tr-TR']['notification_types_agentError'] = 'Ajan Hatası';
@@ -376,6 +403,20 @@ $LANGARR['tr-TR']['handler_message_invalid_action'] = "Geçersiz eylem!";
 $LANGARR['tr-TR']['handler_message_search_query_cannot_be_empty'] = "Arama sorgusu boş olamaz!";
 $LANGARR['tr-TR']['handler_message_searched_for_entries'] = "{0} adet kalem arandı.";
 $LANGARR['tr-TR']['handler_message_no_hashlists_selected'] = "Hiç hash listesi seçilmedi!";
+
+$LANGARR['tr-TR']['handler_message_users_user_disabled_successfully'] = "Kullanıcı başarılı şekilde pasif edildi!";
+$LANGARR['tr-TR']['handler_message_users_invalid_user'] = "Geçersiz kullanıcı!";
+$LANGARR['tr-TR']['handler_message_users_cannot_disable_yourself'] = "Kendini pasif edemezsin!";
+$LANGARR['tr-TR']['handler_message_users_user_enabled_successfully'] = "Kullanıcı başarılı şekilde aktif edildi!";
+$LANGARR['tr-TR']['handler_message_users_cannot_delete_yourself'] = "Kendini silemezsin!";
+$LANGARR['tr-TR']['handler_message_users_invalid_group'] = "Geçersiz grup!";
+$LANGARR['tr-TR']['handler_message_users_cannot_change_own_rights'] = "Kendi grubunu değiştiremezsin!";
+$LANGARR['tr-TR']['handler_message_users_updated_rights_successfully'] = "Kullanıcı grubu başarılı şekilde değiştirildi!";
+$LANGARR['tr-TR']['handler_message_users_change_own_password'] = "Kendi şifrenizi değiştirmek için ayarlarınıza gidin!";
+$LANGARR['tr-TR']['handler_message_users_password_updated_successfully'] = "Kullanıcı şifresi başarılı şekilde güncellendi!";
+$LANGARR['tr-TR']['handler_message_users_invalid_email'] = "Geçersiz e-posta adresi!";
+$LANGARR['tr-TR']['handler_message_users_username_short'] = "Kullanıcı adı çok kısa!";
+$LANGARR['tr-TR']['handler_message_users_username_used'] = "Kullanıcı adı zaten var!";
 
 // API
 $LANGARR['tr-TR']['api_server_error_invalid_query'] = "Geçersiz sorgu!";
