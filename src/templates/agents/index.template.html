@@ -78,7 +78,7 @@
         </td>
         {{IF [[login.getLevel()]] >= 30}}
           <td>
-            <form action="agents.php" method="POST" onSubmit="if (!confirm('Really delete agent [[set.getVal('agent').getId()]]?')) return false;">
+            <form action="agents.php" method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_delete_agent', [ [[set.getVal('agent').getId()]] ])]]')) return false;">
               <input type='hidden' name='action' value='[[$DAgentAction::DELETE_AGENT]]'>
               <input type="hidden" name="agent" value="[[set.getVal('agent').getId()]]">
               <input type="hidden" name="csrf" value="[[csrf]]">

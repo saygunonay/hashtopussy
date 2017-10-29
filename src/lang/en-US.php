@@ -36,6 +36,7 @@ $LANGARR['en-US']['cracked'] = "cracked";
 $LANGARR['en-US']['page'] = "page";
 $LANGARR['en-US']['otp_key'] = "OTP key";
 $LANGARR['en-US']['all'] = "all";
+$LANGARR['en-US']['supertask'] = "supertask";
 
 //
 $LANGARR['en-US']['button_set'] = "Set";
@@ -201,6 +202,7 @@ $LANGARR['en-US']['table_property_date'] = 'Date';
 $LANGARR['en-US']['table_property_level'] = 'Level';
 $LANGARR['en-US']['table_property_issuer'] = 'Issuer';
 $LANGARR['en-US']['table_property_message'] = 'Message';
+$LANGARR['en-US']['table_property_keyspace_unknown'] = "Keyspace unknown";
 
 //
 $LANGARR['en-US']['description_no_activity'] = "no activity";
@@ -354,6 +356,7 @@ $LANGARR['en-US']['lists_search_description'] = "Enter hashes to search for here
 $LANGARR['en-US']['lists_search_not_found'] = "NOT FOUND";
 $LANGARR['en-US']['lists_search_found_in_hashlist'] = 'in hashlist <a href="hashlists.php?id={0}">{1}</a>';
 
+// files
 $LANGARR['en-US']['files_index_files'] = 'Files';
 $LANGARR['en-US']['files_index_existing_files'] = 'Existing {0}';
 $LANGARR['en-US']['files_index_add_new_file'] = 'Add new {0}';
@@ -365,11 +368,14 @@ $LANGARR['en-US']['files_index_download_url'] = 'Download URL';
 $LANGARR['en-US']['files_edit_edit_file'] = 'Edit File';
 $LANGARR['en-US']['files_edit_warning_message'] = "WARNING: It's not recommended to rename a file during running a task where this file is used. This can cause problems with the agents using the file.<br>Keep in mind that when you rename a file the agents will download the file again as they don't know that it is just a renamed file.";
 
+// chunks
 $LANGARR['en-US']['chunks_chunk_activity'] = 'Chunk activity';
 
+// hashcat
 $LANGARR['en-US']['hashcat_index_hashcat_releases'] = 'Hashcat releases';
 $LANGARR['en-US']['hashcat_new_create_new_hashcat_release'] = 'Create new hashcat release';
 
+// myaccount
 $LANGARR['en-US']['myaccount_myaccount'] = 'My Account';
 $LANGARR['en-US']['myaccount_old_password'] = 'Old password';
 $LANGARR['en-US']['myaccount_new_password'] = 'New password';
@@ -381,6 +387,7 @@ $LANGARR['en-US']['myaccount_description_yubikey_disabled'] = 'Yubikey OTP is cu
 $LANGARR['en-US']['myaccount_notifications'] = 'Notifications';
 $LANGARR['en-US']['myaccount_notifications_create_notification'] = 'Create Notification';
 
+// users
 $LANGARR['en-US']['users_index_all_users'] = 'All users';
 $LANGARR['en-US']['users_index_status_valid'] = 'Valid';
 $LANGARR['en-US']['users_index_status_invalid'] = 'Invalid/Not activated';
@@ -390,6 +397,7 @@ $LANGARR['en-US']['users_detail_user_currently_enabled'] = 'User is currently en
 $LANGARR['en-US']['users_detail_user_currently_disabled'] = 'User is currently disabled';
 $LANGARR['en-US']['users_detail_delete_user_warning'] = 'Do you really want to delete this user? This cannot be undone!';
 
+// config
 $LANGARR['en-US']['config_server_configuration'] = 'Server configuration';
 $LANGARR['en-US']['config_server_description_agent_timeout'] = 'How long an agent must not respond until he is treated as not active anymore';
 $LANGARR['en-US']['config_server_description_benchmark_time'] = 'Time in seconds an agent should benchmark a task';
@@ -416,9 +424,26 @@ $LANGARR['en-US']['config_server_database_tools_rescan_global_files'] = 'Scans a
 $LANGARR['en-US']['config_server_database_tools_clear_all'] = 'Erases all hashlists, tasks (not pre-configured) and chunks of those tasks.';
 $LANGARR['en-US']['config_hash_types_hash_types'] = 'Hash Types';
 $LANGARR['en-US']['config_hash_types_add_new_hash_type'] = 'Add new hash type';
-$LANGARR['en-US']['config_hash_types_delete_hashtype_warning'] = 'Really delete hash type {0}?';
 $LANGARR['en-US']['config_agent_binaries_agent_binaries'] = "Agent Binaries";
 $LANGARR['en-US']['config_log_log_entries'] = "Log Entries";
+
+//
+$LANGARR['en-US']['post_confirm_msg_delete_all_finished_tasks'] = 'Really delete all finished tasks?';
+$LANGARR['en-US']['post_confirm_msg_delete_binary'] = 'Really delete binary {0}?';
+$LANGARR['en-US']['post_confirm_msg_delete_notification'] = 'Really delete notification {0}?';
+$LANGARR['en-US']['post_confirm_msg_delete_task'] = 'Really delete task {0}?';
+$LANGARR['en-US']['post_confirm_msg_delete_task_used'] = 'This task is used in a Supertask, are you sure you really want to delete it?';
+$LANGARR['en-US']['post_confirm_msg_delete_agent'] = 'Really delete agent {0}?';
+$LANGARR['en-US']['post_confirm_msg_delete_voucher'] = 'Really delete this voucher?';
+$LANGARR['en-US']['post_confirm_msg_delete_file'] = 'Really delete file {0}?';
+$LANGARR['en-US']['post_confirm_msg_delete_hashcat'] = 'Really delete Hashcat release {0}?';
+$LANGARR['en-US']['post_confirm_msg_delete_hashlist'] = 'Really delete hashlist {0}?';
+$LANGARR['en-US']['post_confirm_msg_delete_superhashlist'] = 'Really delete superhashlist {0}?\n(Included hashes will stay intact in their hashlists)';
+$LANGARR['en-US']['post_confirm_msg_delete_supertask'] = 'Really delete supertask {0}?';
+$LANGARR['en-US']['post_confirm_msg_purge_task'] = 'Really purge task {0}?';
+$LANGARR['en-US']['post_confirm_msg_reset_chunk'] = 'Really reset chunk {0}?';
+$LANGARR['en-US']['post_confirm_msg_abort_chunk'] = 'Really abort cracking chunk {0}?';
+$LANGARR['en-US']['post_confirm_msg_delete_hashtype'] = 'Really delete hash type {0}?';
 
 //
 $LANGARR['en-US']['user_group_name_1'] = 'View User';

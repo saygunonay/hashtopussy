@@ -14,7 +14,7 @@
       <td>[[lang.get('table_property_id')]]</td>
       <td>
         <code>[[task.getId()]]</code>
-        <form style ='float: right;' action="tasks.php" method="POST" onSubmit="if (!confirm('Really delete task [[task.getId()]]?')) return false;">
+        <form style ='float: right;' action="tasks.php" method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_delete_task', [ [[task.getId()]] ])]]')) return false;">
           <input type="hidden" name="action" value="[[$DTaskAction::DELETE_TASK]]">
           <input type="hidden" name="csrf" value="[[csrf]]">
           <input type="hidden" name="task" value="[[task.getId()]]">
@@ -57,7 +57,7 @@
             <input type="submit" class='btn btn-default' value="[[lang.get('button_set')]]">
           </form>
         {{ELSE}}
-          [[task.getChunkTime()]] seconds
+          [[task.getChunkTime()]] [[lang.get('seconds')]]
         {{ENDIF}}
       </td>
     </tr>
@@ -79,9 +79,9 @@
       <td>[[lang.get('table_property_benchmark_type')]]</td>
       <td>
         {{IF [[task.getUseNewBench()]] == 0}}
-          Runtime Benchmark
+          [[lang.get('tasks_new_benchmark_type_runtime')]]
         {{ELSE}}
-          Speed Test
+          [[lang.get('tasks_new_benchmark_type_speed')]]
         {{ENDIF}}
       </td>
     </tr>
@@ -121,9 +121,9 @@
           </form>
         {{ELSE}}
           {{IF [[task.getIsCpuTask()]] == 1}}
-            Yes
+            [[lang.getUCF('yes')]]
           {{ELSE}}
-            No
+            [[lang.getUCF('no')]]
           {{ENDIF}}
         {{ENDIF}}
       </td>
@@ -144,9 +144,9 @@
           </form>
         {{ELSE}}
           {{IF [[task.getIsSmall()]] == 1}}
-            Yes
+            [[lang.getUCF('yes')]]
           {{ELSE}}
-            No
+            [[lang.getUCF('no')]]
           {{ENDIF}}
         {{ENDIF}}
       </td>
@@ -173,7 +173,7 @@
         <td>
           [[task.getProgress()]] ([[Util::showperc([[task.getProgress()]], [[task.getKeyspace()]])]]%)
           {{IF [[isActive]] == 0 && [[login.getLevel()]] >= 20}}
-            <form class='form-inline' action="tasks.php?id=[[task.getId()]]" method="POST" onSubmit="if (!confirm('Really completely purge task [[task.getId()]]?')) return false;">
+            <form class='form-inline' action="tasks.php?id=[[task.getId()]]" method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_purge_task', [ [[task.getId()]] ])]]')) return false;">
               <input type="hidden" name="action" value="[[$DTaskAction::PURGE_TASK]]">
               <input type="hidden" name="task" value="[[task.getId()]]">
               <input type="hidden" name="csrf" value="[[csrf]]">
@@ -505,14 +505,14 @@
         </td>
         <td>
           {{IF [[chunk.getDispatchTime()]] == 0}}
-            (no activity)
+            ([[lang.get('description_no_activity')]])
           {{ELSE}}
             [[date([[config.getVal(DConfig::TIME_FORMAT)]], [[chunk.getDispatchTime()]])]]
           {{ENDIF}}
         </td>
         <td>
           {{IF [[chunk.getSolveTime()]] == 0}}
-            (no activity)
+            ([[lang.get('description_no_activity')]])
           </td>
           <td>
           {{ELSE}}
@@ -534,7 +534,7 @@
         </td>
         <td>
           {{IF [[activeChunks.getVal([[chunk.getId()]])]] == false && [[login.getLevel()]] >= 20}}
-            <form action="tasks.php?id=[[task.getId()]]" method="POST" onSubmit="if (!confirm('Really reset chunk [[chunk.getId()]]?')) return false;">
+            <form action="tasks.php?id=[[task.getId()]]" method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_reset_chunk', [ [[chunk.getId()]] ])]]')) return false;">
               <input type="hidden" name="action" value="[[$DTaskAction::RESET_CHUNK]]">
               <input type="hidden" name="chunk" value="[[chunk.getId()]]">
               <input type="hidden" name="csrf" value="[[csrf]]">
@@ -542,7 +542,7 @@
             </form>
           {{ENDIF}}
           {{IF [[activeChunks.getVal([[chunk.getId()]])]] && [[login.getLevel()]] >= 20}}
-            <form action="tasks.php?id=[[task.getId()]]" method="POST" onSubmit="if (!confirm('Really abort cracking chunk [[chunk.getId()]]?')) return false;">
+            <form action="tasks.php?id=[[task.getId()]]" method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_abort_chunk', [ [[chunk.getId()]] ])]]')) return false;">
               <input type="hidden" name="action" value="[[$DTaskAction::ABORT_CHUNK]]">
               <input type="hidden" name="chunk" value="[[chunk.getId()]]">
               <input type="hidden" name="csrf" value="[[csrf]]">

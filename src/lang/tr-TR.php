@@ -36,6 +36,7 @@ $LANGARR['tr-TR']['cracked'] = "kırılmış";
 $LANGARR['tr-TR']['page'] = "sayfa";
 $LANGARR['tr-TR']['otp_key'] = "OTP anahtarı";
 $LANGARR['tr-TR']['all'] = "hepsi";
+$LANGARR['tr-TR']['supertask'] = "üstgörev";
 
 //
 $LANGARR['tr-TR']['button_set'] = "Ayarla";
@@ -62,7 +63,7 @@ $LANGARR['tr-TR']['button_show_all_assignments'] = "Tüm atamaları göster";
 $LANGARR['tr-TR']['button_hide_all_assignments'] = "Tüm atamaları sakla";
 $LANGARR['tr-TR']['button_reset'] = "Sıfırla";
 $LANGARR['tr-TR']['button_abort'] = "Vazgeç";
-$LANGARR['tr-TR']['button_purge'] = "Arıt";
+$LANGARR['tr-TR']['button_purge'] = "Tamamen Sil";
 $LANGARR['tr-TR']['button_create_hashlist'] = "Hash listesi oluştur";
 $LANGARR['tr-TR']['button_search'] = "Ara";
 $LANGARR['tr-TR']['button_rename'] = "İsim Değiştir";
@@ -201,6 +202,7 @@ $LANGARR['tr-TR']['table_property_date'] = 'Tarih';
 $LANGARR['tr-TR']['table_property_level'] = 'Seviye';
 $LANGARR['tr-TR']['table_property_issuer'] = 'Yayınlayan';
 $LANGARR['tr-TR']['table_property_message'] = 'Mesaj';
+$LANGARR['en-US']['table_property_keyspace_unknown'] = "Deneme uzayı bilinmiyor";
 
 //
 $LANGARR['tr-TR']['description_no_activity'] = "faaliyet yok";
@@ -354,6 +356,7 @@ $LANGARR['tr-TR']['lists_search_description'] = "Aranacak hashleri buraya girin.
 $LANGARR['tr-TR']['lists_search_not_found'] = "BULUNAMADI";
 $LANGARR['tr-TR']['lists_search_found_in_hashlist'] = '<a href="hashlists.php?id={0}">{1}</a> hash listesinde';
 
+// files
 $LANGARR['tr-TR']['files_index_files'] = 'Dosyalar';
 $LANGARR['tr-TR']['files_index_existing_files'] = 'Var olan {0}';
 $LANGARR['tr-TR']['files_index_add_new_file'] = 'Yeni {0} ekle';
@@ -365,11 +368,14 @@ $LANGARR['tr-TR']['files_index_download_url'] = 'İndirme URL\'i';
 $LANGARR['tr-TR']['files_edit_edit_file'] = 'Dosyayı Düzelt';
 $LANGARR['tr-TR']['files_edit_warning_message'] = "Uyarı: Eğer dosya koşmakta olan bir görevde kullanılıyorsa isminin değiştirilmesi önerilmez. Bu durum dosyayı kullanan ajanlarla ilgili sorunlar yaratabilir.<br>Dosyanın ismini değitirdiğinizde ajanlar dosyayı tekrar indireceklerdir çünkü onu yeni bir dosya olarak kabul edeceklerdir, ismi değitirilmiş bir dosya olduğunu bilemezler.";
 
+// chunks
 $LANGARR['tr-TR']['chunks_chunk_activity'] = 'Parça faaliyeti';
 
+// hashcat
 $LANGARR['tr-TR']['hashcat_index_hashcat_releases'] = 'Hashcat sürümleri';
 $LANGARR['tr-TR']['hashcat_new_create_new_hashcat_release'] = 'Yeni hashcat sürümü oluştur';
 
+// myaccount
 $LANGARR['tr-TR']['myaccount_myaccount'] = 'Hesabım';
 $LANGARR['tr-TR']['myaccount_old_password'] = 'Eski şifre';
 $LANGARR['tr-TR']['myaccount_new_password'] = 'Yeni şifre';
@@ -381,6 +387,7 @@ $LANGARR['tr-TR']['myaccount_description_yubikey_disabled'] = 'Yubikey OTP şu a
 $LANGARR['tr-TR']['myaccount_notifications'] = 'Uyarılar';
 $LANGARR['tr-TR']['myaccount_notifications_create_notification'] = 'Uyarı Oluştur';
 
+// users
 $LANGARR['tr-TR']['users_index_all_users'] = 'Tüm kullanıcılar';
 $LANGARR['tr-TR']['users_index_status_valid'] = 'Geçerli';
 $LANGARR['tr-TR']['users_index_status_invalid'] = 'Geçersiz/Aktive edilmemiş';
@@ -390,6 +397,7 @@ $LANGARR['tr-TR']['users_detail_user_currently_enabled'] = 'Kullanıcı şu anda
 $LANGARR['tr-TR']['users_detail_user_currently_disabled'] = 'Kullanıcı şu anda pasif';
 $LANGARR['tr-TR']['users_detail_delete_user_warning'] = 'Bu kullanıcıyı gerçekten silmek istiyor musunuz? Bu işlem geri alınamaz!';
 
+// config
 $LANGARR['tr-TR']['config_server_configuration'] = 'Sunucu yapılandırması';
 $LANGARR['tr-TR']['config_server_description_agent_timeout'] = 'Bir ajanın pasif kabul edilmesi için cevap vermemesi gereken süre';
 $LANGARR['tr-TR']['config_server_description_benchmark_time'] = 'Bir ajanın bir görevi değerlendirme süresi';
@@ -421,7 +429,24 @@ $LANGARR['tr-TR']['config_agent_binaries_agent_binaries'] = "Ajan Dosyaları";
 $LANGARR['tr-TR']['config_log_log_entries'] = "Log Kayıtları";
 
 //
-$LANGARR['tr-TR']['user_group_name_1'] = 'İzleyici Kullanıcı';
+$LANGARR['tr-TR']['post_confirm_msg_delete_all_finished_tasks'] = 'Tüm bitmiş görevleri silmeyi gerçekten istiyor musunuz?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_binary'] = 'Dosya {0} gerçekten silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_notification'] = 'Uyarı {0} gerçekten silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_task'] = 'Görev {0} gerçekten silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_task_used'] = 'Bu görev bir üstgörevde kullanılıyor, silmek istediğinizden gerçekten emin misiniz?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_agent'] = 'Ajan {0} gerçekten silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_voucher'] = 'Bu tanıt gerçekten silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_file'] = 'Dosya {0} gerçekten silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_hashcat'] = 'Hashcat sürümü {0} gerçekten silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_hashlist'] = 'Hash listesi {0} gerçekten silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_superhashlist'] = 'Üst hash listesi {0} gerçekten silinsin mi?\n(İçeriğindeki hash listeleri olduğu gibi kalacaktır)';
+$LANGARR['tr-TR']['post_confirm_msg_delete_supertask'] = 'Üstgörev {0} gerçekten silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_purge_task'] = 'Görev {0} gerçekten tamamen silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_reset_chunk'] = 'Parça {0} gerçekten sıfırlansın mı?';
+$LANGARR['tr-TR']['post_confirm_msg_abort_chunk'] = 'Parça {0} gerçekten iptal edilsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_hashtype'] = 'Hash tipi {0} gerçekten silinsin mi?';
+
+//
 $LANGARR['tr-TR']['user_group_name_2'] = 'Sadece Okuyucu Kullanıcı';
 $LANGARR['tr-TR']['user_group_name_3'] = 'Normal Kullanıcı';
 $LANGARR['tr-TR']['user_group_name_4'] = 'Süper Kullanıcı';

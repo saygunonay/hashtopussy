@@ -46,7 +46,7 @@
 					<td><code>[[voucher.getVoucher()]]</code></td>
           			<td>[[date([[config.getVal(DConfig::TIME_FORMAT)]], [[voucher.getTime()]])]]</td>
           			<td>
-          				<form action="agents.php?new=true" method="POST" onSubmit="if (!confirm('Really delete this voucher?')) return false;">
+          				<form action="agents.php?new=true" method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_delete_voucher')]]')) return false;">
           					<input type="hidden" name="action" value="[[$DAgentAction::DELETE_VOUCHER]]">
           					<input type="hidden" name="voucher" value="[[voucher.getId()]]">
 										<input type="hidden" name="csrf" value="[[csrf]]">

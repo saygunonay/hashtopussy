@@ -4,7 +4,7 @@
 {%TEMPLATE->struct/messages%}
 <div style='overflow: auto;'>
 	{{IF [[login.getLevel()]] >= 30}}
-		<form style ='float: left; padding-right: 5px;' action="tasks.php" class='form-inline' method="POST" onSubmit="if (!confirm('Really delete all finished tasks?')) return false;">
+		<form style ='float: left; padding-right: 5px;' action="tasks.php" class='form-inline' method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_delete_all_finished_tasks')]]')) return false;">
 			<input type='hidden' name='action' value='[[$DTaskAction::DELETE_FINISHED]]'>
 			<input type="hidden" name="csrf" value="[[csrf]]">
 			<input type="submit" value="[[lang.get('tasks_index_button_delete_finished')]]" class='btn btn-default'>
@@ -80,7 +80,7 @@
         			{{ENDIF}}
         		</td>
             {{IF [[task.getVal('Task').getTaskType()]] == 1}}
-              <td colspan="3">Supertask</td>
+              <td colspan="3">[[lang.getUCF('supertask')]]</td>
             {{ELSE}}
               <td class="num">[[task.getVal('numChunks')]]@[[task.getVal('Task')->getChunkTime()]]s</td>
               {{IF [[task.getVal('Task')->getKeyspace()]] > 0}}
@@ -91,7 +91,7 @@
                   [[Util::showperc([[task.getVal('sumprog')]], [[task.getVal('Task')->getKeyspace()]])]]%
                 </td>
               {{ELSE}}
-                <td colspan='2'>Keyspace unknown</td>
+                <td colspan='2'>[[lang.getUCF('table_property_keyspace_unknown')]]</td>
               {{ENDIF}}
             {{ENDIF}}
         		<td class='num'>
@@ -150,7 +150,7 @@
                   </form>
                 {{ENDIF}}
 
-	        			<form style ='float: left;' action="tasks.php" method="POST" onSubmit="if (!confirm('Really delete task [[task.getVal('Task')->getId()]]?')) return false;">
+	        			<form style ='float: left;' action="tasks.php" method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_delete_task', [ [[task.getVal('Task')->getId()]] ])]]')) return false;">
 	        				<input type="hidden" name="action" value="[[$DTaskAction::DELETE_TASK]]">
 	        				<input type="hidden" name="task" value="[[task.getVal('Task')->getId()]]">
 									<input type="hidden" name="csrf" value="[[csrf]]">
@@ -173,16 +173,16 @@
                 <div class="panel panel-default" style="margin-bottom: 0;">
                   <table class="table table-bordered table-nonfluid table-subtask-border">
 										<tr>
-											<th>ID</th>
-											<th>Name</th>
-											<th>Chunks</th>
-											<th>Dispatched</th>
-											<th>Searched</th>
-											<th>Cracked</th>
-											<th>Agents</th>
-											<th>Files</th>
-											<th>Subtask Priority</th>
-											<th>Action</th>
+											<th>[[lang.get('table_property_id')]]</th>
+											<th>[[lang.get('table_property_name')]]</th>
+											<th>[[lang.get('table_property_chunks')]]</th>
+											<th>[[lang.get('table_property_dispatched')]]</th>
+											<th>[[lang.get('table_property_searched')]]</th>
+											<th>[[lang.get('table_property_cracked')]]</th>
+											<th>[[lang.get('table_property_agents')]]</th>
+											<th>[[lang.get('table_property_files')]]</th>
+											<th>[[lang.get('table_property_subtask_priority')]]</th>
+											<th>[[lang.get('table_property_action')]]</th>
 										</tr>
                     {{FOREACH subTask;[[subTasks.getVal([[task.getVal('Task').getId()]])]]}}
                       <tr>
@@ -263,7 +263,7 @@
                             <form style ='float: left; padding-right: 5px;' action="tasks.php?new=true&copy=[[subTask.getVal('Task')->getId()]]" method="post">
                               <input type="submit" class='btn btn-default' value="Copy">
                             </form>
-                            <form style ='float: left;' action="tasks.php" method="POST" onSubmit="if (!confirm('Really delete task [[subTask.getVal('Task')->getId()]]?')) return false;">
+                            <form style ='float: left;' action="tasks.php" method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_delete_task', [ [[subTask.getVal('Task')->getId()]] ])]]')) return false;">
                               <input type="hidden" name="action" value="[[$DTaskAction::DELETE_TASK]]">
 															<input type="hidden" name="csrf" value="[[csrf]]">
                               <input type="hidden" name="task" value="[[subTask.getVal('Task')->getId()]]">

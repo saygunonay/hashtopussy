@@ -92,7 +92,7 @@
           <a href="binaries.php?edit=[[binary.getId()]]"><button class="btn btn-primary">[[lang.get('button_edit')]]</button></a>
         </td>
         <td>
-          <form action="binaries.php" method="POST" onSubmit="if (!confirm('Really delete binary [[binary.getId()]]?')) return false;">
+          <form action="binaries.php" method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_delete_binary', [ [[binary.getId()]] ])]]')) return false;">
             <input type='hidden' name='action' value='[[$DAgentBinaryAction::DELETE_BINARY]]'>
             <input type="hidden" name="id" value="[[binary.getId()]]">
             <input type="hidden" name="csrf" value="[[csrf]]">
