@@ -247,45 +247,46 @@ class DConfig {
    * @return string
    */
   public static function getConfigDescription($config) {
+    global $LANG;
     switch ($config) {
       case DConfig::BENCHMARK_TIME:
-        return "Time in seconds an agent should benchmark a task";
+        return $LANG->get('config_server_description_benchmark_time');
       case DConfig::CHUNK_DURATION:
-        return "How long an agent approximately should need for completing one chunk";
+        return $LANG->get('config_server_description_chunk_duration');
       case DConfig::CHUNK_TIMEOUT:
-        return "How long an agent must not respond until it is treated as timed out and the chunk will get shipped to other agents";
+        return $LANG->get('config_server_description_chunk_timeout');
       case DConfig::AGENT_TIMEOUT:
-        return "How long an agent must not respond until he is treated as not active anymore";
+        return $LANG->get('config_server_description_agent_timeout');
       case DConfig::HASHES_PAGE_SIZE:
-        return "How many hashes are showed at once in the hashes view (Page size)";
+        return $LANG->get('config_server_description_hashes_page_size');
       case DConfig::FIELD_SEPARATOR:
-        return "What separator should be used to separate hash and plain (or salt)";
+        return $LANG->get('config_server_description_field_separator');
       case DConfig::HASHLIST_ALIAS:
-        return "What string is used as hashlist alias when creating a task";
+        return $LANG->get('config_server_description_hashlist_alias');
       case DConfig::STATUS_TIMER:
-        return "After how many seconds the agent should send it's progress and cracks to the server";
+        return $LANG->get('config_server_description_status_timer');
       case DConfig::BLACKLIST_CHARS:
-        return "Chars which are not allowed to be used in attack command inputs";
+        return $LANG->get('config_server_description_blacklist_chars');
       case DConfig::NUMBER_LOGENTRIES:
-        return "How many log entries should be saved. When this number is exceeded by 120%, the oldest ones will get deleted";
+        return $LANG->get('config_server_description_number_logentries');
       case DConfig::TIME_FORMAT:
-        return "Set the formatting of time displaying. Use syntax for PHPs date() method";
+        return $LANG->get('config_server_description_time_format');
       case DConfig::BASE_URL:
-        return "Base url for the webpage (this does not include hostname and is normally determined automatically on the installation)";
+        return $LANG->get('config_server_description_base_url');
       case DConfig::DISP_TOLERANCE:
-        return "How many percent a chunk can be longer than normal to finish a task (this avoids small chunks if the remaining part is slightly bigger than the normal chunk)";
+        return $LANG->get('config_server_description_disp_tolerance');
       case DConfig::BATCH_SIZE:
-        return "Batch size of SQL query when hashlist is sent to the agent";
+        return $LANG->get('config_server_description_batch_size');
       case DConfig::YUBIKEY_ID:
-        return "Yubikey Client Id";
+        return $LANG->get('config_server_description_yubikey_id');
       case DConfig::YUBIKEY_KEY:
-        return "Yubikey Secret Key";
+        return $LANG->get('config_server_description_yubikey_key');
       case DConfig::YUBIKEY_URL:
-        return "Yubikey API Url";
+        return $LANG->get('config_server_description_yubikey_url');
       case DConfig::BASE_HOST:
-        return "Base hostname/port/protocol to use. Only fill in to override the self-determined value.";
+        return $LANG->get('config_server_description_base_host');
       case DConfig::DONATE_OFF:
-        return "Hide donate information (insert '1' to hide)";
+        return $LANG->get('config_server_description_donate_off');
     }
     return $config;
   }

@@ -79,6 +79,12 @@ $LANGARR['en-US']['button_change_password'] = "Change Password";
 $LANGARR['en-US']['button_disable'] = "Disable";
 $LANGARR['en-US']['button_enable'] = "Enable";
 $LANGARR['en-US']['button_manage'] = "Manage";
+$LANGARR['en-US']['button_rebuild_chunk_cache'] = "Rebuild chunk cache";
+$LANGARR['en-US']['button_rescan_global_files'] = "Rescan global files";
+$LANGARR['en-US']['button_clear_all'] = "Clear all";
+$LANGARR['en-US']['button_add'] = "Add";
+$LANGARR['en-US']['button_edit'] = "Edit";
+$LANGARR['en-US']['button_show'] = "Show";
 
 $LANGARR['en-US']['button_choose_file_placeholder'] = "No file";
 
@@ -182,6 +188,19 @@ $LANGARR['en-US']['table_property_enable_disable_user'] = 'Enable/Disable user';
 $LANGARR['en-US']['table_property_set_user_group'] = 'Set user group';
 $LANGARR['en-US']['table_property_set_password'] = 'Set password';
 $LANGARR['en-US']['table_property_delete_user'] = 'Delete user';
+$LANGARR['en-US']['table_property_description'] = 'Description';
+$LANGARR['en-US']['table_property_hashtype'] = 'Hash type (Hashcat -m)';
+$LANGARR['en-US']['table_property_salted_long'] = 'Salted (only if there is a separate salt value)';
+$LANGARR['en-US']['table_property_salted'] = 'Salted';
+$LANGARR['en-US']['table_property_type'] = 'Type';
+$LANGARR['en-US']['table_property_os'] = 'OS';
+$LANGARR['en-US']['table_property_operating_system'] = 'Operating system';
+$LANGARR['en-US']['table_property_filename_long'] = "Filename (placed in 'static' folder)";
+$LANGARR['en-US']['table_property_version_long'] = 'Version (update here if you place a new binary)';
+$LANGARR['en-US']['table_property_date'] = 'Date';
+$LANGARR['en-US']['table_property_level'] = 'Level';
+$LANGARR['en-US']['table_property_issuer'] = 'Issuer';
+$LANGARR['en-US']['table_property_message'] = 'Message';
 
 //
 $LANGARR['en-US']['description_no_activity'] = "no activity";
@@ -370,6 +389,36 @@ $LANGARR['en-US']['users_detail_user'] = 'User';
 $LANGARR['en-US']['users_detail_user_currently_enabled'] = 'User is currently enabled';
 $LANGARR['en-US']['users_detail_user_currently_disabled'] = 'User is currently disabled';
 $LANGARR['en-US']['users_detail_delete_user_warning'] = 'Do you really want to delete this user? This cannot be undone!';
+
+$LANGARR['en-US']['config_server_configuration'] = 'Server configuration';
+$LANGARR['en-US']['config_server_description_agent_timeout'] = 'How long an agent must not respond until he is treated as not active anymore';
+$LANGARR['en-US']['config_server_description_benchmark_time'] = 'Time in seconds an agent should benchmark a task';
+$LANGARR['en-US']['config_server_description_chunk_duration'] = 'How long an agent approximately should need for completing one chunk';
+$LANGARR['en-US']['config_server_description_chunk_timeout'] = 'How long an agent must not respond until it is treated as timed out and the chunk will get shipped to other agents';
+$LANGARR['en-US']['config_server_description_hashes_page_size'] = 'How many hashes are showed at once in the hashes view (Page size)';
+$LANGARR['en-US']['config_server_description_field_separator'] = 'What separator should be used to separate hash and plain (or salt)';
+$LANGARR['en-US']['config_server_description_hashlist_alias'] = 'What string is used as hashlist alias when creating a task';
+$LANGARR['en-US']['config_server_description_status_timer'] = 'After how many seconds the agent should send it\'s progress and cracks to the server';
+$LANGARR['en-US']['config_server_description_blacklist_chars'] = 'Chars which are not allowed to be used in attack command inputs';
+$LANGARR['en-US']['config_server_description_number_logentries'] = 'How many log entries should be saved. When this number is exceeded by 120%, the oldest ones will get deleted';
+$LANGARR['en-US']['config_server_description_time_format'] = 'Set the formatting of time displaying. Use syntax for PHPs date() method';
+$LANGARR['en-US']['config_server_description_base_url'] = 'Base url for the webpage (this does not include hostname and is normally determined automatically on the installation)';
+$LANGARR['en-US']['config_server_description_disp_tolerance'] = 'How many percent a chunk can be longer than normal to finish a task (this avoids small chunks if the remaining part is slightly bigger than the normal chunk)';
+$LANGARR['en-US']['config_server_description_batch_size'] = 'Batch size of SQL query when hashlist is sent to the agent';
+$LANGARR['en-US']['config_server_description_yubikey_id'] = 'Yubikey Client Id';
+$LANGARR['en-US']['config_server_description_yubikey_key'] = 'Yubikey Secret Key';
+$LANGARR['en-US']['config_server_description_yubikey_url'] = 'Yubikey API URL';
+$LANGARR['en-US']['config_server_description_base_host'] = 'Base hostname/port/protocol to use. Only fill in to override the self-determined value';
+$LANGARR['en-US']['config_server_description_donate_off'] = 'Hide donate information (insert \'1\' to hide)';
+$LANGARR['en-US']['config_server_database_tools'] = 'Database tools';
+$LANGARR['en-US']['config_server_database_tools_rebuild_chunk_cache'] = 'Counts cracked hashes in all chunks and all hashlists using slow but precise COUNT() function.';
+$LANGARR['en-US']['config_server_database_tools_rescan_global_files'] = 'Scans all global files for size mismatch or inexistence.';
+$LANGARR['en-US']['config_server_database_tools_clear_all'] = 'Erases all hashlists, tasks (not pre-configured) and chunks of those tasks.';
+$LANGARR['en-US']['config_hash_types_hash_types'] = 'Hash Types';
+$LANGARR['en-US']['config_hash_types_add_new_hash_type'] = 'Add new hash type';
+$LANGARR['en-US']['config_hash_types_delete_hashtype_warning'] = 'Really delete hash type {0}?';
+$LANGARR['en-US']['config_agent_binaries_agent_binaries'] = "Agent Binaries";
+$LANGARR['en-US']['config_log_log_entries'] = "Log Entries";
 
 //
 $LANGARR['en-US']['user_group_name_1'] = 'View User';

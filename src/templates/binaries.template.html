@@ -1,6 +1,6 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Agent Binaries</h2>
+<h2>[[lang.get('config_agent_binaries_agent_binaries')]]</h2>
 {%TEMPLATE->struct/messages%}
 {{IF [[newBinary]]}}
   <form action="" method="post">
@@ -8,24 +8,24 @@
     <div class="panel panel-default">
       <table class="table table-bordered table-nonfluid">
         <tr>
-          <th>Type</th>
+          <th>[[lang.get('table_property_type')]]</th>
           <td><input type="text" name="type" class="form-control" value=""></td>
         </tr>
         <tr>
-          <th>Operating Systems</th>
+          <th>[[lang.get('table_property_operating_system')]]</th>
           <td><input type="text" name="os" class="form-control" value=""></td>
         </tr>
         <tr>
-          <th>Filename (placed in 'static' folder)</th>
+          <th>[[lang.get('table_property_filename_long')]]</th>
           <td><input type="text" name="filename" class="form-control" value=""></td>
         </tr>
         <tr>
-          <th>Version</th>
+          <th>[[lang.get('table_property_version')]]</th>
           <td><input type="text" name="version" class="form-control" value=""></td>
         </tr>
         <tr>
           <td colspan="2">
-            <button type="submit" class="btn btn-success">Create</button>
+            <button type="submit" class="btn btn-success">[[lang.get('button_create')]]</button>
           </td>
         </tr>
       </table>
@@ -40,24 +40,24 @@
     <div class="panel panel-default">
       <table class="table table-bordered table-nonfluid">
         <tr>
-          <th>Type</th>
+          <th>[[lang.get('table_property_type')]]</th>
           <td><input type="text" name="type" class="form-control" value="[[bin.getType()]]"></td>
         </tr>
         <tr>
-          <th>Operating Systems</th>
+          <th>[[lang.get('table_property_operating_system')]]</th>
           <td><input type="text" name="os" class="form-control" value="[[bin.getOperatingSystems()]]"></td>
         </tr>
         <tr>
-          <th>Filename (placed in 'static' folder)</th>
+          <th>[[lang.get('table_property_filename_long')]]</th>
           <td><input type="text" name="filename" class="form-control" value="[[bin.getFilename()]]"></td>
         </tr>
         <tr>
-          <th>Current Version (update here if you place a new binary)</th>
+          <th>[[lang.get('table_property_version_long')]]</th>
           <td><input type="text" name="version" class="form-control" value="[[bin.getVersion()]]"></td>
         </tr>
         <tr>
           <td colspan="2">
-            <button type="submit" class="btn btn-success">Save</button>
+            <button type="submit" class="btn btn-success">[[lang.get('button_save')]]</button>
           </td>
         </tr>
       </table>
@@ -69,15 +69,15 @@
 	<table class="table table-bordered table-nonfluid">
     <tr>
       <td colspan="7">
-        <a href="binaries.php?new=true"><button class="btn btn-success">Add New Binary</button></a>
+        <a href="binaries.php?new=true"><button class="btn btn-success">[[lang.get('button_add')]]</button></a>
       </td>
     </tr>
 		<tr>
-			<th>ID</th>
-			<th>Type</th>
-			<th>OS</th>
-			<th>Filename</th>
-			<th>Current Version</th>
+			<th>[[lang.get('table_property_id')]]</th>
+			<th>[[lang.get('table_property_type')]]</th>
+			<th>[[lang.get('table_property_os')]]</th>
+			<th>[[lang.get('table_property_filename')]]</th>
+			<th>[[lang.get('table_property_version')]]</th>
 			<th>&nbsp;</th>
       <th>&nbsp;</th>
 		</tr>
@@ -89,14 +89,14 @@
         <td><code>[[binary.getFilename()]]</code></td>
         <td>[[binary.getVersion()]]</td>
         <td>
-          <a href="binaries.php?edit=[[binary.getId()]]"><button class="btn btn-primary">Edit</button></a>
+          <a href="binaries.php?edit=[[binary.getId()]]"><button class="btn btn-primary">[[lang.get('button_edit')]]</button></a>
         </td>
         <td>
           <form action="binaries.php" method="POST" onSubmit="if (!confirm('Really delete binary [[binary.getId()]]?')) return false;">
             <input type='hidden' name='action' value='[[$DAgentBinaryAction::DELETE_BINARY]]'>
             <input type="hidden" name="id" value="[[binary.getId()]]">
             <input type="hidden" name="csrf" value="[[csrf]]">
-            <input type="submit" class='btn btn-danger' value="Delete">
+            <input type="submit" class='btn btn-danger' value="[[lang.get('button_delete')]]">
           </form>
         </td>
 			</tr>

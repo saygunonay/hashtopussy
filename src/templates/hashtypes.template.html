@@ -1,6 +1,6 @@
 {%TEMPLATE->struct/head%}
 {%TEMPLATE->struct/menu%}
-<h2>Hashtypes</h2>
+<h2>[[lang.get('config_hash_types_hash_types')]]</h2>
 {%TEMPLATE->struct/messages%}
 <form action="hashtypes.php" method="POST">
 	<input type='hidden' name='action' value='[[$DHashtypeAction::ADD_HASHTYPE]]'>
@@ -9,13 +9,13 @@
 		<table class="table table-bordered table-nonfluid">
 			<tr>
 				<th colspan='2' style='text-align: center;'>
-					<b>Add new Hashtype</b>
+					<b>[[lang.get('config_hash_types_add_new_hash_type')]]</b>
 				</th>
 			</tr>
 			<tr>
-				<th>Hashtype (Hashcat -m)</th>
-				<th>Description</th>
-				<th>Salted (only if there is a separate salt value)</th>
+				<th>[[lang.get('table_property_hashtype')]]</th>
+				<th>[[lang.get('table_property_description')]]</th>
+				<th>[[lang.get('table_property_salted_long')]]</th>
 			</tr>
 			<tr>
 				<td>
@@ -26,14 +26,14 @@
 				</td>
 				<td>
 					<select name="isSalted" class="form-control">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
+            <option value="0">[[lang.getUCF('no')]]</option>
+            <option value="1">[[lang.getUCF('yes')]]</option>
           </select>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" class='btn btn-success' value="Add">
+					<input type="submit" class='btn btn-success' value="[[lang.get('button_add')]]">
 				</td>
 			</tr>
 		</table>
@@ -42,9 +42,9 @@
 <div class="panel panel-default">
 	<table class="table table-bordered table-nonfluid">
 		<tr>
-			<th>Hashtype (Hashcat -m)</th>
-			<th>Description</th>
-      <th>Salted</th>
+			<th>[[lang.get('table_property_hashtype')]]</th>
+			<th>[[lang.get('table_property_description')]]</th>
+      <th>[[lang.get('table_property_salted')]]</th>
 			<th>&nbsp;</th>
 		</tr>
 		{{FOREACH type;[[hashtypes]]}}
@@ -53,17 +53,17 @@
 				<td>[[type.getDescription()]]</td>
         <td>
           {{IF [[type.getIsSalted()]] == 1}}
-          Yes
+          [[lang.getUCF('yes')]]
           {{ELSE}}
-          No
+          [[lang.getUCF('no')]]
           {{ENDIF}}
         </td>
 				<td>
-					<form action="hashtypes.php" method="POST" onSubmit="if (!confirm('Really delete hashtype [[type.getId()]]?')) return false;">
+					<form action="hashtypes.php" method="POST" onSubmit="if (!confirm('[[lang.get('config_hash_types_delete_hashtype_warning', [ [[type.getId()]] ] )]]')) return false;">
 						<input type="hidden" name="action" value="[[$DHashtypeAction::DELETE_HASHTYPE]]">
 						<input type="hidden" name="type" value="[[type.getId()]]">
 						<input type="hidden" name="csrf" value="[[csrf]]">
-						<input type="submit" class='btn btn-danger' value="Delete">
+						<input type="submit" class='btn btn-danger' value="[[lang.get('button_delete')]]">
 					</form>
 				</td>
 			</tr>

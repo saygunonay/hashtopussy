@@ -79,6 +79,12 @@ $LANGARR['tr-TR']['button_change_password'] = "Şifreyi Değiştir";
 $LANGARR['tr-TR']['button_disable'] = "Pasif et";
 $LANGARR['tr-TR']['button_enable'] = "Aktif et";
 $LANGARR['tr-TR']['button_manage'] = "Yönet";
+$LANGARR['tr-TR']['button_rebuild_chunk_cache'] = "Parça önbelleğini yeniden oluştur";
+$LANGARR['tr-TR']['button_rescan_global_files'] = "Dosyaları yeniden tara";
+$LANGARR['tr-TR']['button_clear_all'] = "Hepsini temizle";
+$LANGARR['tr-TR']['button_add'] = "Ekle";
+$LANGARR['tr-TR']['button_edit'] = "Düzelt";
+$LANGARR['tr-TR']['button_show'] = "Göster";
 
 $LANGARR['tr-TR']['button_choose_file_placeholder'] = "Dosya yok";
 
@@ -182,6 +188,19 @@ $LANGARR['tr-TR']['table_property_enable_disable_user'] = 'Kullanıcıyı aktif/
 $LANGARR['tr-TR']['table_property_set_user_group'] = 'Kullanıcı grubunu ayarla';
 $LANGARR['tr-TR']['table_property_set_password'] = 'Şifreyi ayarla';
 $LANGARR['tr-TR']['table_property_delete_user'] = 'Kullanıcıyı sil';
+$LANGARR['tr-TR']['table_property_description'] = 'Tanım';
+$LANGARR['tr-TR']['table_property_hashtype'] = 'Hash tipi (Hashcat -m)';
+$LANGARR['tr-TR']['table_property_salted_long'] = 'Salt\'lı (ayrı bir salt değeri var mı)';
+$LANGARR['tr-TR']['table_property_salted'] = 'Salt\'lı';
+$LANGARR['tr-TR']['table_property_type'] = 'Tip';
+$LANGARR['tr-TR']['table_property_os'] = 'OS';
+$LANGARR['tr-TR']['table_property_operating_system'] = 'İşletim sistemi';
+$LANGARR['tr-TR']['table_property_filename_long'] = "Dosya ismi ('static' dizinine koyulur)";
+$LANGARR['tr-TR']['table_property_version_long'] = 'Sürüm (yeni bir dosya yüklerseniz burayı güncelleyin)';
+$LANGARR['tr-TR']['table_property_date'] = 'Tarih';
+$LANGARR['tr-TR']['table_property_level'] = 'Seviye';
+$LANGARR['tr-TR']['table_property_issuer'] = 'Yayınlayan';
+$LANGARR['tr-TR']['table_property_message'] = 'Mesaj';
 
 //
 $LANGARR['tr-TR']['description_no_activity'] = "faaliyet yok";
@@ -370,6 +389,36 @@ $LANGARR['tr-TR']['users_detail_user'] = 'Kullanıcı';
 $LANGARR['tr-TR']['users_detail_user_currently_enabled'] = 'Kullanıcı şu anda aktif';
 $LANGARR['tr-TR']['users_detail_user_currently_disabled'] = 'Kullanıcı şu anda pasif';
 $LANGARR['tr-TR']['users_detail_delete_user_warning'] = 'Bu kullanıcıyı gerçekten silmek istiyor musunuz? Bu işlem geri alınamaz!';
+
+$LANGARR['tr-TR']['config_server_configuration'] = 'Sunucu yapılandırması';
+$LANGARR['tr-TR']['config_server_description_agent_timeout'] = 'Bir ajanın pasif kabul edilmesi için cevap vermemesi gereken süre';
+$LANGARR['tr-TR']['config_server_description_benchmark_time'] = 'Bir ajanın bir görevi değerlendirme süresi';
+$LANGARR['tr-TR']['config_server_description_chunk_duration'] = 'Bir ajanın bir parçayı bitirmesi yaklaşık kaç saniye almalı';
+$LANGARR['tr-TR']['config_server_description_chunk_timeout'] = 'Bir ajanın zaman aşımına uğraması ve kendisine atanmış parçanın başka ajana yollanması için geçmesi gereken süre';
+$LANGARR['tr-TR']['config_server_description_hashes_page_size'] = 'Hash listesinde aynı sayfada kaç tane kalem gösterilsin (Sayfa boyutu)';
+$LANGARR['tr-TR']['config_server_description_field_separator'] = 'Hash ve açık halini (veya salt\'ı) ayırırken hangi ayraç kullanılsın';
+$LANGARR['tr-TR']['config_server_description_hashlist_alias'] = 'Bir görev oluşturulurken hash listesi lakabı olarak hangi dizi kullanılsın';
+$LANGARR['tr-TR']['config_server_description_status_timer'] = 'Ajan kaç saniyede bir sunucuya durumunu ve kırılanları göndersin';
+$LANGARR['tr-TR']['config_server_description_blacklist_chars'] = 'Saldırı komutu girdilerinde kullanılmasına izin verilmeyen karakterler';
+$LANGARR['tr-TR']['config_server_description_number_logentries'] = 'Saklanacak log girdisi sayısı. Bu sayının %120\'sine ulaşıldığında en eskileri silinecektir';
+$LANGARR['tr-TR']['config_server_description_time_format'] = 'Zaman gösterimi formatı. PHP date() fonsiyonunun formatını kullanın';
+$LANGARR['tr-TR']['config_server_description_base_url'] = 'Web safasının temel URL\'i (sunucu adını içermez ve normalde kurulum sırasında otomatik belirlenir)';
+$LANGARR['tr-TR']['config_server_description_disp_tolerance'] = 'Bir görevin son parçası normalden yüzde kaç uzun olabilir (görevin son kalan kısmı normal parça uzunluğundan biraz uzunsa çok küçük bir son parça oluşumunun önüne geçilmiş olunur)';
+$LANGARR['tr-TR']['config_server_description_batch_size'] = 'Hash listesi ajana yollanırken SQL sorgusunun bölüt boyutu';
+$LANGARR['tr-TR']['config_server_description_yubikey_id'] = 'Yubikey İstemci Kimliği';
+$LANGARR['tr-TR']['config_server_description_yubikey_key'] = 'Yubikey Gizli Anahtarı';
+$LANGARR['tr-TR']['config_server_description_yubikey_url'] = 'Yubikey API URL';
+$LANGARR['tr-TR']['config_server_description_base_host'] = 'Kullanılacak temel sunucu adı/port/protokol. Otomatik belirlenen değerlerin üstüne yazmak için kullanınız';
+$LANGARR['tr-TR']['config_server_description_donate_off'] = 'Bağış bilgisini sakla (saklamak için \'1\' giriniz)';
+$LANGARR['tr-TR']['config_server_database_tools'] = 'Veri tabanı araçları';
+$LANGARR['tr-TR']['config_server_database_tools_rebuild_chunk_cache'] = 'Tüm parçalarda ve tüm hash listelerinde kırılmış hashleri yavaş ama hatasız COUNT() fonksiyonunu kullanarak sayar.';
+$LANGARR['tr-TR']['config_server_database_tools_rescan_global_files'] = 'Tüm dosyaları boyut uyumsuzluğu veya var olmama durumu için tarar.';
+$LANGARR['tr-TR']['config_server_database_tools_clear_all'] = 'Tüm hash listelerini, görevleri (ön-ayarlı olanlar hariç) ve parçaları siler.';
+$LANGARR['tr-TR']['config_hash_types_hash_types'] = 'Hash Tipleri';
+$LANGARR['tr-TR']['config_hash_types_add_new_hash_type'] = 'Yeni hash tipi ekle';
+$LANGARR['tr-TR']['config_hash_types_delete_hashtype_warning'] = 'Hash tipi {0} gerçekten silmek istiyor musunuz?';
+$LANGARR['tr-TR']['config_agent_binaries_agent_binaries'] = "Ajan Dosyaları";
+$LANGARR['tr-TR']['config_log_log_entries'] = "Log Kayıtları";
 
 //
 $LANGARR['tr-TR']['user_group_name_1'] = 'İzleyici Kullanıcı';
