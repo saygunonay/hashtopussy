@@ -11,44 +11,44 @@ class HashcatHandler implements Handler {
   
   public function handle($action) {
     /** @var $LOGIN Login */
-    global $LOGIN;
+    global $LOGIN, $LANG;
     
     switch ($action) {
       case DHashcatAction::DELETE_RELEASE:
         if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->delete();
         break;
       case DHashcatAction::CREATE_RELEASE:
         if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->newHashcat();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_invalid_action'));
         break;
     }
   }
   
   private static function newHashcat() {
     /** @var $LOGIN Login */
-    global $FACTORIES, $LOGIN;
+    global $FACTORIES, $LOGIN, $LANG;
     
     // new hashcat release
     $version = $_POST["version"];
     $url = $_POST["url"];
     $rootdir = $_POST["rootdir"];
     if (strlen($version) == 0) {
-      UI::addMessage(UI::ERROR, "You must specify a version!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_hashcat_specify_version'));
       return;
     }
     
     $hashcat = new HashcatRelease(0, $version, time(), $url, $rootdir);
     $hashcat = $FACTORIES::getHashcatReleaseFactory()->save($hashcat);
     if ($hashcat == null) {
-      UI::addMessage(UI::ERROR, "Could not create new hashcat release!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_hashcat_not_create'));
     }
     else {
       Util::createLogEntry("User", $LOGIN->getUserID(), DLogEntry::INFO, "New hashcat release was created: " . $version);
@@ -58,7 +58,7 @@ class HashcatHandler implements Handler {
   }
   
   private static function delete() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // delete hashcat release
     $release = $FACTORIES::getHashcatReleaseFactory()->get($_POST['release']);
@@ -66,7 +66,7 @@ class HashcatHandler implements Handler {
     $qF = new QueryFilter(Agent::HC_VERSION, $release->getVersion(), "=");
     $agents = $FACTORIES::getAgentFactory()->filter(array($FACTORIES::FILTER => $qF));
     if (sizeof($agents)) {
-      UI::addMessage(UI::ERROR, "There are registered agents running this Hashcat version!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_hashcat_not_delete'));
       return;
     }
     $FACTORIES::getHashcatReleaseFactory()->delete($release);

@@ -95,6 +95,6 @@ class SearchHandler implements Handler {
     $OBJECTS['resultEntries'] = $resultEntries;
     $OBJECTS['hashlists'] = $hashlists;
     $OBJECTS['result'] = true;
-    UI::addMessage(UI::SUCCESS, $LANG->get("handler_message_searched_for_entries", [sizeof($resultEntries)]));
+    UI::addMessage(UI::SUCCESS, $LANG->get("handler_message_search_searched_for_entries", [sizeof($resultEntries)]));
   }
 }

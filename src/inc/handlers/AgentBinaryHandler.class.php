@@ -10,6 +10,7 @@ class AgentBinaryHandler implements Handler {
   }
   
   public function handle($action) {
+    global $LANG;
     switch ($action) {
       case DAgentBinaryAction::NEW_BINARY:
         $this->newBinary();
@@ -21,28 +22,28 @@ class AgentBinaryHandler implements Handler {
         $this->deleteBinary();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_invalid_action'));
         break;
     }
   }
   
   private function deleteBinary() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $id = $_POST['id'];
     $agentBinary = $FACTORIES::getAgentBinaryFactory()->get($id);
     if ($agentBinary == null) {
-      UI::addMessage(UI::ERROR, "Binary does not exist!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_agent_binary_doesnot_exist'));
       return;
     }
     $FACTORIES::getAgentBinaryFactory()->delete($agentBinary);
     unlink(dirname(__FILE__) . "/../../static/" . $agentBinary->getFilename());
-    UI::addMessage(UI::SUCCESS, "Binary deleted successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_agent_binary_deleted_successfully'));
   }
   
   private function editBinary() {
     /** @var $LOGIN Login */
-    global $FACTORIES, $LOGIN;
+    global $FACTORIES, $LOGIN, $LANG;
     
     $id = $_POST['id'];
     $type = $_POST['type'];
@@ -50,16 +51,16 @@ class AgentBinaryHandler implements Handler {
     $filename = $_POST['filename'];
     $version = $_POST['version'];
     if (strlen($version) == 0) {
-      UI::addMessage(UI::ERROR, "Version cannot be empty!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_agent_binary_version_empty'));
       return;
     }
     else if (!file_exists(dirname(__FILE__) . "/../../static/$filename")) {
-      UI::addMessage(UI::ERROR, "Provided filename does not exist!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_agent_binary_filename_doesnot_exist'));
       return;
     }
     $agentBinary = $FACTORIES::getAgentBinaryFactory()->get($id);
     if ($agentBinary == null) {
-      UI::addMessage(UI::ERROR, "Binary does not exist!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_agent_binary_doesnot_exist'));
       return;
     }
     
@@ -67,7 +68,7 @@ class AgentBinaryHandler implements Handler {
     $qF2 = new QueryFilter(AgentBinary::AGENT_BINARY_ID, $agentBinary->getId(), "<>");
     $result = $FACTORIES::getAgentBinaryFactory()->filter(array($FACTORIES::FILTER => array($qF1, $qF2)), true);
     if ($result != null) {
-      UI::addMessage(UI::ERROR, "You cannot have two binaries with the same type!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_agent_binary_cannot_have_same_type'));
       return;
     }
     
@@ -78,34 +79,34 @@ class AgentBinaryHandler implements Handler {
     
     $FACTORIES::getAgentBinaryFactory()->update($agentBinary);
     Util::createLogEntry(DLogEntryIssuer::USER, $LOGIN->getUserID(), DLogEntry::INFO, "Binary " . $agentBinary->getFilename() . " was updated!");
-    UI::addMessage(UI::SUCCESS, "Binary was updated successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_agent_binary_updated_successfully'));
   }
   
   private function newBinary() {
     /** @var $LOGIN Login */
-    global $FACTORIES, $LOGIN;
+    global $FACTORIES, $LOGIN, $LANG;
     
     $type = $_POST['type'];
     $os = $_POST['os'];
     $filename = $_POST['filename'];
     $version = $_POST['version'];
     if (strlen($version) == 0) {
-      UI::addMessage(UI::ERROR, "Version cannot be empty!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_agent_binary_version_empty'));
       return;
     }
     else if (!file_exists(dirname(__FILE__) . "/../../static/$filename")) {
-      UI::addMessage(UI::ERROR, "Provided filename does not exist!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_agent_binary_filename_doesnot_exist'));
       return;
     }
     $qF = new QueryFilter(AgentBinary::TYPE, $type, "=");
     $result = $FACTORIES::getAgentBinaryFactory()->filter(array($FACTORIES::FILTER => $qF), true);
     if ($result != null) {
-      UI::addMessage(UI::ERROR, "You cannot have two binaries with the same type!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_agent_binary_cannot_have_same_type'));
       return;
     }
     $agentBinary = new AgentBinary(0, $type, $version, $os, $filename);
     $FACTORIES::getAgentBinaryFactory()->save($agentBinary);
     Util::createLogEntry(DLogEntryIssuer::USER, $LOGIN->getUserID(), DLogEntry::INFO, "New Binary " . $agentBinary->getFilename() . " was added!");
-    UI::addMessage(UI::SUCCESS, "Binary was added successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_agent_binary_added_successfully'));
   }
 }

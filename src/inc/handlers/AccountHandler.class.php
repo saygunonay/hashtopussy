@@ -4,7 +4,7 @@ class AccountHandler implements Handler {
   private $user;
   
   public function __construct($userId = null) {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     if ($userId == null) {
       $this->user = null;
@@ -13,13 +13,13 @@ class AccountHandler implements Handler {
     
     $this->user = $FACTORIES::getUserFactory()->get($userId);
     if ($this->user == null) {
-      UI::printError("FATAL", "User with ID $userId not found!");
+      UI::printError("FATAL", $LANG->get('handler_message_account_user_not_found', [$userId]));
     }
   }
   
   public function handle($action) {
     /** @var Login $LOGIN */
-    global $LOGIN, $OBJECTS;
+    global $LOGIN, $OBJECTS, $LANG;
     
     switch ($action) {
       case DAccountAction::SET_EMAIL:
@@ -50,7 +50,7 @@ class AccountHandler implements Handler {
         $this->changePassword();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_invalid_action'));
         break;
     }
     
@@ -59,21 +59,21 @@ class AccountHandler implements Handler {
   }
   
   private function changePassword() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $oldPassword = $_POST['oldpass'];
     $newPassword = $_POST['newpass'];
     $repeatedPassword = $_POST['reppass'];
     if (!Encryption::passwordVerify($oldPassword, $this->user->getPasswordSalt(), $this->user->getPasswordHash())) {
-      UI::addMessage(UI::ERROR, "Your old password is wrong!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_account_old_password_wrong'));
       return;
     }
     else if (strlen($newPassword) < 4) {
-      UI::addMessage(UI::ERROR, "Your password is too short!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_account_password_short'));
       return;
     }
     else if ($newPassword != $repeatedPassword) {
-      UI::addMessage(UI::ERROR, "Your new passwords do not match!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_account_password_dont_match'));
       return;
     }
     
@@ -84,36 +84,36 @@ class AccountHandler implements Handler {
     $this->user->setIsComputedPassword(0);
     $FACTORIES::getUserFactory()->update($this->user);
     Util::createLogEntry(DLogEntryIssuer::USER, $this->user->getId(), DLogEntry::INFO, "User changed password!");
-    UI::addMessage(UI::SUCCESS, "Password was updated successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_account_password_updated'));
   }
   
   private function updateLifetime() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $lifetime = intval($_POST['lifetime']);
     if ($lifetime < 60 || $lifetime > 48 * 3600) {
-      UI::addMessage(UI::ERROR, "Lifetime must be larger than 1 minute and smaller than 2 days!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_account_lifetime_error'));
       return;
     }
     
     $this->user->setSessionLifetime($lifetime);
     $FACTORIES::getUserFactory()->update($this->user);
-    UI::addMessage(UI::SUCCESS, "Updated session lifetime successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_account_lifetime_updated'));
   }
   
   private function setEmail() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $email = $_POST['email'];
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      UI::addMessage(UI::ERROR, "Invalid email address!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_account_email_invalid'));
       return;
     }
     
     $this->user->setEmail($email);
     $FACTORIES::getUserFactory()->update($this->user);
     Util::createLogEntry(DLogEntryIssuer::USER, $this->user->getId(), DLogEntry::INFO, "User changed email!");
-    UI::addMessage(UI::SUCCESS, "Email updated successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_account_email_updated'));
   }
   
   private function checkOTP() {
@@ -140,7 +140,7 @@ class AccountHandler implements Handler {
   }
   
   private function setOTP($num) {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     if ($_POST['action'] == DAccountAction::YUBIKEY_ENABLE) {
       $isValid = false;
@@ -159,7 +159,7 @@ class AccountHandler implements Handler {
       }
       
       if (!$isValid) {
-        UI::addMessage(UI::ERROR, "Configure OTP KEY first!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_account_otp_configure_first'));
         return;
       }
     }
@@ -195,6 +195,6 @@ class AccountHandler implements Handler {
     
     $FACTORIES::getUserFactory()->update($this->user);
     Util::createLogEntry(DLogEntryIssuer::USER, $this->user->getId(), DLogEntry::INFO, "User changed OTP!");
-    UI::addMessage(UI::SUCCESS, "OTP updated successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_account_otp_updated'));
   }
 }

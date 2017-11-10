@@ -24,7 +24,7 @@ class HashlistHandler implements Handler {
   private $hashlist;
   
   public function __construct($hashlistId = null) {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     if ($hashlistId == null) {
       $this->hashlist = null;
@@ -33,60 +33,60 @@ class HashlistHandler implements Handler {
     
     $this->hashlist = $FACTORIES::getHashlistFactory()->get($hashlistId);
     if ($this->hashlist == null) {
-      UI::printError("FATAL", "Hashlist with ID $hashlistId not found!");
+      UI::printError("FATAL", $LANG->get('handler_message_hashlist_not_found', [$hashlistId]));
     }
   }
   
   public function handle($action) {
     /** @var Login $LOGIN */
-    global $LOGIN;
+    global $LOGIN, $LANG;
     
     switch ($action) {
       case DHashlistAction::APPLY_PRECONFIGURED_TASKS:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->preconf();
         break;
       case DHashlistAction::CREATE_WORDLIST:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->createWordlists();
         break;
       case DHashlistAction::SET_SECRET:
         if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->toggleSecret();
         break;
       case DHashlistAction::RENAME_HASHLIST:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->rename();
         break;
       case DHashlistAction::PROCESS_ZAP:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->processZap();
         break;
       case DHashlistAction::EXPORT_HASHLIST:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->export();
         break;
       case DHashlistAction::ZAP_HASHLIST:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->zap();
         break;
       case DHashlistAction::DELETE_HASHLIST:
         if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->delete();
         break;
@@ -95,36 +95,36 @@ class HashlistHandler implements Handler {
         break;
       case DHashlistAction::CREATE_SUPERHASHLIST:
         if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->createSuperhashlist();
         break;
       case DHashlistAction::CREATE_LEFTLIST:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->leftlist();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_invalid_action'));
         break;
     }
   }
   
   private function leftlist() {
     /** @var $CONFIG DataSet */
-    global $FACTORIES, $CONFIG;
+    global $FACTORIES, $CONFIG, $LANG;
     
     $hashlist = $FACTORIES::getHashlistFactory()->get($_POST['hashlist']);
     if ($hashlist == null) {
-      UI::printError("ERROR", "Invalid hashlist!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_invalid'));
     }
     else if ($hashlist->getFormat() == DHashlistFormat::WPA || $hashlist->getFormat() == DHashlistFormat::BINARY) {
-      UI::printError("ERROR", "You cannot create left lists for binary hashes!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_leftlists_binary'));
     }
     $hashlists = Util::checkSuperHashlist($hashlist);
     if ($hashlists[0]->getFormat() != DHashlistFormat::PLAIN) {
-      UI::printError("ERROR", "You cannot create left lists for binary hashes!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_leftlists_binary'));
     }
     
     $hashlistIds = array();
@@ -167,7 +167,7 @@ class HashlistHandler implements Handler {
       }
     }
     if (sizeof($hashlists) == 0) {
-      UI::printError("ERROR", $LANG->get('handler_message_no_hashlists_selected'));
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_no_hashlists_selected'));
     }
     $name = htmlentities($_POST["name"], ENT_QUOTES, "UTF-8");
     $qF = new ContainFilter(Hashlist::HASHLIST_ID, $hashlists);
@@ -197,7 +197,7 @@ class HashlistHandler implements Handler {
   private function create() {
     /** @var $LOGIN Login */
     /** @var $CONFIG DataSet */
-    global $FACTORIES, $LOGIN, $CONFIG;
+    global $FACTORIES, $LOGIN, $CONFIG, $LANG;
     
     $name = htmlentities($_POST["name"], ENT_QUOTES, "UTF-8");
     $salted = (isset($_POST["salted"]) && intval($_POST["salted"]) == 1) ? "1" : "0";
@@ -208,13 +208,13 @@ class HashlistHandler implements Handler {
     $hashtype = intval($_POST["hashtype"]);
     $saltSeparator = $_POST['separator'];
     if ($format < 0 || $format > 2) {
-      UI::printError("ERROR", "Invalid hashlist format!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_invalid_format'));
     }
     else if (strlen($name) == 0) {
-      UI::printError("ERROR", "Hashlist name cannot be empty!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_name_empty'));
     }
     else if ($salted == '1' && strlen($saltSeparator) == 0) {
-      UI::printError("ERROR", "Salt separator cannot be empty when hashes are salted!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_salt_separator_empty'));
     }
     
     $this->hashlist = new Hashlist(0, $name, $format, $hashtype, 0, $separator, 0, $secret, $hexsalted, $salted);
@@ -238,14 +238,14 @@ class HashlistHandler implements Handler {
     }
     $tmpfile = dirname(__FILE__) . "/../../tmp/hashlist_" . $this->hashlist->getId();
     if (!Util::uploadFile($tmpfile, $source, $sourcedata) && file_exists($tmpfile)) {
-      UI::printError("ERROR", "Failed to process file!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_failed_file_process'));
     }
     else if (!file_exists($tmpfile)) {
-      UI::printError("ERROR", "Required file does not exist!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_required_file_not_exist'));
     }
     $file = fopen($tmpfile, "rb");
     if (!$file) {
-      UI::printError("ERROR", "Failed to open file!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_failed_file_open'));
     }
     $added = 0;
     
@@ -265,7 +265,7 @@ class HashlistHandler implements Handler {
           rewind($file);
           $bufline = stream_get_line($file, 1024, $lineSeparator);
           if (strpos($bufline, $saltSeparator) === false && $lineSeparator != "") {
-            UI::printError("ERROR", "Salted hashes separator not found in file!");
+            UI::printError("ERROR", $LANG->get('handler_message_hashlist_salt_separator_not_found'));
           }
         }
         else {
@@ -327,7 +327,7 @@ class HashlistHandler implements Handler {
             break;
           }
           if (strlen($data) != 393) {
-            UI::printError("ERROR", "Data file only contains " . strlen($data) . " bytes!");
+            UI::printError("ERROR", $LANG->get('handler_message_hashlist_file_contains_bytes', [strlen($data)]));
           }
           // get the SSID
           $network = "";
@@ -387,11 +387,11 @@ class HashlistHandler implements Handler {
   }
   
   private function zap() {
-    global $FACTORIES, $OBJECTS;
+    global $FACTORIES, $OBJECTS, $LANG;
     
     $this->hashlist = $FACTORIES::getHashlistFactory()->get($_POST["hashlist"]);
     if ($this->hashlist == null) {
-      UI::printError("ERROR", "Invalid hashlist!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_invalid'));
     }
     $type = $FACTORIES::getHashTypeFactory()->get($this->hashlist->getHashTypeId());
     
@@ -402,12 +402,12 @@ class HashlistHandler implements Handler {
   
   private function export() {
     /** @var DataSet $CONFIG */
-    global $FACTORIES, $CONFIG;
+    global $FACTORIES, $CONFIG, $LANG;
     
     // export cracked hashes to a file
     $this->hashlist = $FACTORIES::getHashlistFactory()->get($_POST["hashlist"]);
     if ($this->hashlist == null) {
-      UI::printError("ERROR", "Invalid hashlist!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_invalid'));
     }
     $hashlists = Util::checkSuperHashlist($this->hashlist);
     $tmpname = "Pre-cracked_" . $this->hashlist->getId() . "_" . date("d-m-Y_H-i-s") . ".txt";
@@ -419,7 +419,7 @@ class HashlistHandler implements Handler {
     }
     $file = fopen($tmpfile, "wb");
     if (!$file) {
-      UI::printError("ERROR", "Failed to write file!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_failed_file_write'));
     }
     
     $hashlistIds = array();
@@ -463,15 +463,15 @@ class HashlistHandler implements Handler {
     
     $file = new File(0, $tmpname, Util::filesize($tmpfile), $this->hashlist->getSecret(), 0);
     $FACTORIES::getFileFactory()->save($file);
-    UI::addMessage(UI::SUCCESS, "Cracked hashes from hashlist exported successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_hashlist_cracked_hashes_exported'));
   }
   
   private function delete() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $this->hashlist = $FACTORIES::getHashlistFactory()->get($_POST["hashlist"]);
     if ($this->hashlist == null) {
-      UI::printError("ERROR", "Invalid hashlist!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_invalid'));
     }
     
     $FACTORIES::getAgentFactory()->getDB()->query("START TRANSACTION");
@@ -577,12 +577,12 @@ class HashlistHandler implements Handler {
   }
   
   private function processZap() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // pre-crack hashes processor
     $this->hashlist = $FACTORIES::getHashlistFactory()->get($_POST["hashlist"]);
     if ($this->hashlist == null) {
-      UI::printError("ERROR", "Invalid hashlist!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_invalid'));
     }
     $separator = $_POST["separator"];
     $source = $_POST["source"];
@@ -608,17 +608,17 @@ class HashlistHandler implements Handler {
     //put input into a temp file
     $tmpfile = dirname(__FILE__) . "/../../tmp/zaplist_" . $this->hashlist->getId();
     if (!Util::uploadFile($tmpfile, $source, $sourcedata)) {
-      UI::addMessage(UI::ERROR, "Failed to process file!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_hashlist_failed_file_process'));
       return;
     }
     $size = Util::filesize($tmpfile);
     if ($size == 0) {
-      UI::addMessage(UI::ERROR, "File is empty!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_hashlist_file_empty'));
       return;
     }
     $file = fopen($tmpfile, "rb");
     if (!$file) {
-      UI::printError("ERROR", "Processing of temporary file failed!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_failed_temp_file_process'));
     }
     $startTime = time();
     
@@ -791,19 +791,19 @@ class HashlistHandler implements Handler {
       }
     }
     $FACTORIES::getAgentFactory()->getDB()->query("COMMIT");
-    UI::addMessage(UI::SUCCESS, "Processed pre-cracked hashes: $totalLines total lines, $newCracked new cracked hashes, $alreadyCracked were already cracked, $invalid invalid lines, $notFound not matching entries (" . ($endTime - $startTime) . "s)!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_hashlist_processed_precracked_hashes', [$totalLines, $newCracked, $alreadyCracked, $invalid, $notFound, ($endTime - $startTime)]));
     if ($tooLong > 0) {
-      UI::addMessage(UI::WARN, "$tooLong entries with too long plaintext");
+      UI::addMessage(UI::WARN, $LANG->get('handler_message_hashlist_long_entries', [$tooLong]));
     }
   }
   
   private function rename() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // change hashlist name
     $this->hashlist = $FACTORIES::getHashlistFactory()->get($_POST["hashlist"]);
     if ($this->hashlist == null) {
-      UI::printError("ERROR", "Invalid hashlist!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_invalid'));
     }
     $name = htmlentities($_POST["name"], ENT_QUOTES, "UTF-8");
     $this->hashlist->setHashlistName($name);
@@ -812,12 +812,12 @@ class HashlistHandler implements Handler {
   }
   
   private function toggleSecret() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // switch hashlist secret state
     $this->hashlist = $FACTORIES::getHashlistFactory()->get($_POST["hashlist"]);
     if ($this->hashlist == null) {
-      UI::printError("ERROR", "Invalid hashlist!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_invalid'));
     }
     $secret = intval($_POST["secret"]);
     $this->hashlist->setSecret($secret);
@@ -841,24 +841,24 @@ class HashlistHandler implements Handler {
   
   private function createWordlists() {
     /** @var DataSet $CONFIG */
-    global $FACTORIES, $CONFIG;
+    global $FACTORIES, $CONFIG, $LANG;
     
     // create wordlist from hashlist cracked hashes
     $this->hashlist = $FACTORIES::getHashlistFactory()->get($_POST["hashlist"]);
     if ($this->hashlist == null) {
-      UI::printError("ERROR", "Invalid hashlist!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_invalid'));
     }
     
     $lists = Util::checkSuperHashlist($this->hashlist);
     if (sizeof($lists) == 0) {
-      UI::printError("ERROR", "Failed to determine the hashlists which should get exported!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_failed_determine_hashlists'));
     }
     
     $wordlistName = "Wordlist_" . $this->hashlist->getId() . "_" . date("d.m.Y_H.i.s") . ".txt";
     $wordlistFilename = dirname(__FILE__) . "/../../files/" . $wordlistName;
     $wordlistFile = fopen($wordlistFilename, "wb");
     if ($wordlistFile === false) {
-      UI::printError("ERROR", "Failed to write wordlist file!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_failed_write_wordlist'));
     }
     $wordCount = 0;
     $pagingSize = 5000;
@@ -894,7 +894,7 @@ class HashlistHandler implements Handler {
     //add file to files list
     $file = new File(0, $wordlistName, Util::filesize($wordlistFilename), $this->hashlist->getSecret(), 0);
     $FACTORIES::getFileFactory()->save($file);
-    UI::addMessage(UI::SUCCESS, "Exported $wordCount found plains to $wordlistName successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_hashlist_exported_plains', [$wordCount, $wordlistName]));
   }
   
   private function preconf() {
@@ -902,7 +902,7 @@ class HashlistHandler implements Handler {
     
     $this->hashlist = $FACTORIES::getHashlistFactory()->get($_POST["hashlist"]);
     if ($this->hashlist == null) {
-      UI::printError("ERROR", "Invalid hashlist!");
+      UI::printError("ERROR", $LANG->get('handler_message_hashlist_invalid'));
     }
     
     $addCount = 0;
@@ -950,11 +950,11 @@ class HashlistHandler implements Handler {
         }
       }
       if ($addCount > 0) {
-        UI::addMessage(UI::SUCCESS, $LANG->get("lists_detail_message_new_task_create_redirect", [$addCount, $fileCount]));
+        UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_hashlist_new_task_create_redirect', [$addCount, $fileCount]));
         UI::setForward("tasks.php", 5);
       }
       else {
-        UI::addMessage(UI::ERROR, "Didn't create any tasks!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_hashlist_not_created_task'));
       }
     }
   }

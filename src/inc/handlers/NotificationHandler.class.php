@@ -10,6 +10,7 @@ class NotificationHandler implements Handler {
   }
   
   public function handle($action) {
+    global $LANG;
     switch ($action) {
       case DNotificationAction::CREATE_NOTIFICATION:
         $this->create();
@@ -21,7 +22,7 @@ class NotificationHandler implements Handler {
         $this->delete();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_invalid_action'));
         break;
     }
   }
@@ -69,15 +70,15 @@ class NotificationHandler implements Handler {
   
   private function delete() {
     /** @var $LOGIN Login */
-    global $FACTORIES, $LOGIN;
+    global $FACTORIES, $LOGIN, $LANG;
     
     $notification = $FACTORIES::getNotificationSettingFactory()->get($_POST['notification']);
     if ($notification == null) {
-      UI::addMessage(UI::ERROR, "Notification not found!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_not_found'));
       return;
     }
     else if ($notification->getUserId() != $LOGIN->getUserID()) {
-      UI::addMessage(UI::ERROR, "You are not allowed to delete this notification!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_not_allowed_delete'));
       return;
     }
     $FACTORIES::getNotificationSettingFactory()->delete($notification);
@@ -85,15 +86,15 @@ class NotificationHandler implements Handler {
   
   private function toggleActive() {
     /** @var Login $LOGIN */
-    global $FACTORIES, $LOGIN;
+    global $FACTORIES, $LOGIN, $LANG;
     
     $notification = $FACTORIES::getNotificationSettingFactory()->get($_POST['notification']);
     if ($notification == null) {
-      UI::addMessage(UI::ERROR, "Notification not found!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_not_found'));
       return;
     }
     else if ($notification->getUserId() != $LOGIN->getUserID()) {
-      UI::addMessage(UI::ERROR, "You have no access to this notification!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_no_access'));
       return;
     }
     if ($notification->getIsActive() == 1) {
@@ -107,33 +108,33 @@ class NotificationHandler implements Handler {
   
   private function create() {
     /** @var Login $LOGIN */
-    global $FACTORIES, $NOTIFICATIONS, $LOGIN;
+    global $FACTORIES, $NOTIFICATIONS, $LOGIN, $LANG;
     
     $actionType = $_POST['actionType'];
     $notification = $_POST['notification'];
     $receiver = trim($_POST['receiver']);
     
     if (!isset($NOTIFICATIONS[$notification])) {
-      UI::addMessage(UI::ERROR, "This notification is not available!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_not_available'));
       return;
     }
     else if (!in_array($actionType, DNotificationType::getAll())) {
-      UI::addMessage(UI::ERROR, "This actionType is not available!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_actiontype_not_available'));
       return;
     }
     else if (strlen($receiver) == 0) {
-      UI::addMessage(UI::ERROR, "You need to fill in a receiver!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_fill_receiver'));
       return;
     }
     else if (DNotificationType::getRequiredLevel($actionType) > $LOGIN->getLevel()) {
-      UI::addMessage(UI::ERROR, "You are not allowed to use this action type!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_not_allowed_actiontype'));
       return;
     }
     $objectId = null;
     switch (DNotificationType::getObjectType($actionType)) {
       case DNotificationObjectType::USER:
         if ($LOGIN->getLevel() < DAccessLevel::ADMINISTRATOR) {
-          UI::addMessage(UI::ERROR, "You are not allowed to use user action types!");
+          UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_not_allowed_user_actiontypes'));
           return;
         }
         if ($_POST['users'] == "ALL") {
@@ -141,7 +142,7 @@ class NotificationHandler implements Handler {
         }
         $user = $FACTORIES::getUserFactory()->get($_POST['users']);
         if ($user == null) {
-          UI::addMessage(UI::ERROR, "Invalid user selected!");
+          UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_invalid_user'));
           return;
         }
         $objectId = $user->getId();
@@ -152,7 +153,7 @@ class NotificationHandler implements Handler {
         }
         $agent = $FACTORIES::getAgentFactory()->get($_POST['agents']);
         if ($agent == null) {
-          UI::addMessage(UI::ERROR, "Invalid agent selected!");
+          UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_invalid_agent'));
           return;
         }
         $objectId = $agent->getId();
@@ -163,7 +164,7 @@ class NotificationHandler implements Handler {
         }
         $hashlist = $FACTORIES::getHashlistFactory()->get($_POST['hashlists']);
         if ($hashlist == null) {
-          UI::addMessage(UI::ERROR, "Invalid hashlist selected!");
+          UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_invalid_hashlist'));
           return;
         }
         $objectId = $hashlist->getId();
@@ -174,7 +175,7 @@ class NotificationHandler implements Handler {
         }
         $task = $FACTORIES::getTaskFactory()->get($_POST['tasks']);
         if ($task == null) {
-          UI::addMessage(UI::ERROR, "Invalid task selected!");
+          UI::addMessage(UI::ERROR, $LANG->get('handler_message_notification_invalid_task'));
           return;
         }
         $objectId = $task->getId();

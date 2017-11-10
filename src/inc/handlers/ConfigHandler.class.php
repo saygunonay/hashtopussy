@@ -16,6 +16,7 @@ class ConfigHandler implements Handler {
   }
   
   public function handle($action) {
+    global $LANG;
     switch ($action) {
       case DConfigAction::UPDATE_CONFIG:
         $this->updateConfig();
@@ -30,7 +31,7 @@ class ConfigHandler implements Handler {
         $this->clearAll();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_invalid_action'));
         break;
     }
   }
@@ -64,36 +65,36 @@ class ConfigHandler implements Handler {
   }
   
   private function scanFiles() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $allOk = true;
     $files = $FACTORIES::getFileFactory()->filter(array());
     foreach ($files as $file) {
       $absolutePath = dirname(__FILE__) . "/../../files/" . $file->getFilename();
       if (!file_exists($absolutePath)) {
-        UI::addMessage(UI::ERROR, "File " . $file->getFilename() . " does not exist!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_config_file_not_exist', [$file->getFilename()]));
         $allOk = false;
         continue;
       }
       $size = Util::filesize($absolutePath);
       if ($size == -1) {
         $allOk = false;
-        UI::addMessage(UI::ERROR, "Failed to determine file size of " . $file->getFilename());
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_config_cannot_determine_filesize', [$file->getFilename()]));
       }
       else if ($size != $file->getSize()) {
         $allOk = false;
-        UI::addMessage(UI::WARN, "File size mismatch of " . $file->getFilename() . ", will be corrected.");
+        UI::addMessage(UI::WARN, $LANG->get('handler_message_config_filesize_mismatch_corrected', [$file->getFilename()]));
         $file->setSize($size);
         $FACTORIES::getFileFactory()->update($file);
       }
     }
     if ($allOk) {
-      UI::addMessage(UI::SUCCESS, "File scan was successfull, no actions required!");
+      UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_config_file_scan_successful'));
     }
   }
   
   private function rebuildCache() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $correctedChunks = 0;
     $correctedHashlists = 0;
@@ -164,11 +165,11 @@ class ConfigHandler implements Handler {
     }
     $FACTORIES::getAgentFactory()->getDB()->query("COMMIT");
     
-    UI::addMessage(UI::SUCCESS, "Updated all chunks and hashlists. Corrected $correctedChunks chunks and $correctedHashlists hashlists.");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_config_updated_chunks_hashlists', [$correctedChunks, $correctedHashlists]));
   }
   
   private function updateConfig() {
-    global $OBJECTS, $FACTORIES;
+    global $OBJECTS, $FACTORIES, $LANG;
     
     /** @var DataSet $CONFIG */
     $CONFIG = $OBJECTS['config'];
@@ -188,7 +189,7 @@ class ConfigHandler implements Handler {
         }
       }
     }
-    UI::addMessage(UI::SUCCESS, "Config was updated!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_config_updated'));
     $OBJECTS['config'] = $CONFIG;
   }
 }

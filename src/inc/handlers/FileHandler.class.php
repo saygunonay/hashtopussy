@@ -13,18 +13,18 @@ class FileHandler implements Handler {
   
   public function handle($action) {
     /** @var Login $LOGIN */
-    global $LOGIN;
+    global $LOGIN, $LANG;
     
     switch ($action) {
       case DFileAction::DELETE_FILE:
         if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->delete();
         break;
       case DFileAction::SET_SECRET:
         if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->switchSecret();
         break;
@@ -33,33 +33,33 @@ class FileHandler implements Handler {
         break;
       case DFileAction::EDIT_FILE:
         if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get('handler_message_no_rights'));
         }
         $this->saveChanges();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get('handler_message_invalid_action'));
         break;
     }
   }
   
   private function saveChanges() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $file = $FACTORIES::getFileFactory()->get($_POST['fileId']);
     if ($file == null) {
-      UI::addMessage(UI::ERROR, "Invalid file ID!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_invalid_file_id'));
       return;
     }
     $newName = str_replace(" ", "_", htmlentities($_POST['filename'], ENT_QUOTES, "UTF-8"));
     if (strlen($newName) == 0) {
-      UI::addMessage(UI::ERROR, "Filename cannot be empty!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_filename_empty'));
       return;
     }
     $qF = new QueryFilter(File::FILENAME, $newName, "=");
     $files = $FACTORIES::getFileFactory()->filter(array($FACTORIES::FILTER => $qF));
     if (sizeof($files) > 0) {
-      UI::addMessage(UI::ERROR, "This filename is already used!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_filename_used'));
       return;
     }
     
@@ -77,7 +77,7 @@ class FileHandler implements Handler {
     
     $success = rename(dirname(__FILE__) . "/../../files/" . $file->getFilename(), dirname(__FILE__) . "/../../files/" . $newName);
     if (!$success) {
-      UI::addMessage(UI::ERROR, "Failed to rename file!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_rename_failed'));
       return;
     }
     $file->setFilename($newName);
@@ -86,6 +86,7 @@ class FileHandler implements Handler {
   }
   
   private function add() {
+    global $LANG;
     $fileCount = 0;
     $source = $_POST["source"];
     if (!file_exists(dirname(__FILE__) . "/../../files")) {
@@ -116,11 +117,11 @@ class FileHandler implements Handler {
               $fileCount++;
             }
             else {
-              UI::addMessage(UI::ERROR, "Failed to insert file $realname into DB!");
+              UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_rename_failed', [$realname]));
             }
           }
           else {
-            UI::addMessage(UI::ERROR, "Failed to copy file $realname to the right place! " . $resp[1]);
+            UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_copy_failed', [$realname, $resp[1]]));
           }
         }
         break;
@@ -145,11 +146,11 @@ class FileHandler implements Handler {
               $fileCount++;
             }
             else {
-              UI::addMessage(UI::ERROR, "Failed to insert file $realname into DB!");
+              UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_rename_failed', [$realname]));
             }
           }
           else {
-            UI::addMessage(UI::ERROR, "Failed to copy file $realname to the right place! " . $resp[1]);
+            UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_copy_failed', [$realname, $resp[1]]));
           }
         }
         break;
@@ -165,15 +166,15 @@ class FileHandler implements Handler {
             $fileCount++;
           }
           else {
-            UI::addMessage(UI::ERROR, "Failed to insert file $realname into DB!");
+            UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_rename_failed', [$realname]));
           }
         }
         else {
-          UI::addMessage(UI::ERROR, "Failed to copy file $realname to the right place! " . $resp[1]);
+          UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_copy_failed', [$realname, $resp[1]]));
         }
         break;
     }
-    UI::addMessage(UI::SUCCESS, "Successfully added $fileCount files!");
+    UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_file_add_success', [$fileCount]));
   }
   
   private function switchSecret() {
@@ -187,21 +188,21 @@ class FileHandler implements Handler {
   }
   
   private function delete() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $file = $FACTORIES::getFileFactory()->get($_POST['file']);
     if ($file == null) {
-      UI::printError("ERROR", "File does not exist!");
+      UI::printError("ERROR", $LANG->get('handler_message_file_not_exist'));
     }
     $qF = new QueryFilter(TaskFile::FILE_ID, $file->getId(), "=");
     $tasks = $FACTORIES::getTaskFileFactory()->filter(array($FACTORIES::FILTER => $qF));
     if (sizeof($tasks) > 0) {
-      UI::addMessage(UI::ERROR, "This file is currently used in a task!");
+      UI::addMessage(UI::ERROR, $LANG->get('handler_message_file_used_in_task'));
     }
     else {
       $FACTORIES::getFileFactory()->delete($file);
       unlink(dirname(__FILE__) . "/../../files/" . $file->getFilename());
-      UI::addMessage(UI::SUCCESS, "Successfully deleted file!");
+      UI::addMessage(UI::SUCCESS, $LANG->get('handler_message_file_delete_success'));
     }
   }
 }

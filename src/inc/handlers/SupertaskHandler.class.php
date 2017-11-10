@@ -14,6 +14,7 @@ class SupertaskHandler implements Handler {
   }
   
   public function handle($action) {
+    global $LANG;
     switch ($action) {
       case DSupertaskAction::DELETE_SUPERTASK:
         $this->delete();
@@ -28,20 +29,20 @@ class SupertaskHandler implements Handler {
         $this->importSupertask();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get("handler_message_invalid_action"));
         break;
     }
   }
   
   private function importSupertask() {
     /** @var $CONFIG DataSet */
-    global $FACTORIES, $CONFIG;
+    global $FACTORIES, $CONFIG, $LANG;
     
     $name = htmlentities($_POST['name'], ENT_QUOTES, "UTF-8");
     $masks = $_POST['masks'];
     $isSmall = intval($_POST['isSmall']);
     if (strlen($name) == 0 || strlen($masks) == 0) {
-      UI::addMessage(UI::ERROR, "Name or masks is empty!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_supertask_name_mask_empty"));
       return;
     }
     if ($isSmall != 0 && $isSmall != 1) {
@@ -68,7 +69,7 @@ class SupertaskHandler implements Handler {
     }
     
     if (sizeof($masks) == 0) {
-      UI::addMessage(UI::ERROR, "No valid mask lines! Supertask was not created.");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_supertask_no_valid_mask"));
       return;
     }
     
@@ -114,15 +115,15 @@ class SupertaskHandler implements Handler {
   
   private function createTasks() {
     /** @var DataSet $CONFIG */
-    global $FACTORIES, $CONFIG;
+    global $FACTORIES, $CONFIG, $LANG;
     
     $supertask = $FACTORIES::getSupertaskFactory()->get($_POST['supertask']);
     $hashlist = $FACTORIES::getHashlistFactory()->get($_POST['hashlist']);
     if ($supertask == null) {
-      UI::printError("ERROR", "Invalid supertask ID!");
+      UI::printError("ERROR", $LANG->get("handler_message_supertask_invalid_supertask"));
     }
     else if ($hashlist == null) {
-      UI::printError("ERROR", "Invalid hashlist ID!");
+      UI::printError("ERROR", $LANG->get("handler_message_supertask_invalid_hashlist"));
     }
     
     $FACTORIES::getAgentFactory()->getDB()->query("START TRANSACTION");
@@ -139,7 +140,7 @@ class SupertaskHandler implements Handler {
     foreach ($tasks as $task) {
       /** @var $task Task */
       if (strpos($task->getAttackCmd(), $CONFIG->getVal(DConfig::HASHLIST_ALIAS)) === false) {
-        UI::addMessage(UI::WARN, "Task must contain the hashlist alias for cracking!");
+        UI::addMessage(UI::WARN, $LANG->get("handler_message_supertask_task_contain_hashlist_alias"));
         continue;
       }
       $qF = new QueryFilter(TaskFile::TASK_ID, $task->getId(), "=");
@@ -174,11 +175,11 @@ class SupertaskHandler implements Handler {
     }
     
     $FACTORIES::getAgentFactory()->getDB()->query("COMMIT");
-    UI::addMessage(UI::SUCCESS, "New supertask applied successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get("handler_message_supertask_applied_successfully"));
   }
   
   private function create() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $name = htmlentities($_POST['name'], ENT_QUOTES, "UTF-8");
     $tasks = $_POST['task'];
@@ -197,15 +198,15 @@ class SupertaskHandler implements Handler {
       $FACTORIES::getSupertaskTaskFactory()->save($supertaskTask);
     }
     $FACTORIES::getAgentFactory()->getDB()->query("COMMIT");
-    UI::addMessage(UI::SUCCESS, "New supertask created successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get("handler_message_supertask_created_successfully"));
   }
   
   private function delete() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $supertask = $FACTORIES::getSupertaskFactory()->get($_POST['supertask']);
     if ($supertask == null) {
-      UI::printError("ERROR", "Invalid supertask ID!");
+      UI::printError("ERROR", $LANG->get("handler_message_supertask_invalid_supertask"));
     }
     $FACTORIES::getAgentFactory()->getDB()->query("START TRANSACTION");
     $qF = new QueryFilter(SupertaskTask::SUPERTASK_ID, $supertask->getId(), "=", $FACTORIES::getSupertaskTaskFactory());
@@ -224,6 +225,6 @@ class SupertaskHandler implements Handler {
     
     $FACTORIES::getSupertaskFactory()->delete($supertask);
     $FACTORIES::getAgentFactory()->getDB()->query("COMMIT");
-    UI::addMessage(UI::SUCCESS, "Supertask deleted successfully!");
+    UI::addMessage(UI::SUCCESS, $LANG->get("handler_message_supertask_deleted_successfully"));
   }
 }

@@ -329,8 +329,6 @@ $LANGARR['tr-TR']['lists_detail_create_preconfigured_tasks'] = "Ön-ayarlı gör
 $LANGARR['tr-TR']['lists_detail_create_supertask'] = "Üstgörev oluştur";
 $LANGARR['tr-TR']['lists_detail_hashlists_included_in_this_superhashlist'] = "Bu üst hash listesinde bulunan hash listeleri";
 
-$LANGARR['tr-TR']['lists_detail_message_new_task_create_redirect'] = "{0} tane görev {1} dosya ile oluşturuldu! Görevler sayfasına 5 saniye içerisinde aktarılacaksınız.";
-
 $LANGARR['tr-TR']['lists_new_new_hashlist'] = "Yeni hash listesi";
 $LANGARR['tr-TR']['lists_new_hashlist_format_text_file'] = "Metin dosya";
 $LANGARR['tr-TR']['lists_new_hashlist_format_hccapx_file'] = "HCCAPX dosya";
@@ -430,7 +428,7 @@ $LANGARR['tr-TR']['config_log_log_entries'] = "Log Kayıtları";
 
 //
 $LANGARR['tr-TR']['post_confirm_msg_delete_all_finished_tasks'] = 'Tüm bitmiş görevleri silmeyi gerçekten istiyor musunuz?';
-$LANGARR['tr-TR']['post_confirm_msg_delete_binary'] = 'Dosya {0} gerçekten silinsin mi?';
+$LANGARR['tr-TR']['post_confirm_msg_delete_binary'] = 'Komut dosyası {0} gerçekten silinsin mi?';
 $LANGARR['tr-TR']['post_confirm_msg_delete_notification'] = 'Uyarı {0} gerçekten silinsin mi?';
 $LANGARR['tr-TR']['post_confirm_msg_delete_task'] = 'Görev {0} gerçekten silinsin mi?';
 $LANGARR['tr-TR']['post_confirm_msg_delete_task_used'] = 'Bu görev bir üstgörevde kullanılıyor, silmek istediğinizden gerçekten emin misiniz?';
@@ -471,12 +469,11 @@ $LANGARR['tr-TR']['notification_types_deleteTask'] = 'Görev Silindi';
 $LANGARR['tr-TR']['notification_types_deleteHashlist'] = 'Hash listesi Silindi';
 $LANGARR['tr-TR']['notification_types_deleteAgent'] = 'Ajan Silindi';
 
-// 
+// handler messages
 $LANGARR['tr-TR']['handler_message_invalid_form_submission'] = "Hatalı form gönderimi!";
 $LANGARR['tr-TR']['handler_message_invalid_action'] = "Geçersiz eylem!";
-$LANGARR['tr-TR']['handler_message_search_query_cannot_be_empty'] = "Arama sorgusu boş olamaz!";
-$LANGARR['tr-TR']['handler_message_searched_for_entries'] = "{0} adet kalem arandı.";
-$LANGARR['tr-TR']['handler_message_no_hashlists_selected'] = "Hiç hash listesi seçilmedi!";
+$LANGARR['tr-TR']['handler_message_invalid_inputs'] = "Geçersiz girdiler!";
+$LANGARR['tr-TR']['handler_message_no_rights'] = "Bu eylemi gerçekleştirmek için hakkınız yok!";
 
 $LANGARR['tr-TR']['handler_message_users_user_disabled_successfully'] = "Kullanıcı başarılı şekilde pasif edildi!";
 $LANGARR['tr-TR']['handler_message_users_invalid_user'] = "Geçersiz kullanıcı!";
@@ -491,6 +488,125 @@ $LANGARR['tr-TR']['handler_message_users_password_updated_successfully'] = "Kull
 $LANGARR['tr-TR']['handler_message_users_invalid_email'] = "Geçersiz e-posta adresi!";
 $LANGARR['tr-TR']['handler_message_users_username_short'] = "Kullanıcı adı çok kısa!";
 $LANGARR['tr-TR']['handler_message_users_username_used'] = "Kullanıcı adı zaten var!";
+
+$LANGARR['tr-TR']['handler_message_account_user_not_found'] = "{0} kimlikli kullanıcı bulunamadı!";
+$LANGARR['tr-TR']['handler_message_account_old_password_wrong'] = "Eski şifre yanlış!";
+$LANGARR['tr-TR']['handler_message_account_password_short'] = "Şifre çok kısa!";
+$LANGARR['tr-TR']['handler_message_account_password_dont_match'] = "Yeni şifreler birbiriyle aynı değil!";
+$LANGARR['tr-TR']['handler_message_account_password_updated'] = "Şifre başarılı bir şekilde güncellendi!";
+$LANGARR['tr-TR']['handler_message_account_lifetime_error'] = "Oturum süresi 1 dakikadan büyük ve 2 günden küçük olmalıdır!";
+$LANGARR['tr-TR']['handler_message_account_lifetime_updated'] = "Oturum süresi başarılı bir şekilde güncellendi!";
+$LANGARR['tr-TR']['handler_message_account_email_invalid'] = "Geçersiz e-posta adresi!";
+$LANGARR['tr-TR']['handler_message_account_email_updated'] = "E-posta adresi başarılı bir şekilde güncellendi!";
+$LANGARR['tr-TR']['handler_message_account_otp_configure_first'] = "Önce OTP anahtarını yapılandırın!";
+$LANGARR['tr-TR']['handler_message_account_otp_updated'] = "OTP başarılı bir şekilde güncellendi!";
+
+$LANGARR['tr-TR']['handler_message_agent_binary_doesnot_exist'] = "Komut dosyası bulunamadı!";
+$LANGARR['tr-TR']['handler_message_agent_binary_deleted_successfully'] = "Komut dosyası başarılı bir şekilde silindi!";
+$LANGARR['tr-TR']['handler_message_agent_binary_version_empty'] = "Sürüm boş bırakılamaz!";
+$LANGARR['tr-TR']['handler_message_agent_binary_filename_doesnot_exist'] = "İsmi verilen dosya bulunamadı!";
+$LANGARR['tr-TR']['handler_message_agent_binary_cannot_have_same_type'] = "Aynı tipte birden fazla komut dosyası olamaz!";
+$LANGARR['tr-TR']['handler_message_agent_binary_updated_successfully'] = "Komut dosyası başarılı bir şekilde güncellendi!";
+$LANGARR['tr-TR']['handler_message_agent_binary_added_successfully'] = "Komut dosyası başarılı bir şekilde eklendi!";
+
+$LANGARR['tr-TR']['handler_message_agent_not_found'] = "{0} kimlikli ajan bulunamadı!";
+$LANGARR['tr-TR']['handler_message_agent_binary_invalid'] = "Ajan komut dosyası geçersiz!";
+$LANGARR['tr-TR']['handler_message_agent_binary_not_present'] = "Ajan komut dosyası sunucuda bulunamadı!";
+$LANGARR['tr-TR']['handler_message_agent_invalid_task'] = "Geçersiz görev!";
+$LANGARR['tr-TR']['handler_message_agent_assign_limit'] = "Limite ulaşıldığı için bu göreve ajan atayamazsınız!";
+$LANGARR['tr-TR']['handler_message_agent_delete_error'] = "Ajanın silinmesinde hata oluştu!";
+$LANGARR['tr-TR']['handler_message_agent_invalid_agent'] = "Geçersiz ajan!";
+$LANGARR['tr-TR']['handler_message_agent_no_blacklisted_characters'] = "Parametreler izin verilmeyen karakterler içermemelidir!";
+$LANGARR['tr-TR']['handler_message_agent_invalid_ignore_state'] = "Geçersiz durum!";
+$LANGARR['tr-TR']['handler_message_agent_invalid_trusted_state'] = "Geçersiz güvenilir durumu!";
+$LANGARR['tr-TR']['handler_message_agent_invalid_user_selected'] = "Geçersiz kullanıcı seçildi!";
+
+$LANGARR['tr-TR']['handler_message_config_file_not_exist'] = "Dosya {0} bulunamadı!";
+$LANGARR['tr-TR']['handler_message_config_cannot_determine_filesize'] = "{0} dosyasının boyutu belirlenemedi!";
+$LANGARR['tr-TR']['handler_message_config_filesize_mismatch_corrected'] = "{0} dosyasının boyutundaki uyumsuzluk düzeltilecektir.";
+$LANGARR['tr-TR']['handler_message_config_file_scan_successful'] = "Dosya taraması başarılı oldu, herhangi bir eylem gerekli değil!";
+$LANGARR['tr-TR']['handler_message_config_updated_chunks_hashlists'] = "Tüm parçalar ve hash listeleri güncellendi. {0} parça ve {1} hash listesi düzeltildi.";
+$LANGARR['tr-TR']['handler_message_config_updated'] = "Yapılandırma güncellendi!";
+
+$LANGARR['tr-TR']['handler_message_file_invalid_file_id'] = "Geçersiz dosya kimliği!";
+$LANGARR['tr-TR']['handler_message_file_filename_empty'] = "Dosya adı boş olamaz!";
+$LANGARR['tr-TR']['handler_message_file_filename_used'] = "Dosya adı zaten kullanılıyor!";
+$LANGARR['tr-TR']['handler_message_file_rename_failed'] = "Dosya adı değiştirilemedi!";
+$LANGARR['tr-TR']['handler_message_file_insert_db_failed'] = "{0} dosyası veri tabanına girilemedi!";
+$LANGARR['tr-TR']['handler_message_file_copy_failed'] = "{0} dosyası doğru yere kopyalanamadı! {1}";
+$LANGARR['tr-TR']['handler_message_file_add_success'] = "{0} dosya başarılı bir şekilde eklendi!";
+$LANGARR['tr-TR']['handler_message_file_not_exist'] = "Dosya bulunamadı!";
+$LANGARR['tr-TR']['handler_message_file_used_in_task'] = "Bu dosya bir görevde kullanılıyor!";
+$LANGARR['tr-TR']['handler_message_file_delete_success'] = "Dosya başarılı bir şekilde silindi!";
+
+$LANGARR['tr-TR']['handler_message_hashcat_specify_version'] = "Bir sürüm belirtmelisiniz!";
+$LANGARR['tr-TR']['handler_message_hashcat_not_create'] = "Yeni hashcat yayımı oluşturulamadı!";
+$LANGARR['tr-TR']['handler_message_hashcat_not_delete'] = "Bu hashcat sürümünü kullanan ajanlar bulunmaktadır!";
+
+$LANGARR['tr-TR']['handler_message_hashlist_not_found'] = "Hash listesi {0} bulunamadı!";
+$LANGARR['tr-TR']['handler_message_hashlist_invalid'] = "Geçersiz hash listesi!";
+$LANGARR['tr-TR']['handler_message_hashlist_leftlists_binary'] = "Binari hashler için kalan listesi oluturamazsınız!";
+$LANGARR['tr-TR']['handler_message_hashlist_no_hashlists_selected'] = "Hiç hash listesi seçilmedi!";
+$LANGARR['tr-TR']['handler_message_hashlist_invalid_format'] = "Geçersiz hash listesi formatı!";
+$LANGARR['tr-TR']['handler_message_hashlist_name_empty'] = "Hash listesi ismi boş bırakılamaz!";
+$LANGARR['tr-TR']['handler_message_hashlist_salt_separator_empty'] = "Hashler saltlı iken salt ayıraçı boş olamaz!";
+$LANGARR['tr-TR']['handler_message_hashlist_failed_file_process'] = "Dosya işlenmesi başarısız oldu!";
+$LANGARR['tr-TR']['handler_message_hashlist_required_file_not_exist'] = "Gerekli dosya bulunamadı!";
+$LANGARR['tr-TR']['handler_message_hashlist_failed_file_open'] = "Dosya açılamadı!";
+$LANGARR['tr-TR']['handler_message_hashlist_salt_separator_not_found'] = "Saltlı hash ayıraçı dosyada bulunamadı!";
+$LANGARR['tr-TR']['handler_message_hashlist_file_contains_bytes'] = "Veri dosyasında sadece {0} byte bulunmaktadır!";
+$LANGARR['tr-TR']['handler_message_hashlist_failed_file_write'] = "Dosyaya yazma başarısız!";
+$LANGARR['tr-TR']['handler_message_hashlist_cracked_hashes_exported'] = "Kırılan hashler hash listesinden başarılı bir şekilde ihraç edildi!";
+$LANGARR['tr-TR']['handler_message_hashlist_file_empty'] = "Dosya boş!";
+$LANGARR['tr-TR']['handler_message_hashlist_failed_temp_file_process'] = "Geçici dosyanın işlenmesi başarısız oldu!";
+$LANGARR['tr-TR']['handler_message_hashlist_processed_precracked_hashes'] = "Önceden kırılmış hashler işlendi: {0} toplam satır, {1} yeni kırılmış hash, {2} adet zaten kırılmış, {3} geçersiz satır, {4} uyumsuz kalem ({5}s)!";
+$LANGARR['tr-TR']['handler_message_hashlist_long_entries'] = "Fazla uzun metine sahip {0} kalem";
+$LANGARR['tr-TR']['handler_message_hashlist_failed_determine_hashlists'] = "İhraç edilecek hash listeleri belirlenemedi!";
+$LANGARR['tr-TR']['handler_message_hashlist_failed_write_wordlist'] = "Kelime listesi dosyası yazılamadı!";
+$LANGARR['tr-TR']['handler_message_hashlist_exported_plains'] = "Bulunan {0} hash {1} dosyasına başarılı bir şekilde ihraç edildi!";
+$LANGARR['tr-TR']['handler_message_hashlist_new_task_create_redirect'] = "{0} tane görev {1} dosya ile oluşturuldu! Görevler sayfasına 5 saniye içerisinde aktarılacaksınız.";
+$LANGARR['tr-TR']['handler_message_hashlist_not_created_task'] = "Görev oluşturulmadı!";
+
+$LANGARR['tr-TR']['handler_message_hashtype_failed_to_add'] = "Yeni hash tipi eklenemedi!";
+$LANGARR['tr-TR']['handler_message_hashtype_hash_number_already_used'] = "Bu hash numarası zaten kullanılıyor!";
+$LANGARR['tr-TR']['handler_message_hashtype_created_successfully'] = "Yeni hash tipi başarılı bir şekilde oluşturuldu!";
+$LANGARR['tr-TR']['handler_message_hashtype_invalid_hashtype'] = "Geçersiz hash tipi!";
+$LANGARR['tr-TR']['handler_message_hashtype_cannot_delete_hashtype'] = "Bu hash tipini silemezsiniz! Bu hash tipini kullanan hash listeleri bulunmaktadır!";
+$LANGARR['tr-TR']['handler_message_hashtype_deleted_successfully'] = "Hash tipi başarılı bir şekilde silindi!";
+
+$LANGARR['tr-TR']['handler_message_notification_not_found'] = "Uyarı bulunamadı!";
+$LANGARR['tr-TR']['handler_message_notification_not_allowed_delete'] = "Bu uyarıyı silmeye yetkili değilsiniz!";
+$LANGARR['tr-TR']['handler_message_notification_no_access'] = "Bu uyarıya erişime yetkili değilsiniz!";
+$LANGARR['tr-TR']['handler_message_notification_not_available'] = "Böyle bir uyarı bulunmamaktadır!";
+$LANGARR['tr-TR']['handler_message_notification_actiontype_not_available'] = "Böyle bir eylem tipi bulunmamaktadır!";
+$LANGARR['tr-TR']['handler_message_notification_fill_receiver'] = "Alıcıyı doldurmalısınız!";
+$LANGARR['tr-TR']['handler_message_notification_not_allowed_actiontype'] = "Bu eylem tipini kullanmaya yetkili değilsiniz!";
+$LANGARR['tr-TR']['handler_message_notification_not_allowed_user_actiontypes'] = "Kullanıcı eylem tiplerini kullanamazsınız!";
+$LANGARR['tr-TR']['handler_message_notification_invalid_user'] = "Geçersiz kullanıcı seçildi!";
+$LANGARR['tr-TR']['handler_message_notification_invalid_agent'] = "Geçersiz ajan seçildi!";
+$LANGARR['tr-TR']['handler_message_notification_invalid_hashlist'] = "Geçersiz hash listesi seçildi!";
+$LANGARR['tr-TR']['handler_message_notification_invalid_task'] = "Geçersiz görev seçildi!";
+
+$LANGARR['tr-TR']['handler_message_search_query_cannot_be_empty'] = "Arama sorgusu boş olamaz!";
+$LANGARR['tr-TR']['handler_message_search_searched_for_entries'] = "{0} adet kalem arandı.";
+
+$LANGARR['tr-TR']['handler_message_supertask_name_mask_empty'] = "İsim veya maskeler boş!";
+$LANGARR['tr-TR']['handler_message_supertask_no_valid_mask'] = "Geçerli maske yok! Üstgörev oluşturulamadı.";
+$LANGARR['tr-TR']['handler_message_supertask_invalid_supertask'] = "Geçersiz üstgörev kimliği!";
+$LANGARR['tr-TR']['handler_message_supertask_invalid_hashlist'] = "Geçersiz hash listesi kimliği!";
+$LANGARR['tr-TR']['handler_message_supertask_task_contain_hashlist_alias'] = "Görev hash listesi lakabını içermelidir!";
+$LANGARR['tr-TR']['handler_message_supertask_applied_successfully'] = "Yeni üstgörev başarılı bir şekilde uygulandı!";
+$LANGARR['tr-TR']['handler_message_supertask_created_successfully'] = "Yeni üstgörev başarılı bir şekilde oluşturuldu!";
+$LANGARR['tr-TR']['handler_message_supertask_deleted_successfully'] = "Üstgörev başarılı bir şekilde silindi!";
+
+$LANGARR['tr-TR']['handler_message_task_not_found'] = "Görev {0} bulunamadı!";
+$LANGARR['tr-TR']['handler_message_task_no_such'] = "Böyle bir görev yok!";
+$LANGARR['tr-TR']['handler_message_task_command_must_contain_hashlist'] = "Komut satırı hash listesi ({0}) içermelidir!";
+$LANGARR['tr-TR']['handler_message_task_command_no_blacklisted_character'] = "Komut yasaklı karakterler içermemelidir!";
+$LANGARR['tr-TR']['handler_message_task_invalid_hashlist'] = "Geçersiz hash listesi!";
+$LANGARR['tr-TR']['handler_message_task_chunk_time'] = "Parça zamanı durum sorgusu periyotundan fazla olmalıdır!";
+$LANGARR['tr-TR']['handler_message_task_no_such_chunk'] = "Böyle bir parça yok!";
+$LANGARR['tr-TR']['handler_message_task_no_assignment_agent'] = "Bu ajan için atama bulunamadı!";
 
 // API
 $LANGARR['tr-TR']['api_server_error_invalid_query'] = "Geçersiz sorgu!";

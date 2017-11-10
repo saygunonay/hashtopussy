@@ -329,8 +329,6 @@ $LANGARR['en-US']['lists_detail_create_preconfigured_tasks'] = "Create pre-confi
 $LANGARR['en-US']['lists_detail_create_supertask'] = "Create supertask";
 $LANGARR['en-US']['lists_detail_hashlists_included_in_this_superhashlist'] = "Hashlists included in this superhashlist";
 
-$LANGARR['en-US']['lists_detail_message_new_task_create_redirect'] = "Successfully created {0} new tasks with {1} files! You will be forwarded to the tasks page in 5 seconds.";
-
 $LANGARR['en-US']['lists_new_new_hashlist'] = "New hashlist";
 $LANGARR['en-US']['lists_new_hashlist_format_text_file'] = "Text file";
 $LANGARR['en-US']['lists_new_hashlist_format_hccapx_file'] = "HCCAPX file";
@@ -471,12 +469,11 @@ $LANGARR['en-US']['notification_types_deleteTask'] = 'Delete Task';
 $LANGARR['en-US']['notification_types_deleteHashlist'] = 'Delete Hashlist';
 $LANGARR['en-US']['notification_types_deleteAgent'] = 'Delete Agent';
 
-// 
+// handler messages
 $LANGARR['en-US']['handler_message_invalid_form_submission'] = "Invalid form submission!";
 $LANGARR['en-US']['handler_message_invalid_action'] = "Invalid action!";
-$LANGARR['en-US']['handler_message_search_query_cannot_be_empty'] = "Search query cannot be empty!";
-$LANGARR['en-US']['handler_message_searched_for_entries'] = "Searched for {0} entries.";
-$LANGARR['en-US']['handler_message_no_hashlists_selected'] = "No hashlists selected!";
+$LANGARR['en-US']['handler_message_invalid_inputs'] = "Invalid inputs!";
+$LANGARR['en-US']['handler_message_no_rights'] = "You have no rights to execute this action!";
 
 $LANGARR['en-US']['handler_message_users_user_disabled_successfully'] = "User was disabled successfully!";
 $LANGARR['en-US']['handler_message_users_invalid_user'] = "Invalid user!";
@@ -491,6 +488,125 @@ $LANGARR['en-US']['handler_message_users_password_updated_successfully'] = "User
 $LANGARR['en-US']['handler_message_users_invalid_email'] = "Invalid email address!";
 $LANGARR['en-US']['handler_message_users_username_short'] = "Username is too short!";
 $LANGARR['en-US']['handler_message_users_username_used'] = "Username is already used!";
+
+$LANGARR['en-US']['handler_message_account_user_not_found'] = "User with ID {0} not found!";
+$LANGARR['en-US']['handler_message_account_old_password_wrong'] = "Your old password is wrong!";
+$LANGARR['en-US']['handler_message_account_password_short'] = "Your password is too short!";
+$LANGARR['en-US']['handler_message_account_password_dont_match'] = "Your new passwords do not match!";
+$LANGARR['en-US']['handler_message_account_password_updated'] = "Password was updated successfully!";
+$LANGARR['en-US']['handler_message_account_lifetime_error'] = "Lifetime must be larger than 1 minute and smaller than 2 days!";
+$LANGARR['en-US']['handler_message_account_lifetime_updated'] = "Updated session lifetime successfully!";
+$LANGARR['en-US']['handler_message_account_email_invalid'] = "Invalid email address!";
+$LANGARR['en-US']['handler_message_account_email_updated'] = "Email updated successfully!";
+$LANGARR['en-US']['handler_message_account_otp_configure_first'] = "Configure OTP KEY first!";
+$LANGARR['en-US']['handler_message_account_otp_updated'] = "OTP updated successfully!";
+
+$LANGARR['en-US']['handler_message_agent_binary_doesnot_exist'] = "Binary does not exist!";
+$LANGARR['en-US']['handler_message_agent_binary_deleted_successfully'] = "Binary deleted successfully!";
+$LANGARR['en-US']['handler_message_agent_binary_version_empty'] = "Version cannot be empty!";
+$LANGARR['en-US']['handler_message_agent_binary_filename_doesnot_exist'] = "Provided filename does not exist!";
+$LANGARR['en-US']['handler_message_agent_binary_cannot_have_same_type'] = "You cannot have two binaries with the same type!";
+$LANGARR['en-US']['handler_message_agent_binary_updated_successfully'] = "Binary was updated successfully!";
+$LANGARR['en-US']['handler_message_agent_binary_added_successfully'] = "Binary was added successfully!";
+
+$LANGARR['en-US']['handler_message_agent_not_found'] = "Agent with ID {0} not found!";
+$LANGARR['en-US']['handler_message_agent_binary_invalid'] = "Invalid Agent Binary!";
+$LANGARR['en-US']['handler_message_agent_binary_not_present'] = "Agent Binary not present on server!";
+$LANGARR['en-US']['handler_message_agent_invalid_task'] = "Invalid task!";
+$LANGARR['en-US']['handler_message_agent_assign_limit'] = "You cannot assign agent to this task as the limit of assignments is reached!";
+$LANGARR['en-US']['handler_message_agent_delete_error'] = "Error occured on deletion of agent!";
+$LANGARR['en-US']['handler_message_agent_invalid_agent'] = "Invalid agent!";
+$LANGARR['en-US']['handler_message_agent_no_blacklisted_characters'] = "Parameters must contain no blacklisted characters!";
+$LANGARR['en-US']['handler_message_agent_invalid_ignore_state'] = "Invalid Ignore state!";
+$LANGARR['en-US']['handler_message_agent_invalid_trusted_state'] = "Invalid trusted state!";
+$LANGARR['en-US']['handler_message_agent_invalid_user_selected'] = "Invalid user selected!";
+
+$LANGARR['en-US']['handler_message_config_file_not_exist'] = "File {0} does not exist!";
+$LANGARR['en-US']['handler_message_config_cannot_determine_filesize'] = "Failed to determine file size of {0}!";
+$LANGARR['en-US']['handler_message_config_filesize_mismatch_corrected'] = "File size mismatch of {0} will be corrected.";
+$LANGARR['en-US']['handler_message_config_file_scan_successful'] = "File scan was successful, no actions required!";
+$LANGARR['en-US']['handler_message_config_updated_chunks_hashlists'] = "Updated all chunks and hashlists. Corrected {0} chunks and {1} hashlists.";
+$LANGARR['en-US']['handler_message_config_updated'] = "Config was updated!";
+
+$LANGARR['en-US']['handler_message_file_invalid_file_id'] = "Invalid file ID!";
+$LANGARR['en-US']['handler_message_file_filename_empty'] = "Filename cannot be empty!";
+$LANGARR['en-US']['handler_message_file_filename_used'] = "This filename is already used!";
+$LANGARR['en-US']['handler_message_file_rename_failed'] = "Failed to rename file!";
+$LANGARR['en-US']['handler_message_file_insert_db_failed'] = "Failed to insert file {0} into DB!";
+$LANGARR['en-US']['handler_message_file_copy_failed'] = "Failed to copy file {0} to the right place! {1}";
+$LANGARR['en-US']['handler_message_file_add_success'] = "Successfully added {0} files!";
+$LANGARR['en-US']['handler_message_file_not_exist'] = "File does not exist!";
+$LANGARR['en-US']['handler_message_file_used_in_task'] = "This file is currently used in a task!";
+$LANGARR['en-US']['handler_message_file_delete_success'] = "Successfully deleted file!";
+
+$LANGARR['en-US']['handler_message_hashcat_specify_version'] = "You must specify a version!";
+$LANGARR['en-US']['handler_message_hashcat_not_create'] = "Could not create new hashcat release!";
+$LANGARR['en-US']['handler_message_hashcat_not_delete'] = "There are registered agents running this Hashcat version!";
+
+$LANGARR['en-US']['handler_message_hashlist_not_found'] = "Hashlist with ID {0} not found!";
+$LANGARR['en-US']['handler_message_hashlist_invalid'] = "Invalid hashlist!";
+$LANGARR['en-US']['handler_message_hashlist_leftlists_binary'] = "You cannot create left lists for binary hashes!";
+$LANGARR['en-US']['handler_message_hashlist_no_hashlists_selected'] = "No hashlists selected!";
+$LANGARR['en-US']['handler_message_hashlist_invalid_format'] = "Invalid hashlist format!";
+$LANGARR['en-US']['handler_message_hashlist_name_empty'] = "Hashlist name cannot be empty!";
+$LANGARR['en-US']['handler_message_hashlist_salt_separator_empty'] = "Salt separator cannot be empty when hashes are salted!";
+$LANGARR['en-US']['handler_message_hashlist_failed_file_process'] = "Failed to process file!";
+$LANGARR['en-US']['handler_message_hashlist_required_file_not_exist'] = "Required file does not exist!";
+$LANGARR['en-US']['handler_message_hashlist_failed_file_open'] = "Failed to open file!";
+$LANGARR['en-US']['handler_message_hashlist_salt_separator_not_found'] = "Salted hashes separator not found in file!";
+$LANGARR['en-US']['handler_message_hashlist_file_contains_bytes'] = "Data file only contains {0} bytes!";
+$LANGARR['en-US']['handler_message_hashlist_failed_file_write'] = "Failed to write file!";
+$LANGARR['en-US']['handler_message_hashlist_cracked_hashes_exported'] = "Cracked hashes from hashlist exported successfully!";
+$LANGARR['en-US']['handler_message_hashlist_file_empty'] = "File is empty!";
+$LANGARR['en-US']['handler_message_hashlist_failed_temp_file_process'] = "Processing of temporary file failed!";
+$LANGARR['en-US']['handler_message_hashlist_processed_precracked_hashes'] = "Processed pre-cracked hashes: {0} total lines, {1} new cracked hashes, {2} were already cracked, {3} invalid lines, {4} not matching entries ({5}s)!";
+$LANGARR['en-US']['handler_message_hashlist_long_entries'] = "{0} entries with too long plaintext";
+$LANGARR['en-US']['handler_message_hashlist_failed_determine_hashlists'] = "Failed to determine the hashlists which should get exported!";
+$LANGARR['en-US']['handler_message_hashlist_failed_write_wordlist'] = "Failed to write wordlist file!";
+$LANGARR['en-US']['handler_message_hashlist_exported_plains'] = "Exported {0} found plains to {1} successfully!";
+$LANGARR['en-US']['handler_message_hashlist_new_task_create_redirect'] = "Successfully created {0} new tasks with {1} files! You will be forwarded to the tasks page in 5 seconds.";
+$LANGARR['en-US']['handler_message_hashlist_not_created_task'] = "Didn't create any tasks!";
+
+$LANGARR['en-US']['handler_message_hashtype_failed_to_add'] = "Failed to add new hash type!";
+$LANGARR['en-US']['handler_message_hashtype_hash_number_already_used'] = "This hash number is already used!";
+$LANGARR['en-US']['handler_message_hashtype_created_successfully'] = "New hashtype created successfully!";
+$LANGARR['en-US']['handler_message_hashtype_invalid_hashtype'] = "Invalid hashtype!";
+$LANGARR['en-US']['handler_message_hashtype_cannot_delete_hashtype'] = "You cannot delete this hashtype! There are hashlists present which are of this type!";
+$LANGARR['en-US']['handler_message_hashtype_deleted_successfully'] = "Hashtype was deleted successfully!";
+
+$LANGARR['en-US']['handler_message_notification_not_found'] = "Notification not found!";
+$LANGARR['en-US']['handler_message_notification_not_allowed_delete'] = "You are not allowed to delete this notification!";
+$LANGARR['en-US']['handler_message_notification_no_access'] = "You have no access to this notification!";
+$LANGARR['en-US']['handler_message_notification_not_available'] = "This notification is not available!";
+$LANGARR['en-US']['handler_message_notification_actiontype_not_available'] = "This actionType is not available!";
+$LANGARR['en-US']['handler_message_notification_fill_receiver'] = "You need to fill in a receiver!";
+$LANGARR['en-US']['handler_message_notification_not_allowed_actiontype'] = "You are not allowed to use this action type!";
+$LANGARR['en-US']['handler_message_notification_not_allowed_user_actiontypes'] = "You are not allowed to use user action types!";
+$LANGARR['en-US']['handler_message_notification_invalid_user'] = "Invalid user selected!";
+$LANGARR['en-US']['handler_message_notification_invalid_agent'] = "Invalid agent selected!";
+$LANGARR['en-US']['handler_message_notification_invalid_hashlist'] = "Invalid hashlist selected!";
+$LANGARR['en-US']['handler_message_notification_invalid_task'] = "Invalid task selected!";
+
+$LANGARR['en-US']['handler_message_search_query_cannot_be_empty'] = "Search query cannot be empty!";
+$LANGARR['en-US']['handler_message_search_searched_for_entries'] = "Searched for {0} entries.";
+
+$LANGARR['en-US']['handler_message_supertask_name_mask_empty'] = "Name or masks is empty!";
+$LANGARR['en-US']['handler_message_supertask_no_valid_mask'] = "No valid mask lines! Supertask was not created.";
+$LANGARR['en-US']['handler_message_supertask_invalid_supertask'] = "Invalid supertask ID!";
+$LANGARR['en-US']['handler_message_supertask_invalid_hashlist'] = "Invalid hashlist ID!";
+$LANGARR['en-US']['handler_message_supertask_task_contain_hashlist_alias'] = "Task must contain the hashlist alias for cracking!";
+$LANGARR['en-US']['handler_message_supertask_applied_successfully'] = "New supertask applied successfully!";
+$LANGARR['en-US']['handler_message_supertask_created_successfully'] = "New supertask created successfully!";
+$LANGARR['en-US']['handler_message_supertask_deleted_successfully'] = "Supertask deleted successfully!";
+
+$LANGARR['en-US']['handler_message_task_not_found'] = "Task with ID {0} not found!";
+$LANGARR['en-US']['handler_message_task_no_such'] = "No such task!";
+$LANGARR['en-US']['handler_message_task_command_must_contain_hashlist'] = "Command line must contain hashlist ({0})!";
+$LANGARR['en-US']['handler_message_task_command_no_blacklisted_character'] = "The command must contain no blacklisted characters!";
+$LANGARR['en-US']['handler_message_task_invalid_hashlist'] = "Invalid hashlist!";
+$LANGARR['en-US']['handler_message_task_chunk_time'] = "Chunk time must be higher than status timer!";
+$LANGARR['en-US']['handler_message_task_no_such_chunk'] = "No such chunk!";
+$LANGARR['en-US']['handler_message_task_no_assignment_agent'] = "No assignment for this agent!";
 
 // API
 $LANGARR['en-US']['api_server_error_invalid_query'] = "Invalid query!";

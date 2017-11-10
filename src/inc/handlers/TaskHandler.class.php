@@ -19,7 +19,7 @@ class TaskHandler implements Handler {
   private $task;
   
   public function __construct($taskId = null) {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     if ($taskId == null) {
       $this->task = null;
@@ -28,84 +28,84 @@ class TaskHandler implements Handler {
     
     $this->task = $FACTORIES::getAgentFactory()->get($taskId);
     if ($this->task == null) {
-      UI::printError("FATAL", "Task with ID $taskId not found!");
+      UI::printError("FATAL", $LANG->get("handler_message_task_not_found", [$taskId]));
     }
   }
   
   public function handle($action) {
     /** @var Login $LOGIN */
-    global $LOGIN;
+    global $LOGIN, $LANG;
     
     switch ($action) {
       case DTaskAction::SET_BENCHMARK:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->adjustBenchmark();
         break;
       case DTaskAction::SET_SMALL_TASK:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->setSmallTask();
         break;
       case DTaskAction::SET_CPU_TASK:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->setCpuTask();
         break;
       case DTaskAction::ABORT_CHUNK:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->abortChunk();
         break;
       case DTaskAction::RESET_CHUNK:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->resetChunk();
         break;
       case DTaskAction::PURGE_TASK:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->purgeTask();
         break;
       case DTaskAction::SET_COLOR:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->updateColor();
         break;
       case DTaskAction::SET_TIME:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->changeChunkTime();
         break;
       case DTaskAction::RENAME_TASK:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->rename();
         break;
       case DTaskAction::DELETE_FINISHED:
         if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->deleteFinished();
         break;
       case DTaskAction::DELETE_TASK:
         if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->delete();
         break;
       case DTaskAction::SET_PRIORITY:
         if ($LOGIN->getLevel() < DAccessLevel::USER) {
-          UI::printError("ERROR", "You have no rights to execute this action!");
+          UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->updatePriority();
         break;
@@ -113,17 +113,17 @@ class TaskHandler implements Handler {
         $this->create();
         break;
       default:
-        UI::addMessage(UI::ERROR, "Invalid action!");
+        UI::addMessage(UI::ERROR, $LANG->get("handler_message_invalid_action"));
         break;
     }
   }
   
   private function setSmallTask() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $task = $FACTORIES::getTaskFactory()->get($_POST['task']);
     if ($task == null) {
-      UI::addMessage(UI::ERROR, "No such task!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_such"));
       return;
     }
     $isSmall = intval($_POST['isSmall']);
@@ -135,11 +135,11 @@ class TaskHandler implements Handler {
   }
   
   private function setCpuTask() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     $task = $FACTORIES::getTaskFactory()->get($_POST['task']);
     if ($task == null) {
-      UI::addMessage(UI::ERROR, "No such task!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_such"));
       return;
     }
     $isCpuTask = intval($_POST['isCpu']);
@@ -152,7 +152,7 @@ class TaskHandler implements Handler {
   
   private function create() {
     /** @var DataSet $CONFIG */
-    global $FACTORIES, $CONFIG;
+    global $FACTORIES, $CONFIG, $LANG;
     
     // new task creator
     $name = htmlentities($_POST["name"], ENT_QUOTES, "UTF-8");
@@ -168,11 +168,11 @@ class TaskHandler implements Handler {
       $color = null;
     }
     if (strpos($cmdline, $CONFIG->getVal(DConfig::HASHLIST_ALIAS)) === false) {
-      UI::addMessage(UI::ERROR, "Command line must contain hashlist (" . $CONFIG->getVal(DConfig::HASHLIST_ALIAS) . ")!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_command_must_contain_hashlist", [$CONFIG->getVal(DConfig::HASHLIST_ALIAS)]));
       return;
     }
     else if (Util::containsBlacklistedChars($cmdline)) {
-      UI::addMessage(UI::ERROR, "The command must contain no blacklisted characters!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_command_no_blacklisted_character"));
       return;
     }
     else if ($skipKeyspace < 0) {
@@ -190,7 +190,7 @@ class TaskHandler implements Handler {
     else {
       $hashlist = $FACTORIES::getHashlistFactory()->get($_POST["hashlist"]);
       if ($hashlist <= 0) {
-        UI::addMessage(UI::ERROR, "Invalid hashlist!");
+        UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_invalid_hashlist"));
         return;
       }
       $hashlistId = $hashlist->getId();
@@ -200,7 +200,7 @@ class TaskHandler implements Handler {
       $forward = "tasks.php";
     }
     if ($chunk < 0 || $status < 0 || $chunk < $status) {
-      UI::addMessage(UI::ERROR, "Chunk time must be higher than status timer!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_chunk_time"));
       return;
     }
     if ($hashlistId != null && $hashlist->getHexSalt() == 1 && strpos($cmdline, "--hex-salt") === false) {
@@ -225,12 +225,12 @@ class TaskHandler implements Handler {
   }
   
   private function updatePriority() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // change task priority
     $task = $FACTORIES::getTaskFactory()->get($_POST["task"]);
     if ($task == null) {
-      UI::addMessage(UI::ERROR, "No such task!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_such"));
       return;
     }
     $pretask = false;
@@ -253,12 +253,12 @@ class TaskHandler implements Handler {
   }
   
   private function delete() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // delete a task
     $task = $FACTORIES::getTaskFactory()->get($_POST["task"]);
     if ($task == null) {
-      UI::addMessage(UI::ERROR, "No such task!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_such"));
       return;
     }
     $FACTORIES::getAgentFactory()->getDB()->query("START TRANSACTION");
@@ -388,12 +388,12 @@ class TaskHandler implements Handler {
   }
   
   private function rename() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // change task name
     $task = $FACTORIES::getTaskFactory()->get($_POST["task"]);
     if ($task == null) {
-      UI::addMessage(UI::ERROR, "No such task!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_such"));
       return;
     }
     $name = htmlentities($_POST["name"], ENT_QUOTES, "UTF-8");
@@ -402,12 +402,12 @@ class TaskHandler implements Handler {
   }
   
   private function changeChunkTime() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // update task chunk time
     $task = $FACTORIES::getTaskFactory()->get($_POST["task"]);
     if ($task == null) {
-      UI::addMessage(UI::ERROR, "No such task!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_such"));
       return;
     }
     $chunktime = intval($_POST["chunktime"]);
@@ -426,12 +426,12 @@ class TaskHandler implements Handler {
   }
   
   private function updateColor() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // change task color
     $task = $FACTORIES::getTaskFactory()->get($_POST["task"]);
     if ($task == null) {
-      UI::addMessage(UI::ERROR, "No such task!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_such"));
       return;
     }
     $color = $_POST["color"];
@@ -443,12 +443,12 @@ class TaskHandler implements Handler {
   }
   
   private function abortChunk() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // reset chunk state and progress to zero
     $chunk = $FACTORIES::getChunkFactory()->get($_POST['chunk']);
     if ($chunk == null) {
-      UI::addMessage(UI::ERROR, "No such chunk!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_such_chunk"));
       return;
     }
     $chunk->setState(DHashcatStatus::ABORTED);
@@ -456,12 +456,12 @@ class TaskHandler implements Handler {
   }
   
   private function resetChunk() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // reset chunk state and progress to zero
     $chunk = $FACTORIES::getChunkFactory()->get($_POST['chunk']);
     if ($chunk == null) {
-      UI::addMessage(UI::ERROR, "No such chunk!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_such_chunk"));
       return;
     }
     $chunk->setState(0);
@@ -473,12 +473,12 @@ class TaskHandler implements Handler {
   }
   
   private function purgeTask() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // delete all task chunks, forget its keyspace value and reset progress to zero
     $task = $FACTORIES::getTaskFactory()->get($_POST["task"]);
     if ($task == null) {
-      UI::addMessage(UI::ERROR, "No such task!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_such"));
       return;
     }
     $FACTORIES::getAgentFactory()->getDB()->query("START TRANSACTION");
@@ -504,13 +504,13 @@ class TaskHandler implements Handler {
   }
   
   private function adjustBenchmark() {
-    global $FACTORIES;
+    global $FACTORIES, $LANG;
     
     // adjust agent benchmark
     $qF = new QueryFilter(Assignment::AGENT_ID, $_POST['agent'], "=");
     $assignment = $FACTORIES::getAssignmentFactory()->filter(array($FACTORIES::FILTER => $qF), true);
     if ($assignment == null) {
-      UI::addMessage(UI::ERROR, "No assignment for this agent!");
+      UI::addMessage(UI::ERROR, $LANG->get("handler_message_task_no_assignment_agent"));
       return;
     }
     $bench = floatval($_POST["bench"]);
