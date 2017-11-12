@@ -4,6 +4,11 @@
  * All define classes should start with 'D'
  */
 
+class DEmailInfo {
+  const FROM_NAME  = "Hashtopussy";
+  const FROM_EMAIL  = "noreply@hashtopussy";
+}
+
 // hashcat status numbers
 class DHashcatStatus {
   const INIT                   = 0;

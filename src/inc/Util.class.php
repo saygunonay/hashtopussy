@@ -1099,7 +1099,7 @@ class Util {
   public static function sendMail($address, $subject, $text) {
     $header = "Content-type: text/html; charset=utf8\r\n";
     // TODO: make sender email configurable
-    $header .= "From: Hashtopussy <noreply@hashtopussy>\r\n";
+    $header .= "From: " . DEmailInfo::FROM_NAME . " <" . DEmailInfo::FROM_EMAIL . ">\r\n";
     if (!mail($address, $subject, $text, $header)) {
       return false;
     }
