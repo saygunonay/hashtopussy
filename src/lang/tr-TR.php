@@ -8,6 +8,8 @@ $LANGARR['tr-TR']['tr-TR'] = "Türkçe";
 $LANGARR['tr-TR']['de-DE'] = "Almanca";
 
 
+$LANGARR['tr-TR']['program_name'] = "Hashtopussy";
+
 // general
 $LANGARR['tr-TR']['login'] = "giriş";
 $LANGARR['tr-TR']['username'] = "kullanıcı adı";
@@ -86,8 +88,12 @@ $LANGARR['tr-TR']['button_clear_all'] = "Hepsini temizle";
 $LANGARR['tr-TR']['button_add'] = "Ekle";
 $LANGARR['tr-TR']['button_edit'] = "Düzelt";
 $LANGARR['tr-TR']['button_show'] = "Göster";
+$LANGARR['tr-TR']['button_recheck'] = "Kontrol et";
+$LANGARR['tr-TR']['button_continue'] = "Devam";
 
 $LANGARR['tr-TR']['button_choose_file_placeholder'] = "Dosya yok";
+
+$LANGARR['tr-TR']['button_start_installation'] = $LANGARR['tr-TR']['program_name'] . " kurulumuna başla";
 
 $LANGARR['tr-TR']['checkbox_select_all'] = "Hepsini Seç";
 
@@ -202,7 +208,7 @@ $LANGARR['tr-TR']['table_property_date'] = 'Tarih';
 $LANGARR['tr-TR']['table_property_level'] = 'Seviye';
 $LANGARR['tr-TR']['table_property_issuer'] = 'Yayınlayan';
 $LANGARR['tr-TR']['table_property_message'] = 'Mesaj';
-$LANGARR['en-US']['table_property_keyspace_unknown'] = "Deneme uzayı bilinmiyor";
+$LANGARR['tr-TR']['table_property_keyspace_unknown'] = "Deneme uzayı bilinmiyor";
 
 //
 $LANGARR['tr-TR']['description_no_activity'] = "faaliyet yok";
@@ -228,8 +234,8 @@ $LANGARR['tr-TR']['index_alert_description_wrong_password'] = "Yanlış kullanı
 $LANGARR['tr-TR']['index_alert_description_need_logged'] = "Bu sayfayı görmek için giriş yapmalısınız! Lütfen tekrar giriş yapın.";
 $LANGARR['tr-TR']['index_alert_description_logged_out'] = "Başarılı bir şekilde çıkış yaptınız!";
 $LANGARR['tr-TR']['index_message_welcome_back'] = "Merhaba {0}, hoş geldin!";
-$LANGARR['tr-TR']['index_message_sourcecode_repo'] = "Hashtopussy kaynak kodu şu Github depolarında bulunabilir:";
-$LANGARR['tr-TR']['index_message_visit_wiki'] = 'Hashtopussy\'nin kullanımıyla ilgili daha fazla bilgi için, lütfen <a href="https://github.com/s3inlc/hashtopussy/wiki">wiki</a> sayfasını ziyaret edin.';
+$LANGARR['tr-TR']['index_message_sourcecode_repo'] = $LANGARR['tr-TR']['program_name'] . " kaynak kodu şu Github depolarında bulunabilir:";
+$LANGARR['tr-TR']['index_message_visit_wiki'] = $LANGARR['tr-TR']['program_name'] . ' kullanımıyla ilgili daha fazla bilgi için, lütfen <a href="https://github.com/s3inlc/hashtopussy/wiki">wiki</a> sayfasını ziyaret edin.';
 $LANGARR['tr-TR']['footer_message_support_us'] = "Bizi destekleyin";
 
 // menu
@@ -468,6 +474,30 @@ $LANGARR['tr-TR']['notification_types_newAgent'] = 'Yeni Ajan';
 $LANGARR['tr-TR']['notification_types_deleteTask'] = 'Görev Silindi';
 $LANGARR['tr-TR']['notification_types_deleteHashlist'] = 'Hash listesi Silindi';
 $LANGARR['tr-TR']['notification_types_deleteAgent'] = 'Ajan Silindi';
+
+// Install
+$LANGARR['tr-TR']['install_fill_all_fields'] = "Tüm alanları doldurmalısınız!";
+$LANGARR['tr-TR']['install_passwords_dont_match'] = "Girdiğiniz şifreler aynı değil!";
+$LANGARR['tr-TR']['install_www_write_directory'] = "www kullanıcısının " . $LANGARR['tr-TR']['program_name'] . " dizinine yazabildiğinden emin olun ve daha sonra 'Kontrol et' düğmesine tıklayın.";
+$LANGARR['tr-TR']['install_installation_title'] = $LANGARR['tr-TR']['program_name'] . " Kurulumu";
+$LANGARR['tr-TR']['install_welcome_installation_title'] = $LANGARR['tr-TR']['program_name'] . " Kurulum İşlemine Hoşgeldiniz!" ;
+$LANGARR['tr-TR']['install_welcome_installation_description'] = $LANGARR['tr-TR']['program_name'] . " kurulumu için çalışan bir MySQL sunucusuna ihtiyacınız var. Kurulum sırasında detaylı bilgiler istenecektir, bu bilgileri girmek için hazırlayın.";
+$LANGARR['tr-TR']['install_db_connection_title'] = "Veri tabanı bağlantısı";
+$LANGARR['tr-TR']['install_db_connection_description'] = "Lütfen " . $LANGARR['tr-TR']['program_name'] . " veri tabanı bağlantısı için aşağıdaki bilgileri doldurun.";
+$LANGARR['tr-TR']['install_db_connection_test_connection_failed'] = "Test bağlantısı başarısız, lütfen tekrar deneyin!";
+$LANGARR['tr-TR']['install_db_connection_server_hostname'] = "Sunucu adı";
+$LANGARR['tr-TR']['install_db_connection_server_port'] = "Sunucu portu";
+$LANGARR['tr-TR']['install_db_connection_user'] = "MySQL kullanıcısı";
+$LANGARR['tr-TR']['install_db_connection_password'] = "MySQL şifresi";
+$LANGARR['tr-TR']['install_db_connection_db_name'] = "Veri tabanı adı";
+$LANGARR['tr-TR']['install_db_connection_ready'] = "Veri tabanı bağlantısı hazır, " . $LANGARR['tr-TR']['program_name'] . " şimdi veri tabanı yapısını oluşturacak ve içerisini ilkleme verisi ile dolduracak. Hazır olduğunuzda 'Devam' düğmesine basın. Eğer başarısız olursa veri tabanı bağlantısı ile ilgili bir hata var demektir.";
+$LANGARR['tr-TR']['install_admin_user_title'] = "Yönetici Kullanıcı Oluştur";
+$LANGARR['tr-TR']['install_admin_user_description'] = "Yönetici kullanıcı oluşturmak için lütfen aşağıdaki formu doldurun.";
+$LANGARR['tr-TR']['install_admin_user_username'] = "Kullanıcı";
+$LANGARR['tr-TR']['install_admin_user_email'] = "E-posta adresi";
+$LANGARR['tr-TR']['install_admin_user_password'] = "Şifre";
+$LANGARR['tr-TR']['install_admin_user_repeat_password'] = "Şifre tekrar";
+$LANGARR['tr-TR']['install_done_message'] = "Kullanıcı başarılı bir şekilde oluşturulmuş olmalı.<br>Kurulumunuz tamamlanmıştır. Lütfen 'install' dizinini koruduğunuzdan veya sildiğinizden emin olun. Eğer apache2 kullanıyorsanız, 'AllowOverride All' ayarının " . $LANGARR['tr-TR']['program_name'] . " dizini için yapıldığından emin olun. Eğer nginx kullanıyorsanız şu dizinleri korufuğunuzdan emin olun: files, import, inc, lang, templates.";
 
 // handler messages
 $LANGARR['tr-TR']['handler_message_invalid_form_submission'] = "Hatalı form gönderimi!";

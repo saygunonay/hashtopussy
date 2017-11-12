@@ -44,7 +44,7 @@ switch ($STEP) {
       die();
     }
     $TEMPLATE = new Template("install/0");
-    echo $TEMPLATE->render(array());
+    echo $TEMPLATE->render($OBJECTS);
     break;
   case 1: //clean installation was selected
     if (isset($_GET['next'])) {
@@ -63,7 +63,7 @@ switch ($STEP) {
       die();
     }
     $TEMPLATE = new Template("install/1");
-    echo $TEMPLATE->render(array());
+    echo $TEMPLATE->render($OBJECTS);
     break;
   case 2: //installation should be finished now and user should be able to log in
     $load = file_get_contents(dirname(__FILE__) . "/../inc/db.php");
@@ -77,7 +77,7 @@ switch ($STEP) {
     setcookie("prev", "", time() - 10);
     sleep(1);
     $TEMPLATE = new Template("install/2");
-    echo $TEMPLATE->render(array());
+    echo $TEMPLATE->render($OBJECTS);
     break;
   case 50: //one or more files/dir is not writeable
     if (isset($_GET['check'])) {
@@ -88,7 +88,7 @@ switch ($STEP) {
       }
     }
     $TEMPLATE = new Template("install/50");
-    echo $TEMPLATE->render(array());
+    echo $TEMPLATE->render($OBJECTS);
     break;
   case 51: //enter database connection details
     $fail = false;
@@ -127,7 +127,8 @@ switch ($STEP) {
       }
     }
     $TEMPLATE = new Template("install/51");
-    echo $TEMPLATE->render(array('failed' => $fail));
+    $OBJECTS['failed'] = $fail;
+    echo $TEMPLATE->render($OBJECTS);
     break;
   case 52: //database is filled with initial data now we create the user now
     //create pepper (this is required here that when we create the user, the included file already contains the right peppers
@@ -145,10 +146,10 @@ switch ($STEP) {
       
       //do checks
       if (strlen($username) == 0 || strlen($password) == 0 || strlen($email) == 0 || strlen($repeat) == 0) {
-        $message = Util::getMessage('danger', "You need to fill in all fields!");
+        $message = Util::getMessage('danger', $LANG->get('install_fill_all_fields'));
       }
       else if ($password != $repeat) {
-        $message = Util::getMessage('danger', "Your entered passwords do not match!");
+        $message = Util::getMessage('danger', $LANG->get('install_passwords_dont_match'));
       }
       else {
         $qF = new QueryFilter(RightGroup::GROUP_NAME, "Administrator", "=");
@@ -164,7 +165,8 @@ switch ($STEP) {
       }
     }
     $TEMPLATE = new Template("install/52");
-    echo $TEMPLATE->render(array('message' => $message));
+    $OBJECTS['message'] = $message;
+    echo $TEMPLATE->render($OBJECTS);
     break;
   default:
     die("Some error with steps happened, please start again!");

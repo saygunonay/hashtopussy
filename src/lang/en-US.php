@@ -8,6 +8,8 @@ $LANGARR['en-US']['tr-TR'] = "Turkish";
 $LANGARR['en-US']['de-DE'] = "German";
 
 
+$LANGARR['en-US']['program_name'] = "Hashtopussy";
+
 // general
 $LANGARR['en-US']['login'] = "login";
 $LANGARR['en-US']['username'] = "username";
@@ -86,8 +88,12 @@ $LANGARR['en-US']['button_clear_all'] = "Clear all";
 $LANGARR['en-US']['button_add'] = "Add";
 $LANGARR['en-US']['button_edit'] = "Edit";
 $LANGARR['en-US']['button_show'] = "Show";
+$LANGARR['en-US']['button_recheck'] = "Recheck";
+$LANGARR['en-US']['button_continue'] = "Continue";
 
 $LANGARR['en-US']['button_choose_file_placeholder'] = "No file";
+
+$LANGARR['en-US']['button_start_installation'] = "Start Installation of " . $LANGARR['en-US']['program_name'];
 
 $LANGARR['en-US']['checkbox_select_all'] = "Select All";
 
@@ -228,8 +234,8 @@ $LANGARR['en-US']['index_alert_description_wrong_password'] = "Wrong username/pa
 $LANGARR['en-US']['index_alert_description_need_logged'] = "You need to be logged in to view this! Please log in again.";
 $LANGARR['en-US']['index_alert_description_logged_out'] = "You logged out successfully!";
 $LANGARR['en-US']['index_message_welcome_back'] = "Hi {0}, welcome back!";
-$LANGARR['en-US']['index_message_sourcecode_repo'] = "Hashtopussy Sourcecode is available in these Github repositories:";
-$LANGARR['en-US']['index_message_visit_wiki'] = 'To get more information about how to use Hashtopussy, please visit the <a href="https://github.com/s3inlc/hashtopussy/wiki">wiki</a>.';
+$LANGARR['en-US']['index_message_sourcecode_repo'] = $LANGARR['en-US']['program_name'] . " Sourcecode is available in these Github repositories:";
+$LANGARR['en-US']['index_message_visit_wiki'] = 'To get more information about how to use ' . $LANGARR['en-US']['program_name'] . ', please visit the <a href="https://github.com/s3inlc/hashtopussy/wiki">wiki</a>.';
 $LANGARR['en-US']['footer_message_support_us'] = "Support us";
 
 // menu
@@ -468,6 +474,30 @@ $LANGARR['en-US']['notification_types_newAgent'] = 'New Agent';
 $LANGARR['en-US']['notification_types_deleteTask'] = 'Delete Task';
 $LANGARR['en-US']['notification_types_deleteHashlist'] = 'Delete Hashlist';
 $LANGARR['en-US']['notification_types_deleteAgent'] = 'Delete Agent';
+
+// Install
+$LANGARR['en-US']['install_fill_all_fields'] = "You need to fill in all fields!";
+$LANGARR['en-US']['install_passwords_dont_match'] = "Your entered passwords do not match!";
+$LANGARR['en-US']['install_www_write_directory'] = "Make sure the www user can write to the " . $LANGARR['en-US']['program_name'] . " directory, and click 'Recheck' when you're done.";
+$LANGARR['en-US']['install_installation_title'] = $LANGARR['en-US']['program_name'] . " Installation";
+$LANGARR['en-US']['install_welcome_installation_title'] = "Welcome to the " . $LANGARR['en-US']['program_name'] . " Installation Procedure!" ;
+$LANGARR['en-US']['install_welcome_installation_description'] = "To run " . $LANGARR['en-US']['program_name'] . " you need a running MySQL server. You will be prompted for details during installation, keep informations ready to enter.";
+$LANGARR['en-US']['install_db_connection_title'] = "DB Connection";
+$LANGARR['en-US']['install_db_connection_description'] = "Please fill in the form below for the database connection " . $LANGARR['en-US']['program_name'] . ".";
+$LANGARR['en-US']['install_db_connection_test_connection_failed'] = "Test connection failed, please try again!";
+$LANGARR['en-US']['install_db_connection_server_hostname'] = "Server hostname";
+$LANGARR['en-US']['install_db_connection_server_port'] = "Server port";
+$LANGARR['en-US']['install_db_connection_user'] = "MySQL user";
+$LANGARR['en-US']['install_db_connection_password'] = "MySQL password";
+$LANGARR['en-US']['install_db_connection_db_name'] = "Database name";
+$LANGARR['en-US']['install_db_connection_ready'] = "DB Connection is ready now, " . $LANGARR['en-US']['program_name'] . " will now fill the database with the initial data and structure.	Click on 'Continue' when you're ready. If you there happens any error there must be a problem.";
+$LANGARR['en-US']['install_admin_user_title'] = "Create Admin User";
+$LANGARR['en-US']['install_admin_user_description'] = "Please fill in the form below to create an admin user.";
+$LANGARR['en-US']['install_admin_user_username'] = "Username";
+$LANGARR['en-US']['install_admin_user_email'] = "Email address";
+$LANGARR['en-US']['install_admin_user_password'] = "Password";
+$LANGARR['en-US']['install_admin_user_repeat_password'] = "Repeat password";
+$LANGARR['en-US']['install_done_message'] = "User should be created successfully now.<br>Your installation should be complete now. Please make sure that you protect or delete the 'install' folder. If you use apache2, make sure you have the 'AllowOverride All' set for the " . $LANGARR['en-US']['program_name'] . " directory, if you use nginx make sure to protect these folders: files, import, inc, lang, templates.";
 
 // handler messages
 $LANGARR['en-US']['handler_message_invalid_form_submission'] = "Invalid form submission!";
