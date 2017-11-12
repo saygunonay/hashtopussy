@@ -95,6 +95,8 @@ $LANGARR['tr-TR']['button_choose_file_placeholder'] = "Dosya yok";
 
 $LANGARR['tr-TR']['button_start_installation'] = $LANGARR['tr-TR']['program_name'] . " kurulumuna başla";
 
+$LANGARR['tr-TR']['button_send_new_password'] = "Yeni şifre yolla";
+
 $LANGARR['tr-TR']['checkbox_select_all'] = "Hepsini Seç";
 
 //
@@ -474,6 +476,11 @@ $LANGARR['tr-TR']['notification_types_newAgent'] = 'Yeni Ajan';
 $LANGARR['tr-TR']['notification_types_deleteTask'] = 'Görev Silindi';
 $LANGARR['tr-TR']['notification_types_deleteHashlist'] = 'Hash listesi Silindi';
 $LANGARR['tr-TR']['notification_types_deleteAgent'] = 'Ajan Silindi';
+
+//
+$LANGARR['tr-TR']['forgot_title'] = 'Şifremi Unuttum';
+$LANGARR['tr-TR']['forgot_no_such_user'] = 'Böyle bir kullanıcı yok!';
+$LANGARR['tr-TR']['forgot_password_reset'] = 'Şifre sıfırlandı! Adresinize bir e-posta gönderildi.';
 
 // Install
 $LANGARR['tr-TR']['install_fill_all_fields'] = "Tüm alanları doldurmalısınız!";

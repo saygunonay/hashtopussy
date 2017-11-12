@@ -95,6 +95,8 @@ $LANGARR['en-US']['button_choose_file_placeholder'] = "No file";
 
 $LANGARR['en-US']['button_start_installation'] = "Start Installation of " . $LANGARR['en-US']['program_name'];
 
+$LANGARR['en-US']['button_send_new_password'] = "Send new password";
+
 $LANGARR['en-US']['checkbox_select_all'] = "Select All";
 
 //
@@ -474,6 +476,11 @@ $LANGARR['en-US']['notification_types_newAgent'] = 'New Agent';
 $LANGARR['en-US']['notification_types_deleteTask'] = 'Delete Task';
 $LANGARR['en-US']['notification_types_deleteHashlist'] = 'Delete Hashlist';
 $LANGARR['en-US']['notification_types_deleteAgent'] = 'Delete Agent';
+
+//
+$LANGARR['en-US']['forgot_title'] = 'Forgot password';
+$LANGARR['en-US']['forgot_no_such_user'] = 'No such user!';
+$LANGARR['en-US']['forgot_password_reset'] = 'Password has been reset! You should receive an email soon.';
 
 // Install
 $LANGARR['en-US']['install_fill_all_fields'] = "You need to fill in all fields!";

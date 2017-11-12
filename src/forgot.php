@@ -21,12 +21,12 @@ if (isset($_POST['action']) && Util::checkCSRF($_POST['csrf'])) {
       $qF = new QueryFilter(User::USERNAME, $username, "=");
       $res = $FACTORIES::getUserFactory()->filter(array($FACTORIES::FILTER => array($qF)));
       if ($res == null || sizeof($res) == 0) {
-        $message = "<div class='alert alert-danger'>No such user!</div>";
+        $message = "<div class='alert alert-danger'>" . $LANG->get('forgot_no_such_user') . "</div>";
         break;
       }
       $user = $res[0];
       if ($user->getEmail() != $email) {
-        $message = "<div class='alert alert-danger'>No such user!</div>";
+        $message = "<div class='alert alert-danger'>" . $LANG->get('forgot_no_such_user') . "</div>";
         break;
       }
       $newSalt = Util::randomString(20);
@@ -39,7 +39,7 @@ if (isset($_POST['action']) && Util::checkCSRF($_POST['csrf'])) {
       $tmpl = new Template("email.forgot");
       $obj = array('username' => $user->getUsername(), 'password' => $newPass);
       Util::sendMail($user->getEmail(), "Password reset", $tmpl->render($obj));
-      $message = "<div class='alert alert-success'>Password resetted! You should receive an email soon.</div>";
+      $message = "<div class='alert alert-success'>" . $LANG->get('forgot_password_reset') . "</div>";
   }
 }
 
