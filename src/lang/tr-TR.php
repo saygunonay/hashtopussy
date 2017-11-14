@@ -430,7 +430,6 @@ $LANGARR['tr-TR']['config_server_database_tools_rescan_global_files'] = 'Tüm do
 $LANGARR['tr-TR']['config_server_database_tools_clear_all'] = 'Tüm hash listelerini, görevleri (ön-ayarlı olanlar hariç) ve parçaları siler.';
 $LANGARR['tr-TR']['config_hash_types_hash_types'] = 'Hash Tipleri';
 $LANGARR['tr-TR']['config_hash_types_add_new_hash_type'] = 'Yeni hash tipi ekle';
-$LANGARR['tr-TR']['config_hash_types_delete_hashtype_warning'] = 'Hash tipi {0} gerçekten silmek istiyor musunuz?';
 $LANGARR['tr-TR']['config_agent_binaries_agent_binaries'] = "Ajan Dosyaları";
 $LANGARR['tr-TR']['config_log_log_entries'] = "Log Kayıtları";
 
@@ -453,6 +452,7 @@ $LANGARR['tr-TR']['post_confirm_msg_abort_chunk'] = 'Parça {0} gerçekten iptal
 $LANGARR['tr-TR']['post_confirm_msg_delete_hashtype'] = 'Hash tipi {0} gerçekten silinsin mi?';
 
 //
+$LANGARR['tr-TR']['user_group_name_1'] = 'İzleyici Kullanıcı';
 $LANGARR['tr-TR']['user_group_name_2'] = 'Sadece Okuyucu Kullanıcı';
 $LANGARR['tr-TR']['user_group_name_3'] = 'Normal Kullanıcı';
 $LANGARR['tr-TR']['user_group_name_4'] = 'Süper Kullanıcı';
