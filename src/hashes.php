@@ -148,24 +148,24 @@ if (isset($_GET['filter'])) {
 }
 $OBJECTS['filtering'] = htmlentities($filter, ENT_QUOTES, "UTF-8");
 
-$displays = array("hash" => "Hashes only", "" => "Hashes + plaintexts", "plain" => "Plaintexts only");
-$filters = array("cracked" => "Cracked", "uncracked" => "Uncracked", "" => "All");
+$displays = array("hash" => $LANG->get('hashes_displays_hash'), "" => $LANG->get('hashes_displays_all'), "plain" => $LANG->get('hashes_displays_plain'));
+$filters = array("cracked" => $LANG->get('hashes_filters_cracked'), "uncracked" => $LANG->get('hashes_filters_uncracked'), "" => $LANG->get('hashes_filters_all'));
 
-$displaysSet = array();
+$displaysSet = new DataSet();
 foreach ($displays as $id => $text) {
   $set = new DataSet();
   $set->addValue('id', $id);
   $set->addValue('text', $text);
-  $displaysSet[] = $set;
+  $displaysSet->addValue($id, $set);
 }
 $OBJECTS['displays'] = $displaysSet;
 
-$filtersSet = array();
+$filtersSet = new DataSet();
 foreach ($filters as $id => $text) {
   $set = new DataSet();
   $set->addValue('id', $id);
   $set->addValue('text', $text);
-  $filtersSet[] = $set;
+  $filtersSet->addValue($id, $set);
 }
 $OBJECTS['filters'] = $filtersSet;
 

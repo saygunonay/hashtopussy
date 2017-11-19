@@ -90,6 +90,8 @@ $LANGARR['en-US']['button_edit'] = "Edit";
 $LANGARR['en-US']['button_show'] = "Show";
 $LANGARR['en-US']['button_recheck'] = "Recheck";
 $LANGARR['en-US']['button_continue'] = "Continue";
+$LANGARR['en-US']['button_ok'] = "OK";
+$LANGARR['en-US']['button_convert'] = "Convert";
 
 $LANGARR['en-US']['button_choose_file_placeholder'] = "No file";
 
@@ -211,6 +213,8 @@ $LANGARR['en-US']['table_property_level'] = 'Level';
 $LANGARR['en-US']['table_property_issuer'] = 'Issuer';
 $LANGARR['en-US']['table_property_message'] = 'Message';
 $LANGARR['en-US']['table_property_keyspace_unknown'] = "Keyspace unknown";
+$LANGARR['en-US']['table_property_filter'] = "Filter";
+$LANGARR['en-US']['table_property_displaying'] = "Displaying";
 
 //
 $LANGARR['en-US']['description_no_activity'] = "no activity";
@@ -361,6 +365,21 @@ $LANGARR['en-US']['lists_search_hash_search'] = "Hash Search";
 $LANGARR['en-US']['lists_search_description'] = "Enter hashes to search for here...";
 $LANGARR['en-US']['lists_search_not_found'] = "NOT FOUND";
 $LANGARR['en-US']['lists_search_found_in_hashlist'] = 'in hashlist <a href="hashlists.php?id={0}">{1}</a>';
+
+//
+$LANGARR['en-US']['hashes_chunk_title'] = 'Hashes of chunk {0}';
+$LANGARR['en-US']['hashes_task_title'] = 'Hashes of task <a href="tasks.php?id=[[task.getId()]]">{0}</a>';
+$LANGARR['en-US']['hashes_hashlist_title'] = 'Hashes of hashlist <a href="hashlists.php?id=[[list.getId()]]">{0}</a>';
+$LANGARR['en-US']['hashes_matching_hashes'] = 'Matching hashes';
+$LANGARR['en-US']['hashes_hex_convertor'] = 'HEX convertor';
+
+$LANGARR['en-US']['hashes_filters_cracked'] = 'Cracked';
+$LANGARR['en-US']['hashes_filters_uncracked'] = 'Uncracked';
+$LANGARR['en-US']['hashes_filters_all'] = 'All';
+
+$LANGARR['en-US']['hashes_displays_hash'] = 'Hashes only';
+$LANGARR['en-US']['hashes_displays_plain'] = 'Plaintexts only';
+$LANGARR['en-US']['hashes_displays_all'] = 'Hashes + plaintexts';
 
 // files
 $LANGARR['en-US']['files_index_files'] = 'Files';

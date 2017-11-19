@@ -90,6 +90,8 @@ $LANGARR['tr-TR']['button_edit'] = "Düzelt";
 $LANGARR['tr-TR']['button_show'] = "Göster";
 $LANGARR['tr-TR']['button_recheck'] = "Kontrol et";
 $LANGARR['tr-TR']['button_continue'] = "Devam";
+$LANGARR['tr-TR']['button_ok'] = "Tamam";
+$LANGARR['tr-TR']['button_convert'] = "Dönüştür";
 
 $LANGARR['tr-TR']['button_choose_file_placeholder'] = "Dosya yok";
 
@@ -211,6 +213,8 @@ $LANGARR['tr-TR']['table_property_level'] = 'Seviye';
 $LANGARR['tr-TR']['table_property_issuer'] = 'Yayınlayan';
 $LANGARR['tr-TR']['table_property_message'] = 'Mesaj';
 $LANGARR['tr-TR']['table_property_keyspace_unknown'] = "Deneme uzayı bilinmiyor";
+$LANGARR['tr-TR']['table_property_filter'] = "Filtre";
+$LANGARR['tr-TR']['table_property_displaying'] = "Gösterilen";
 
 //
 $LANGARR['tr-TR']['description_no_activity'] = "faaliyet yok";
@@ -361,6 +365,21 @@ $LANGARR['tr-TR']['lists_search_hash_search'] = "Hash Arama";
 $LANGARR['tr-TR']['lists_search_description'] = "Aranacak hashleri buraya girin...";
 $LANGARR['tr-TR']['lists_search_not_found'] = "BULUNAMADI";
 $LANGARR['tr-TR']['lists_search_found_in_hashlist'] = '<a href="hashlists.php?id={0}">{1}</a> hash listesinde';
+
+//
+$LANGARR['tr-TR']['hashes_chunk_title'] = "Parça {0} hash'leri";
+$LANGARR['tr-TR']['hashes_task_title'] = 'Görev <a href="tasks.php?id=[[task.getId()]]">{0}</a> hash\'leri';
+$LANGARR['tr-TR']['hashes_hashlist_title'] = 'Hash listesi <a href="hashlists.php?id=[[list.getId()]]">{0}</a> hash\'leri';
+$LANGARR['tr-TR']['hashes_matching_hashes'] = 'Bulunan hash\'ler';
+$LANGARR['tr-TR']['hashes_hex_convertor'] = 'HEX dönüştürücüsü';
+
+$LANGARR['tr-TR']['hashes_filters_cracked'] = 'Kırılan';
+$LANGARR['tr-TR']['hashes_filters_uncracked'] = 'Kırılmamış';
+$LANGARR['tr-TR']['hashes_filters_all'] = 'Hepsi';
+
+$LANGARR['tr-TR']['hashes_displays_hash'] = 'Sadece hash\'ler';
+$LANGARR['tr-TR']['hashes_displays_plain'] = 'Sadece düz metinler';
+$LANGARR['tr-TR']['hashes_displays_all'] = 'Hash\'ler + düz metinler';
 
 // files
 $LANGARR['tr-TR']['files_index_files'] = 'Dosyalar';
