@@ -14,12 +14,14 @@
       <td>[[lang.get('table_property_id')]]</td>
       <td>
         <code>[[task.getId()]]</code>
+        {{IF [[login.getLevel()]] >= 20}}
         <form style ='float: right;' action="tasks.php" method="POST" onSubmit="if (!confirm('[[lang.get('post_confirm_msg_delete_task', [ [[task.getId()]] ])]]')) return false;">
           <input type="hidden" name="action" value="[[$DTaskAction::DELETE_TASK]]">
           <input type="hidden" name="csrf" value="[[csrf]]">
           <input type="hidden" name="task" value="[[task.getId()]]">
           <input type="submit" class='btn btn-danger' value="[[lang.get('button_delete')]]">
         </form>
+        {{ENDIF}}
       </td>
     </tr>
     <tr>

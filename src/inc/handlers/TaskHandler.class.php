@@ -92,13 +92,13 @@ class TaskHandler implements Handler {
         $this->rename();
         break;
       case DTaskAction::DELETE_FINISHED:
-        if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
+        if ($LOGIN->getLevel() < DAccessLevel::USER) {
           UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->deleteFinished();
         break;
       case DTaskAction::DELETE_TASK:
-        if ($LOGIN->getLevel() < DAccessLevel::SUPERUSER) {
+        if ($LOGIN->getLevel() < DAccessLevel::USER) {
           UI::printError("ERROR", $LANG->get("handler_message_no_rights"));
         }
         $this->delete();

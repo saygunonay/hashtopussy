@@ -143,7 +143,7 @@
                   });
 							</script>
                     {{ENDIF}}
-        			{{IF [[login.getLevel()]] >= 30}}
+        			{{IF [[login.getLevel()]] >= 20}}
                 {{IF [[task.getVal('Task').getTaskType()]] != 1}}
                   <form style ='float: left; padding-right: 5px;' action="tasks.php?new=true&copy=[[task.getVal('Task')->getId()]]" method="post">
                     <input type="submit" class='btn btn-default' value="[[lang.get('button_copy')]]">
