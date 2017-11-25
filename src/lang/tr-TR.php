@@ -302,6 +302,8 @@ $LANGARR['tr-TR']['agents_new_add_new_agent'] = "Yeni ajan ekle";
 $LANGARR['tr-TR']['agents_new_description_general'] = "Yeni ajan eklemek için istemciyi indirin ve ona geçerli bir tanıt atayın.<br><br>Kullanılan tanıtlar ikinci kez kullanılmalarını önlemek için otomatik olarak silinirler.<br><br>Eğer istemci tarafından bağlanılacak API URL'i sorulursa, aşağıdakini girmelisiniz:<br>";
 $LANGARR['tr-TR']['agents_new_vouchers'] = "Tanıtlar";
 
+$LANGARR['tr-TR']['agents_message_agent_not_found'] = "Ajan bulunamadı!";
+
 // tasks
 $LANGARR['tr-TR']['tasks_index_tasks'] = "Görevler";
 $LANGARR['tr-TR']['tasks_index_button_delete_finished'] = "Bitenleri sil";
@@ -338,6 +340,9 @@ $LANGARR['tr-TR']['tasks_super_details_supertask_details'] = "Üstgörev Detayla
 $LANGARR['tr-TR']['tasks_super_import_create_supertask'] = "Hashcat maskelerinden Üstgörev Oluştur";
 $LANGARR['tr-TR']['tasks_super_import_information'] = "Girilen her maske için bir ön-ayarlı görev oluşturulup yeni oluşturulan üst-göreve dahil edilecektir.";
 $LANGARR['tr-TR']['tasks_super_import_description_masks'] = "Hashcat maskelerinizi satır satır burayaya yapıştırın. Formatları .hcmask dosyasındakine uygun olmalıdır...";
+
+$LANGARR['tr-TR']['tasks_super_message_invalid_supertask'] = 'Geçersiz üstgörev kimliği!';
+$LANGARR['tr-TR']['tasks_message_invalid_task'] = 'Geçersiz görev kimliği!';
 
 // lists
 $LANGARR['tr-TR']['lists_index_hashlists'] = "Hash listeleri";
@@ -381,6 +386,8 @@ $LANGARR['tr-TR']['lists_zap_description_paste_founds'] = "Bulunanları buraya y
 $LANGARR['tr-TR']['lists_zap_import_directory_empty'] = "'içeri aktarım' dizini boş";
 $LANGARR['tr-TR']['lists_zap_conflict_overwrite_hashes'] = "Kırılmış hash'leri üzerine yaz";
 
+$LANGARR['tr-TR']['lists_message_list_not_found'] = "Hash listesi bulunamadı!";
+
 //
 $LANGARR['tr-TR']['hashes_chunk_title'] = "Parça {0} hash'leri";
 $LANGARR['tr-TR']['hashes_task_title'] = 'Görev <a href="tasks.php?id=[[task.getId()]]">{0}</a> hash\'leri';
@@ -396,6 +403,10 @@ $LANGARR['tr-TR']['hashes_displays_hash'] = 'Sadece hash\'ler';
 $LANGARR['tr-TR']['hashes_displays_plain'] = 'Sadece düz metinler';
 $LANGARR['tr-TR']['hashes_displays_all'] = 'Hash\'ler + düz metinler';
 
+$LANGARR['tr-TR']['hashes_message_invalid_hashlist'] = 'Geçersiz hash listesi!';
+$LANGARR['tr-TR']['hashes_message_invalid_chunk'] = 'Geçersiz parça!';
+$LANGARR['tr-TR']['hashes_message_invalid_task'] = 'Geçersiz görev!';
+
 // files
 $LANGARR['tr-TR']['files_index_files'] = 'Dosyalar';
 $LANGARR['tr-TR']['files_index_existing_files'] = 'Var olan {0}';
@@ -407,6 +418,8 @@ $LANGARR['tr-TR']['files_index_download_url'] = 'İndirme URL\'i';
 
 $LANGARR['tr-TR']['files_edit_edit_file'] = 'Dosyayı Düzelt';
 $LANGARR['tr-TR']['files_edit_warning_message'] = "Uyarı: Eğer dosya koşmakta olan bir görevde kullanılıyorsa isminin değiştirilmesi önerilmez. Bu durum dosyayı kullanan ajanlarla ilgili sorunlar yaratabilir.<br>Dosyanın ismini değitirdiğinizde ajanlar dosyayı tekrar indireceklerdir çünkü onu yeni bir dosya olarak kabul edeceklerdir, ismi değitirilmiş bir dosya olduğunu bilemezler.";
+
+$LANGARR['tr-TR']['files_message_invalid_file'] = 'Geçersiz dosya kimliği!';
 
 // chunks
 $LANGARR['tr-TR']['chunks_chunk_activity'] = 'Parça faaliyeti';
@@ -437,6 +450,8 @@ $LANGARR['tr-TR']['users_detail_user_currently_enabled'] = 'Kullanıcı şu anda
 $LANGARR['tr-TR']['users_detail_user_currently_disabled'] = 'Kullanıcı şu anda pasif';
 $LANGARR['tr-TR']['users_detail_delete_user_warning'] = 'Bu kullanıcıyı gerçekten silmek istiyor musunuz? Bu işlem geri alınamaz!';
 
+$LANGARR['tr-TR']['users_message_invalid_user'] = 'Geçersiz kullanıcı!';
+
 // config
 $LANGARR['tr-TR']['config_server_configuration'] = 'Sunucu yapılandırması';
 $LANGARR['tr-TR']['config_server_description_agent_timeout'] = 'Bir ajanın pasif kabul edilmesi için cevap vermemesi gereken süre';
@@ -466,6 +481,8 @@ $LANGARR['tr-TR']['config_hash_types_hash_types'] = 'Hash Tipleri';
 $LANGARR['tr-TR']['config_hash_types_add_new_hash_type'] = 'Yeni hash tipi ekle';
 $LANGARR['tr-TR']['config_agent_binaries_agent_binaries'] = "Ajan Dosyaları";
 $LANGARR['tr-TR']['config_log_log_entries'] = "Log Kayıtları";
+
+$LANGARR['tr-TR']['config_agent_binaries_message_invalid_agent_binary'] = "Geçersiz ajan dosyası kimliği!";
 
 //
 $LANGARR['tr-TR']['post_confirm_msg_delete_all_finished_tasks'] = 'Tüm bitmiş görevleri silmeyi gerçekten istiyor musunuz?';

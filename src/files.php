@@ -39,7 +39,7 @@ if (isset($_GET['view']) && in_array($_GET['view'], array('dict', 'rule'))) {
 if (isset($_GET['edit'])) {
   $file = $FACTORIES::getFileFactory()->get($_GET['edit']);
   if ($file == null) {
-    UI::addMessage(UI::ERROR, "Invalid file ID!");
+    UI::addMessage(UI::ERROR, $LANG->get('files_message_invalid_file'));
   }
   else {
     $OBJECTS['file'] = $file;

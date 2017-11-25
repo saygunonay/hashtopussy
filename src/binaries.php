@@ -34,7 +34,7 @@ if (isset($_GET['new'])) {
 else if (isset($_GET['edit'])) {
   $bin = $FACTORIES::getAgentBinaryFactory()->get($_GET['edit']);
   if ($bin == null) {
-    UI::printError("ERROR", "Invalid agent binary ID!");
+    UI::printError("ERROR", $LANG->get('config_agent_binaries_message_invalid_agent_binary'));
   }
   $OBJECTS['editBinary'] = true;
   $OBJECTS['bin'] = $bin;

@@ -39,7 +39,7 @@ $queryFilters = array();
 if (isset($_GET['hashlist'])) {
   $list = $FACTORIES::getHashlistFactory()->get($_GET["hashlist"]);
   if ($list == null) {
-    UI::printError("ERROR", "Invalid hashlist!");
+    UI::printError("ERROR", $LANG->get('hashes_message_invalid_hashlist'));
   }
   $OBJECTS['list'] = $list;
   if ($list->getFormat() == DHashlistFormat::SUPERHASHLIST) {
@@ -73,7 +73,7 @@ else if (isset($_GET['chunk'])) {
   $qF = new QueryFilter(Chunk::CHUNK_ID, $_GET['chunk'], "=", $FACTORIES::getChunkFactory());
   $joined = $FACTORIES::getChunkFactory()->filter(array($FACTORIES::FILTER => $qF, $FACTORIES::JOIN => array($jF1, $jF2)));
   if (sizeof($joined[$FACTORIES::getChunkFactory()->getModelName()]) == null) {
-    UI::printError("ERROR", "Invalid chunk!");
+    UI::printError("ERROR", $LANG->get('hashes_message_invalid_chunk'));
   }
   /** @var $chunk Chunk */
   $chunk = $joined[$FACTORIES::getChunkFactory()->getModelName()][0];
@@ -103,7 +103,7 @@ else if (isset($_GET['task'])) {
   $qF = new QueryFilter(Task::TASK_ID, $_GET['task'], "=");
   $joined = $FACTORIES::getTaskFactory()->filter(array($FACTORIES::FILTER => $qF, $FACTORIES::JOIN => array($jF)));
   if (sizeof($joined[$FACTORIES::getTaskFactory()->getModelName()]) == null) {
-    UI::printError("ERROR", "Invalid task!");
+    UI::printError("ERROR", $LANG->get('hashes_message_invalid_task'));
   }
   /** @var $task Task */
   $task = $joined[$FACTORIES::getTaskFactory()->getModelName()][0];

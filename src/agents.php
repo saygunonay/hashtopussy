@@ -50,7 +50,7 @@ if (isset($_GET['id'])) {
   $TEMPLATE = new Template("agents/detail");
   $agent = $FACTORIES::getAgentFactory()->get($_GET['id']);
   if (!$agent) {
-    UI::printError("ERROR", "Agent not found!");
+    UI::printError("ERROR", $LANG->get('agents_message_agent_not_found'));
   }
   else {
     $OBJECTS['agent'] = $agent;

@@ -55,7 +55,7 @@ else if (isset($_GET['id'])) {
   $TEMPLATE = new Template("supertasks/detail");
   $supertask = $FACTORIES::getSupertaskFactory()->get($_GET['id']);
   if ($supertask == null) {
-    UI::printError("ERROR", "Invalid supertask ID!");
+    UI::printError("ERROR", $LANG->get('tasks_super_message_invalid_supertask'));
   }
   $qF = new QueryFilter(SupertaskTask::SUPERTASK_ID, $supertask->getId(), "=", $FACTORIES::getSupertaskTaskFactory());
   $jF = new JoinFilter($FACTORIES::getSupertaskTaskFactory(), SupertaskTask::TASK_ID, Task::TASK_ID);

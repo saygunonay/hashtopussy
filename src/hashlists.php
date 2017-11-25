@@ -56,7 +56,7 @@ else if (isset($_GET['id'])) {
   $qF = new QueryFilter(Hashlist::HASHLIST_ID, $_GET['id'], "=");
   $joined = $FACTORIES::getHashlistFactory()->filter(array($FACTORIES::JOIN => array($jF), $FACTORIES::FILTER => array($qF)));
   if (sizeof($joined[$FACTORIES::getHashlistFactory()->getModelName()]) == 0) {
-    UI::printError("ERROR", "Hashlist not found!");
+    UI::printError("ERROR", $LANG->get('lists_message_list_not_found'));
   }
   $list = new DataSet(array('hashlist' => $joined[$FACTORIES::getHashlistFactory()->getModelName()][0], 'hashtype' => $joined[$FACTORIES::getHashTypeFactory()->getModelName()][0]));
   $OBJECTS['list'] = $list;

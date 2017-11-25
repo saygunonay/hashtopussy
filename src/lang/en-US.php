@@ -302,6 +302,8 @@ $LANGARR['en-US']['agents_new_add_new_agent'] = "Add new agent";
 $LANGARR['en-US']['agents_new_description_general'] = "To add new agents provide them with a valid voucher and download a client.<br><br>Used vouchers are automatically deleted to prevent double spending.<br><br>If you are asked to provide the API url on the client to connect to, you need to enter the following:<br>";
 $LANGARR['en-US']['agents_new_vouchers'] = "Vouchers";
 
+$LANGARR['en-US']['agents_message_agent_not_found'] = "Agent not found!";
+
 // tasks
 $LANGARR['en-US']['tasks_index_tasks'] = "Tasks";
 $LANGARR['en-US']['tasks_index_button_delete_finished'] = "Delete finished";
@@ -338,6 +340,9 @@ $LANGARR['en-US']['tasks_super_details_supertask_details'] = "Supertask Details"
 $LANGARR['en-US']['tasks_super_import_create_supertask'] = "Create Supertask from Hashcat masks";
 $LANGARR['en-US']['tasks_super_import_information'] = "For every imported mask there will be a pre-conf task created which is then included in the newly created supertask.";
 $LANGARR['en-US']['tasks_super_import_description_masks'] = "Paste your Hashcat mask lines here. Format should be according to .hcmask files...";
+
+$LANGARR['en-US']['tasks_super_message_invalid_supertask'] = 'Invalid supertask ID!';
+$LANGARR['en-US']['tasks_message_invalid_task'] = 'Invalid task ID!';
 
 // lists
 $LANGARR['en-US']['lists_index_hashlists'] = "Hashlists";
@@ -381,6 +386,8 @@ $LANGARR['en-US']['lists_zap_description_paste_founds'] = "Paste founds here..."
 $LANGARR['en-US']['lists_zap_import_directory_empty'] = "'import' directory is empty";
 $LANGARR['en-US']['lists_zap_conflict_overwrite_hashes'] = "Overwrite already cracked hashes";
 
+$LANGARR['en-US']['lists_message_list_not_found'] = "Hashlist not found!";
+
 //
 $LANGARR['en-US']['hashes_chunk_title'] = 'Hashes of chunk {0}';
 $LANGARR['en-US']['hashes_task_title'] = 'Hashes of task <a href="tasks.php?id=[[task.getId()]]">{0}</a>';
@@ -396,6 +403,10 @@ $LANGARR['en-US']['hashes_displays_hash'] = 'Hashes only';
 $LANGARR['en-US']['hashes_displays_plain'] = 'Plaintexts only';
 $LANGARR['en-US']['hashes_displays_all'] = 'Hashes + plaintexts';
 
+$LANGARR['en-US']['hashes_message_invalid_hashlist'] = 'Invalid hashlist!';
+$LANGARR['en-US']['hashes_message_invalid_chunk'] = 'Invalid chunk!';
+$LANGARR['en-US']['hashes_message_invalid_task'] = 'Invalid task!';
+
 // files
 $LANGARR['en-US']['files_index_files'] = 'Files';
 $LANGARR['en-US']['files_index_existing_files'] = 'Existing {0}';
@@ -407,6 +418,8 @@ $LANGARR['en-US']['files_index_download_url'] = 'Download URL';
 
 $LANGARR['en-US']['files_edit_edit_file'] = 'Edit File';
 $LANGARR['en-US']['files_edit_warning_message'] = "WARNING: It's not recommended to rename a file during running a task where this file is used. This can cause problems with the agents using the file.<br>Keep in mind that when you rename a file the agents will download the file again as they don't know that it is just a renamed file.";
+
+$LANGARR['en-US']['files_message_invalid_file'] = 'Invalid file ID!';
 
 // chunks
 $LANGARR['en-US']['chunks_chunk_activity'] = 'Chunk activity';
@@ -437,6 +450,8 @@ $LANGARR['en-US']['users_detail_user_currently_enabled'] = 'User is currently en
 $LANGARR['en-US']['users_detail_user_currently_disabled'] = 'User is currently disabled';
 $LANGARR['en-US']['users_detail_delete_user_warning'] = 'Do you really want to delete this user? This cannot be undone!';
 
+$LANGARR['en-US']['users_message_invalid_user'] = 'Invalid user!';
+
 // config
 $LANGARR['en-US']['config_server_configuration'] = 'Server configuration';
 $LANGARR['en-US']['config_server_description_agent_timeout'] = 'How long an agent must not respond until he is treated as not active anymore';
@@ -466,6 +481,8 @@ $LANGARR['en-US']['config_hash_types_hash_types'] = 'Hash Types';
 $LANGARR['en-US']['config_hash_types_add_new_hash_type'] = 'Add new hash type';
 $LANGARR['en-US']['config_agent_binaries_agent_binaries'] = "Agent Binaries";
 $LANGARR['en-US']['config_log_log_entries'] = "Log Entries";
+
+$LANGARR['en-US']['config_agent_binaries_message_invalid_agent_binary'] = "Invalid agent binary ID!";
 
 //
 $LANGARR['en-US']['post_confirm_msg_delete_all_finished_tasks'] = 'Really delete all finished tasks?';

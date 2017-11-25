@@ -38,7 +38,7 @@ if (isset($_GET['new'])) {
 else if (isset($_GET['id'])) {
   $user = $FACTORIES::getUserFactory()->get($_GET['id']);
   if ($user == null) {
-    UI::printError("ERROR", "Invalid user!");
+    UI::printError("ERROR", $LANG->get('users_message_invalid_user'));
   }
   else {
     $OBJECTS['user'] = $user;

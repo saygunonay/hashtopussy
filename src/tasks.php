@@ -67,7 +67,7 @@ if (isset($_GET['id'])) {
   $TEMPLATE = new Template("tasks/detail");
   $task = $FACTORIES::getTaskFactory()->get($_GET['id']);
   if ($task == null) {
-    UI::printError("ERROR", "Invalid task ID!");
+    UI::printError("ERROR", $LANG->get('tasks_message_invalid_task'));
   }
   $OBJECTS['task'] = $task;
   
