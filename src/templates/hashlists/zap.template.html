@@ -1,4 +1,4 @@
-<h3>Import pre-cracked hashes:</h3>
+<h3>[[lang.get('lists_zap_import_title')]]</h3>
 <form action="hashlists.php{{IF [[list.getVal('hashlist').getId()]] != ""}}?id=[[list.getVal('hashlist').getId()]]{{ENDIF}}" method="POST" enctype="multipart/form-data">
 	<input type='hidden' name='action' value='[[$DHashlistAction::PROCESS_ZAP]]'>
 	<input type="hidden" name="hashlist" value="[[list.getVal('hashlist').getId()]]">
@@ -6,33 +6,33 @@
 	<div class="panel panel-default">
 		<table class="table table-bordered table-nonfluid">
 			<tr>
-				<th>Property</th>
-				<th>Value</th>
+				<th>[[lang.getUCF('property')]]</th>
+				<th>[[lang.getUCF('value')]]</th>
 			</tr>
 			<tr>
-				<td>Name:</td>
+				<td>[[lang.get('table_property_name')]]</td>
 				<td>[[list.getVal('hashlist').getHashlistName()]]</td>
 			</tr>
 			<tr>
-				<td>Hashtype:</td>
+				<td>[[lang.get('table_property_hash_type')]]</td>
 				<td>[[list.getVal('hashtype').getDescription()]]</td>
 			</tr>
 			<tr>
-				<td>Salted:</td>
+				<td>[[lang.get('table_property_salted')]]</td>
 				<td>
 					{{IF [[list.getVal('hashlist').getIsSalted()]] == 1}}
-						Yes
+						[[lang.getUCF('yes')]]
 					{{ELSE}}
-						No
+						[[lang.getUCF('no')]]
 					{{ENDIF}}
 				</td>
 			</tr>
 			<tr>
-				<td>Hashlist format:</td>
+				<td>[[lang.getUCF('table_property_hashlist_format')]]</td>
 				<td>
 					[[Util::getStaticArray([[list.getVal('hashlist').getFormat()]], 'formats')]]<br>
-					Field separator: <input type="text" class='form-control' name="separator" value="[[config.getVal('fieldseparator')]]" size="1"><br>
-					(Accepted format is
+					[[lang.get('lists_zap_field_separator')]] <input type="text" class='form-control' name="separator" value="[[config.getVal('fieldseparator')]]" size="1"><br>
+					([[lang.get('lists_zap_accepted_format')]]
 					{{IF [[list.getVal('hashlist').getFormat()]] == 0}}
 						hash[:salt]:plaintext
 					{{ENDIF}}
@@ -46,54 +46,54 @@
 			    </td>
 			</tr>
 			<tr>
-				<td>Hash source</td>
+				<td>[[lang.get('table_property_hash_source')]]</td>
 				<td>
-					<input type="radio" name="source" onChange="sourceChange(this.value);" value="paste"> Paste<br>
-					<input type="radio" name="source" onChange="sourceChange(this.value);" value="upload" checked> Upload<br>
-					<input type="radio" name="source" onChange="sourceChange(this.value);" value="import"> Import<br>
-					<input type="radio" name="source" onChange="sourceChange(this.value);" value="url"> URL download
+					<input type="radio" name="source" onChange="sourceChange(this.value);" value="paste"> [[lang.get('lists_new_hash_source_paste')]]<br>
+					<input type="radio" name="source" onChange="sourceChange(this.value);" value="upload" checked> [[lang.get('lists_new_hash_source_upload')]]<br>
+					<input type="radio" name="source" onChange="sourceChange(this.value);" value="import"> [[lang.get('lists_new_hash_source_import')]]<br>
+					<input type="radio" name="source" onChange="sourceChange(this.value);" value="url"> [[lang.get('lists_new_hash_source_url_download')]]
 				</td>
       </tr>
       <tr id="pasteLine" style="display: none;">
-        <td>Input field:</td>
+        <td>[[lang.get('lists_new_hash_source_input_field')]]</td>
         <td>
-          <textarea name="hashfield" class='form-control' cols="60" rows="10" placeholder='Paste founds here...'></textarea>
+          <textarea name="hashfield" class='form-control' cols="60" rows="10" placeholder="[[lang.get('lists_zap_description_paste_founds')]]"></textarea>
         </td>
       </tr>
       <tr id="uploadLine">
-        <td>File to upload:</td>
+        <td>[[lang.get('lists_new_hash_source_file_to_upload')]]</td>
         <td>
-          <input type="file" class='form-control' name="hashfile">
+          <input type="file" class='filestyle' name="hashfile" data-icon="false" data-buttonText="[[lang.get('button_choose_file')]]" data-placeholder="[[lang.get('button_choose_file_placeholder')]]">
         </td>
       </tr>
       <tr id="importLine" style="display: none;">
-        <td>File to import:</td>
+        <td>[[lang.get('lists_new_hash_source_file_to_import')]]</td>
         <td>
           <select class='form-control' name="importfile">
             {{FOREACH impfile;[[impfiles]]}}
               <option value="[[impfile.getVal('file')]]">[[impfile.getVal('file')]]</option>
             {{ENDFOREACH}}
             {{IF [[sizeof([[impfiles]])]] == 0}}
-							<option value="-1">'import' directory is empty</option>
+							<option value="-1">[[lang.get('lists_zap_import_directory_empty')]]</option>
             {{ENDIF}}
           </select>
         </td>
       </tr>
 			<tr id="downloadLine" style="display: none;">
-				<td>File URL:</td>
+				<td>[[lang.get('lists_new_hash_source_file_url')]]</td>
 				<td>
 					<input type="text" class='form-control' name="url" size="35">
 				</td>
 			</tr>
         	<tr>
-        		<td>Conflict resolution:</td>
+        		<td>[[lang.get('table_property_conflict_resolution')]]</td>
         		<td>
-        			<input type="checkbox" name="overwrite" value="1"> Overwrite already cracked hashes
+        			<input type="checkbox" name="overwrite" value="1"> [[lang.get('lists_zap_conflict_overwrite_hashes')]]
         		</td>
         	</tr>
         	<tr>
         		<td colspan="3">
-        			<input type="submit" class='btn btn-default' value="Pre-crack hashes">
+        			<input type="submit" class='btn btn-default' value="[[lang.get('button_precrack_hashes')]]">
         		</td>
         	</tr>
 		</table>

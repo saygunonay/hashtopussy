@@ -99,6 +99,8 @@ $LANGARR['tr-TR']['button_start_installation'] = $LANGARR['tr-TR']['program_name
 
 $LANGARR['tr-TR']['button_send_new_password'] = "Yeni şifre yolla";
 
+$LANGARR['tr-TR']['button_precrack_hashes'] = "Hash'leri önceden kır";
+
 $LANGARR['tr-TR']['checkbox_select_all'] = "Hepsini Seç";
 
 //
@@ -215,6 +217,7 @@ $LANGARR['tr-TR']['table_property_message'] = 'Mesaj';
 $LANGARR['tr-TR']['table_property_keyspace_unknown'] = "Deneme uzayı bilinmiyor";
 $LANGARR['tr-TR']['table_property_filter'] = "Filtre";
 $LANGARR['tr-TR']['table_property_displaying'] = "Gösterilen";
+$LANGARR['tr-TR']['table_property_conflict_resolution'] = "Çatışma çözme";
 
 //
 $LANGARR['tr-TR']['description_no_activity'] = "faaliyet yok";
@@ -231,6 +234,11 @@ $LANGARR['tr-TR']['util_staticarray_states_quit'] = "Çıkıldı";
 $LANGARR['tr-TR']['util_staticarray_states_bypass'] = "Bypass";
 $LANGARR['tr-TR']['util_staticarray_states_trimmed'] = "Kırpıldı";
 $LANGARR['tr-TR']['util_staticarray_states_aborting'] = "Vazgeçiliyor...";
+
+$LANGARR['tr-TR']['util_staticarray_formats_text'] = "Metin";
+$LANGARR['tr-TR']['util_staticarray_formats_hccapx'] = "HCCAPX";
+$LANGARR['tr-TR']['util_staticarray_formats_binary'] = "Binari";
+$LANGARR['tr-TR']['util_staticarray_formats_superhashlist'] = "Üst hash listesi";
 
 // index
 $LANGARR['tr-TR']['index_alert_description_login_form'] = "Burası özel kapalı bir sistemdir. Eğer erişim istiyorsanız bu sayfanın yöneticisi ile iletişime geçerek bir hesap açmasını isteyin.";
@@ -365,6 +373,13 @@ $LANGARR['tr-TR']['lists_search_hash_search'] = "Hash Arama";
 $LANGARR['tr-TR']['lists_search_description'] = "Aranacak hashleri buraya girin...";
 $LANGARR['tr-TR']['lists_search_not_found'] = "BULUNAMADI";
 $LANGARR['tr-TR']['lists_search_found_in_hashlist'] = '<a href="hashlists.php?id={0}">{1}</a> hash listesinde';
+
+$LANGARR['tr-TR']['lists_zap_import_title'] = "Önceden kırılmış hashleri içeri al";
+$LANGARR['tr-TR']['lists_zap_field_separator'] = "Alan ayıraçı:";
+$LANGARR['tr-TR']['lists_zap_accepted_format'] = "Kabul edilen format";
+$LANGARR['tr-TR']['lists_zap_description_paste_founds'] = "Bulunanları buraya yapıştırın...";
+$LANGARR['tr-TR']['lists_zap_import_directory_empty'] = "'içeri aktarım' dizini boş";
+$LANGARR['tr-TR']['lists_zap_conflict_overwrite_hashes'] = "Kırılmış hash'leri üzerine yaz";
 
 //
 $LANGARR['tr-TR']['hashes_chunk_title'] = "Parça {0} hash'leri";

@@ -762,6 +762,7 @@ class Util {
    * @return string the element or empty string
    */
   public static function getStaticArray($val, $id) {
+    global $LANG;
     $platforms = array(
       "unknown",
       "NVidia",
@@ -774,17 +775,16 @@ class Util {
       "<img src='static/osx.png' alt='OS X' title='OS X'>"
     );
     $formats = array(
-      "Text",
-      "HCCAPX",
-      "Binary",
-      "Superhashlist"
+      $LANG->get('util_staticarray_formats_text'),
+      $LANG->get('util_staticarray_formats_hccapx'),
+      $LANG->get('util_staticarray_formats_binary'),
+      $LANG->get('util_staticarray_formats_superhashlist')
     );
     $formattables = array(
       "hashes",
       "hashes_binary",
       "hashes_binary"
     );
-    global $LANG;
     $states = array(
       $LANG->get('util_staticarray_states_new'),
       $LANG->get('util_staticarray_states_init'),

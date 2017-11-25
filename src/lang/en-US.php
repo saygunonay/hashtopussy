@@ -99,6 +99,8 @@ $LANGARR['en-US']['button_start_installation'] = "Start Installation of " . $LAN
 
 $LANGARR['en-US']['button_send_new_password'] = "Send new password";
 
+$LANGARR['en-US']['button_precrack_hashes'] = "Pre-crack hashes";
+
 $LANGARR['en-US']['checkbox_select_all'] = "Select All";
 
 //
@@ -215,6 +217,7 @@ $LANGARR['en-US']['table_property_message'] = 'Message';
 $LANGARR['en-US']['table_property_keyspace_unknown'] = "Keyspace unknown";
 $LANGARR['en-US']['table_property_filter'] = "Filter";
 $LANGARR['en-US']['table_property_displaying'] = "Displaying";
+$LANGARR['en-US']['table_property_conflict_resolution'] = "Conflict resolution";
 
 //
 $LANGARR['en-US']['description_no_activity'] = "no activity";
@@ -231,6 +234,11 @@ $LANGARR['en-US']['util_staticarray_states_quit'] = "Quit";
 $LANGARR['en-US']['util_staticarray_states_bypass'] = "Bypass";
 $LANGARR['en-US']['util_staticarray_states_trimmed'] = "Trimmed";
 $LANGARR['en-US']['util_staticarray_states_aborting'] = "Aborting...";
+
+$LANGARR['en-US']['util_staticarray_formats_text'] = "Text";
+$LANGARR['en-US']['util_staticarray_formats_hccapx'] = "HCCAPX";
+$LANGARR['en-US']['util_staticarray_formats_binary'] = "Binary";
+$LANGARR['en-US']['util_staticarray_formats_superhashlist'] = "Superhashlist";
 
 // index
 $LANGARR['en-US']['index_alert_description_login_form'] = "This is a private closed system. If you need access you need to contact an admin of this page and ask for creating an account.";
@@ -365,6 +373,13 @@ $LANGARR['en-US']['lists_search_hash_search'] = "Hash Search";
 $LANGARR['en-US']['lists_search_description'] = "Enter hashes to search for here...";
 $LANGARR['en-US']['lists_search_not_found'] = "NOT FOUND";
 $LANGARR['en-US']['lists_search_found_in_hashlist'] = 'in hashlist <a href="hashlists.php?id={0}">{1}</a>';
+
+$LANGARR['en-US']['lists_zap_import_title'] = "Import pre-cracked hashes";
+$LANGARR['en-US']['lists_zap_field_separator'] = "Field separator:";
+$LANGARR['en-US']['lists_zap_accepted_format'] = "Accepted format is";
+$LANGARR['en-US']['lists_zap_description_paste_founds'] = "Paste founds here...";
+$LANGARR['en-US']['lists_zap_import_directory_empty'] = "'import' directory is empty";
+$LANGARR['en-US']['lists_zap_conflict_overwrite_hashes'] = "Overwrite already cracked hashes";
 
 //
 $LANGARR['en-US']['hashes_chunk_title'] = 'Hashes of chunk {0}';
