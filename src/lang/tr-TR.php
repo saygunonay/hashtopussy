@@ -454,14 +454,14 @@ $LANGARR['tr-TR']['users_message_invalid_user'] = 'Geçersiz kullanıcı!';
 
 // config
 $LANGARR['tr-TR']['config_server_configuration'] = 'Sunucu yapılandırması';
-$LANGARR['tr-TR']['config_server_description_agent_timeout'] = 'Bir ajanın pasif kabul edilmesi için cevap vermemesi gereken süre';
-$LANGARR['tr-TR']['config_server_description_benchmark_time'] = 'Bir ajanın bir görevi değerlendirme süresi';
+$LANGARR['tr-TR']['config_server_description_benchmark_time'] = 'Bir ajanın bir görevi değerlendirme süresi (saniye olarak)';
 $LANGARR['tr-TR']['config_server_description_chunk_duration'] = 'Bir ajanın bir parçayı bitirmesi yaklaşık kaç saniye almalı';
-$LANGARR['tr-TR']['config_server_description_chunk_timeout'] = 'Bir ajanın zaman aşımına uğraması ve kendisine atanmış parçanın başka ajana yollanması için geçmesi gereken süre';
-$LANGARR['tr-TR']['config_server_description_hashes_page_size'] = 'Hash listesinde aynı sayfada kaç tane kalem gösterilsin (Sayfa boyutu)';
-$LANGARR['tr-TR']['config_server_description_field_separator'] = 'Hash ve açık halini (veya salt\'ı) ayırırken hangi ayraç kullanılsın';
-$LANGARR['tr-TR']['config_server_description_hashlist_alias'] = 'Bir görev oluşturulurken hash listesi lakabı olarak hangi dizi kullanılsın';
-$LANGARR['tr-TR']['config_server_description_status_timer'] = 'Ajan kaç saniyede bir sunucuya durumunu ve kırılanları göndersin';
+$LANGARR['tr-TR']['config_server_description_chunk_timeout'] = 'Bir ajanın zaman aşımına uğraması ve kendisine atanmış parçanın başka ajana yollanması için geçmesi gereken süre (saniye olarak)';
+$LANGARR['tr-TR']['config_server_description_agent_timeout'] = 'Bir ajanın pasif kabul edilmesi için cevap vermemesi gereken süre (saniye olarak)';
+$LANGARR['tr-TR']['config_server_description_hashes_page_size'] = 'Hash listesinde aynı sayfada kaç tane hash gösterilsin (sayfa boyutu)';
+$LANGARR['tr-TR']['config_server_description_field_separator'] = 'Hash ve açık halini (veya salt\'ı) ayırırken kullanılacak ayıraç';
+$LANGARR['tr-TR']['config_server_description_hashlist_alias'] = 'Bir görev oluşturulurken hash listesi lakabı olarak kullanılacak kelime';
+$LANGARR['tr-TR']['config_server_description_status_timer'] = 'Ajanın sunucuya durumunu gönderme periyotu (saniye olarak)';
 $LANGARR['tr-TR']['config_server_description_blacklist_chars'] = 'Saldırı komutu girdilerinde kullanılmasına izin verilmeyen karakterler';
 $LANGARR['tr-TR']['config_server_description_number_logentries'] = 'Saklanacak log girdisi sayısı. Bu sayının %120\'sine ulaşıldığında en eskileri silinecektir';
 $LANGARR['tr-TR']['config_server_description_time_format'] = 'Zaman gösterimi formatı. PHP date() fonsiyonunun formatını kullanın';

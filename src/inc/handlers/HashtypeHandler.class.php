@@ -45,7 +45,7 @@ class HashtypeHandler implements Handler {
     }
     
     $hashtype = new HashType($_POST['id'], $desc, $salted);
-    if (!$FACTORIES::getHashTypeFactory()->save($hashtype)) {
+    if ($FACTORIES::getHashTypeFactory()->save($hashtype) == null) {
       UI::addMessage(UI::ERROR, $LANG->get('handler_message_hashtype_failed_to_add'));
       return;
     }
