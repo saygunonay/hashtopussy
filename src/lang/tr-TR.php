@@ -39,6 +39,7 @@ $LANGARR['tr-TR']['page'] = "sayfa";
 $LANGARR['tr-TR']['otp_key'] = "OTP anahtarı";
 $LANGARR['tr-TR']['all'] = "hepsi";
 $LANGARR['tr-TR']['supertask'] = "üstgörev";
+$LANGARR['tr-TR']['error'] = "hata";
 
 //
 $LANGARR['tr-TR']['button_set'] = "Ayarla";
@@ -556,6 +557,9 @@ $LANGARR['tr-TR']['install_admin_user_email'] = "E-posta adresi";
 $LANGARR['tr-TR']['install_admin_user_password'] = "Şifre";
 $LANGARR['tr-TR']['install_admin_user_repeat_password'] = "Şifre tekrar";
 $LANGARR['tr-TR']['install_done_message'] = "Kullanıcı başarılı bir şekilde oluşturulmuş olmalı.<br>Kurulumunuz tamamlanmıştır. Lütfen 'install' dizinini koruduğunuzdan veya sildiğinizden emin olun. Eğer apache2 kullanıyorsanız, 'AllowOverride All' ayarının " . $LANGARR['tr-TR']['program_name'] . " dizini için yapıldığından emin olun. Eğer nginx kullanıyorsanız şu dizinleri korufuğunuzdan emin olun: files, import, inc, lang, templates.";
+
+// Restricted
+$LANGARR['tr-TR']['restricted_page_message'] = "Bu sayfaya erişim hakkınız yok!";
 
 // handler messages
 $LANGARR['tr-TR']['handler_message_invalid_form_submission'] = "Hatalı form gönderimi!";

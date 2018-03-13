@@ -39,6 +39,7 @@ $LANGARR['en-US']['page'] = "page";
 $LANGARR['en-US']['otp_key'] = "OTP key";
 $LANGARR['en-US']['all'] = "all";
 $LANGARR['en-US']['supertask'] = "supertask";
+$LANGARR['en-US']['error'] = "error";
 
 //
 $LANGARR['en-US']['button_set'] = "Set";
@@ -556,6 +557,9 @@ $LANGARR['en-US']['install_admin_user_email'] = "Email address";
 $LANGARR['en-US']['install_admin_user_password'] = "Password";
 $LANGARR['en-US']['install_admin_user_repeat_password'] = "Repeat password";
 $LANGARR['en-US']['install_done_message'] = "User should be created successfully now.<br>Your installation should be complete now. Please make sure that you protect or delete the 'install' folder. If you use apache2, make sure you have the 'AllowOverride All' set for the " . $LANGARR['en-US']['program_name'] . " directory, if you use nginx make sure to protect these folders: files, import, inc, lang, templates.";
+
+// Restricted
+$LANGARR['en-US']['restricted_page_message'] = "You have no access to this page!";
 
 // handler messages
 $LANGARR['en-US']['handler_message_invalid_form_submission'] = "Invalid form submission!";
