@@ -60,7 +60,7 @@ if (isset($_GET['id']) || !isset($_GET['new'])) {
 
 if (isset($_GET['id'])) {
   if ($LOGIN->getLevel() < DAccessLevel::READ_ONLY) {
-    $TEMPLATE = new Template("restricted");
+    $TEMPLATE = new Template("errors/restricted");
     die($TEMPLATE->render($OBJECTS));
   }
   
@@ -237,7 +237,7 @@ if (isset($_GET['id'])) {
 }
 else if (isset($_GET['new'])) {
   if ($LOGIN->getLevel() < DAccessLevel::READ_ONLY) {
-    $TEMPLATE = new Template("restricted");
+    $TEMPLATE = new Template("errors/restricted");
     die($TEMPLATE->render($OBJECTS));
   }
   $TEMPLATE = new Template("tasks/new");

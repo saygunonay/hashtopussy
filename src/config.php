@@ -11,7 +11,7 @@ if (!$LOGIN->isLoggedin()) {
   die();
 }
 else if ($LOGIN->getLevel() < DAccessLevel::ADMINISTRATOR) {
-  $TEMPLATE = new Template("restricted");
+  $TEMPLATE = new Template("errors/restricted");
   die($TEMPLATE->render($OBJECTS));
 }
 
